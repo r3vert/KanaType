@@ -1,0 +1,3 @@
+# KanaType device settings.
+# Target: CircuitPython 10.2.1 on Adafruit Feather RP2040 (see boot_out.txt).
+# Library bundle: match the 10.x bundle; required libs listed in ../README.md.

@@ -1,0 +1,118 @@
+# Fonts
+
+The UI loads these BDF files by ROLE (roles are defined in
+`kanatype/layout.py`). A missing file degrades gracefully: JP prompts fall back
+down the font chain, and plain text falls back to the built-in ASCII font.
+
+| File (this folder) | Font | Role | Source |
+|---|---|---|---|
+| `notosansjp40.bdf` | Noto Sans JP rasterized at **native 40px** | "noto" — the drill prompt (scale 1) | see below |
+| `unifont_jp16_kana.bdf` | GNU Unifont Japanese 16px, subset to ASCII+kana | "prompt" — 16px x2 = 32px | see below |
+| `unifont_jp16_kana_bold.bdf` | same, dilated 1px (`--bold`) | "prompt_bold" — heavier drill glyph | see below |
+| `ter-u14b_ascii.bdf` | Terminus Bold 8x14, subset to ASCII | "menu" — menus & UI chrome | subset of the below |
+| `ter-u14b.bdf` | Terminus Bold 8x14, full (1356 glyphs) | *subset source only, not loaded* | https://terminus-font.sourceforge.net/ |
+| `ter-u16b.bdf` | Terminus Bold 8x16 | spare (near-identical, 3-item menus) | https://terminus-font.sourceforge.net/ |
+| `k8x12_kana.bdf` | k8x12 12px, subset to ASCII+kana | "jp" — small UI text | https://littlelimit.net/k8x12.htm |
+
+Terminus is SIL OFL 1.1 — drop its license file here as `LICENSE-terminus.txt`.
+
+## The 16px prompt font
+
+Shinonome (`shnmk16.bdf`) was the first choice but **its upstream is gone** —
+openlab.ring.gr.jp refuses connections, the Ring mirror hostnames no longer
+resolve, and the surviving GitHub copies hold only build sources, not compiled
+BDFs. Replaced with GNU Unifont's Japanese build, subset to the glyphs we use:
+
+```
+# 1.27 MB download, 8.9 MB unpacked
+curl -O https://unifoundry.com/pub/unifont/unifont-16.0.01/font-builds/unifont_jp-16.0.01.bdf.gz
+gunzip unifont_jp-16.0.01.bdf.gz
+python ../../tools/subset_font.py unifont_jp-16.0.01.bdf unifont_jp16_kana.bdf --ranges ascii,kana
+python ../../tools/subset_font.py unifont_jp-16.0.01.bdf unifont_jp16_kana_bold.bdf --ranges ascii,kana --bold
+# -> 286 glyphs, 45 KB each
+```
+
+Both are offered in the practice font picker: the plain 16px has truer kana
+shapes than k8x12x3 but thinner strokes; `--bold` dilates it back to a similar
+weight. Enclosed counters (あぬめねゑ) were checked and stay open — see
+`mockups/bold_loop_check.png`.
+
+License: SIL OFL 1.1 and GPLv2+ with the GNU Font Embedding Exception
+(the full notice travels inside the BDF's COPYRIGHT property).
+
+`tools/subset_font.py` is general — use it for any future variety font
+(`--ranges` takes presets or hex ranges). Subsetting is the compression: the
+device needs no decompressor, and a 45 KB font costs nothing against ~6 MB
+of free flash.
+
+k8x12 and Misaki are free licenses (license text ships inside each zip — keep a
+copy here). Download the zips, extract the named `.bdf` files here, deploy.
+
+Adding another variety font: either subset an existing BDF
+(`tools/subset_font.py`) or rasterize a TTF/OTF at any size
+(`tools/ttf2bdf.py`), then add a role to `layout.FONT_PATHS`, a style to
+`DRILL_PROMPT_STYLES`, an entry to `PROMPT_FONTS` — and bump `settings.MAGIC`,
+because the picker index is persisted in nvm.
+
+## The 40px prompt font (Noto Sans JP)
+
+Hand-drawn Japanese bitmap fonts stop at 24px (jiskan24, shinonome) — past
+that the world moved to outlines, so there is no 48px bitmap font to download.
+Big sizes have to be *generated*, which is what `tools/ttf2bdf.py` does:
+FreeType renders each glyph in MONOCHROME mode (hinted, never
+antialiased-then-thresholded) at whatever pixel size you ask for.
+
+```
+curl -L -o NotoSansJP-Regular.otf   https://github.com/notofonts/noto-cjk/raw/main/Sans/SubsetOTF/JP/NotoSansJP-Regular.otf
+python ../../tools/ttf2bdf.py NotoSansJP-Regular.otf notosansjp40.bdf --size 40 --ranges ascii,kana
+# -> 286 glyphs, 97 KB, advance 40, tight ascent 35 / descent 11
+```
+
+License: SIL OFL 1.1 (`LICENSE-notosansjp.txt`), so this one is safe to ship.
+
+Gotchas worth knowing before regenerating at another size:
+- TTF ascent/descent include LINE SPACING — Meiryo at 48px claims a 73px cell,
+  taller than the panel. ttf2bdf therefore declares metrics from the real ink.
+- 40px is what the reflowed drill screen affords: types run down the left in a
+  16px column and the score/answer box take a 28px column, leaving x 18..98 —
+  exactly two 40px kana. A bigger prompt means giving up one of those columns.
+- System fonts (Meiryo, Yu Gothic, MS Gothic) rasterize fine and look great,
+  but are NOT redistributable — generate locally, never commit.
+
+## No kanji on the device (2026-08)
+
+The two full-JIS fonts were removed: `k8x12.bdf` (845 KB, 7170 glyphs) now ships
+as a 29 KB ASCII+kana subset, and `misaki_gothic.bdf` (764 KB) is gone entirely
+along with its "small" role. JP fonts went from ~1.6 MB to ~221 KB.
+
+**Nothing on the device renders kanji any more.** When the vault reader needs it
+(it displays real Obsidian notes), regenerate a kanji-capable small font:
+
+```
+# option A - re-download Misaki, subset to what you actually need
+python ../../tools/subset_font.py misaki_gothic.bdf misaki_sub.bdf     --ranges ascii,kana,0x4e00-0x9fff
+# option B - rasterize Noto (already downloaded) at a small size
+python ../../tools/ttf2bdf.py NotoSansJP-Regular.otf noto12.bdf --size 12     --ranges ascii,kana,0x4e00-0x9fff
+```
+
+Expect a few hundred KB once the CJK block is included — that is the honest
+cost of kanji, and why it is not carried until something needs it.
+
+`ter-u16b.bdf` (181 KB) is an unused spare, the next easy deletion if flash ever
+matters; it is a one-file download to restore.
+
+## Why the menu font is subset too
+
+`ter-u14b.bdf` carries 1356 glyphs (Latin-1, Cyrillic, Greek, box drawing) in
+169 KB. It is the **first font loaded on every boot**, and its parse is a large
+part of the black screen before the menu appears — while the UI never draws
+anything outside ASCII.
+
+```
+python ../../tools/subset_font.py ter-u14b.bdf ter-u14b_ascii.bdf --ranges ascii
+# -> 95 glyphs, 12 KB (7% of the original)
+```
+
+The full file is kept in this folder only as the subset source. It is not
+loaded at runtime, so deleting it (and the unused `ter-u16b.bdf`) saves 346 KB
+of flash — both are one-file downloads to restore.
