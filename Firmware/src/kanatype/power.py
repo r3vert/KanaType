@@ -60,11 +60,15 @@ def restore_time_after_sleep():
     try:
         import rtc
 
-        from kanatype import settings
-
         clock = rtc.RTC()
         if clock.datetime.tm_year >= 2024:
             return False              # the RTC survived; do not clobber it
+        # settings is imported ONLY here, after the year check. It pulls in
+        # keytable + macros -- ~770 lines of source parsed - and this runs on
+        # the boot path, so paying that on every boot to ask a question that
+        # is almost always "no" would undo the boot-time work in PLAN.md.
+        from kanatype import settings
+
         saved = settings.load_clock()
         if saved is None:
             return False
