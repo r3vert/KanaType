@@ -189,13 +189,15 @@ Also out-of-band, **M-key macros + profiles + a second layer** (section below).
 That was not on any milestone; it turns the keyboard app from a fixed keymap
 into something configurable on the device.
 
-**Caveat on "complete":** M1 and M3 are complete as *code*, and both have been
-deployed, but the practice drill has not been run on hardware since the
-2026-08 reflow and the keyboard app has never been run on hardware at all in
-its current form. Two AttributeError crashes (`layout.DRILL_SCORE_X`,
+**Verified on hardware 2026-08-28:** M3 in full, including the macro system,
+the second layer, the setup overlay (which swallows keys without dropping USB)
+and nvm persistence of profiles.
+
+**Still unverified:** the practice drill has not run on hardware since the
+2026-08 reflow. Two AttributeError crashes (`layout.DRILL_SCORE_X`,
 `layout.DRILL_ECHO_Y`) were found by preflight on 2026-08-27 and would have
-killed Practice and Clock on entry, which is a fair measure of how much of
-this is still unverified. `BRINGUP.md` is the checklist.
+killed Practice and Clock on entry, so treat M1 as untested until task 5 of
+`BRINGUP.md` passes. The clock-across-sleep fallback is also untested.
 
 ### Backlog (post-M2, unscheduled)
 

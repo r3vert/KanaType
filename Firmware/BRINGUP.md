@@ -12,9 +12,9 @@ makes it fixable.
 ## STATUS (updated live)
 
 Deployed 3x; device at `L:` with **6.0 MB free**; KMK confirmed in `lib/`.
-**Tasks 1-3b are DONE.** Next action is **task 4** (keyboard + macros on
-hardware) — the app was rewritten on 2026-08-28 and has never run on the board
-in this form.
+**Tasks 1-4 and 8 are DONE.** Next action is **task 5** (Practice) — the drill
+has not run on hardware since the 2026-08 reflow, and it carries two crash
+fixes plus the never-exercised glyph preload.
 
 Deployed again after 3b with three changes: the drill-font preload, and fixes
 for two AttributeError crashes that would have killed **Practice** and **Clock**
@@ -105,70 +105,70 @@ The same rescan hit the drill prompt at ~3.1 s per first-seen kana; `drill.py`
 now preloads each font in one pass at start instead. PCF is the logged
 follow-up that removes scanning altogether (PLAN.md).
 
-## 4. Keyboard app + macro system  <-- NEXT ACTION
+## 4. Keyboard app + macro system  ✅ DONE
 
 The whole app was rewritten on 2026-08-28 and has never run on hardware in this
 form. Work it in order; the later checks assume the earlier ones passed.
 
 ### 4a. Base typing
 
-- [ ] Open Keyboard. Screen shows `KEYBOARD`, a bolt icon, `1234567890` over
+- [x] Open Keyboard. Screen shows `KEYBOARD`, a bolt icon, `1234567890` over
       `!@#$%^&*()` on the left, `M1..M4` with assignments on the right, and
       `tap: setup` / `hold: exit` bottom-left
-- [ ] Type in a text editor — letters match the printed keys
-- [ ] `Shift`+letter capitalises; `Ctrl`+C/V copy-paste; `Alt` behaves
-- [ ] Spacebar (SW57, the key with the SPACE legend) types a space
-- [ ] Arrow keys move the caret in the right directions
-- [ ] **M1 types `-`** (the board's only hyphen), M2 `Ctrl+C`, M3 `Ctrl+V`,
+- [x] Type in a text editor — letters match the printed keys
+- [x] `Shift`+letter capitalises; `Ctrl`+C/V copy-paste; `Alt` behaves
+- [x] Spacebar (SW57, the key with the SPACE legend) types a space
+- [x] Arrow keys move the caret in the right directions
+- [x] **M1 types `-`** (the board's only hyphen), M2 `Ctrl+C`, M3 `Ctrl+V`,
       M4 `Ctrl+Shift+V` — M4 is the UNLABELLED key between M3 and the spacebar
-- [ ] The key right of the spacebar no longer types `]`
+- [x] The key right of the spacebar no longer types `]`
 
 ### 4b. MENU tap vs hold
 
-- [ ] Tap MENU (under Tab) → setup overlay, titled `SETUP M1-M4`
-- [ ] **While the overlay is open, typing does NOT reach the PC.** Watch the
+- [x] Tap MENU (under Tab) → setup overlay, titled `SETUP M1-M4`
+- [x] **While the overlay is open, typing does NOT reach the PC.** Watch the
       editor: every key should be swallowed. This is the `process_key`
       return-None path and it has only been verified against KMK's source
-- [ ] USB stays connected the whole time (no device-disconnect chime)
-- [ ] MENU again closes the overlay, back to the base screen
-- [ ] Hold MENU ~0.75 s → launcher, no console flash. **If 0.75 s feels wrong
+- [x] USB stays connected the whole time (no device-disconnect chime)
+- [x] MENU again closes the overlay, back to the base screen
+- [x] Hold MENU ~0.75 s → launcher, no console flash. **If 0.75 s feels wrong
       in the hand, say so** — `MENU_HOLD_SECONDS` in `apps/keyboard.py`
 
 ### 4c. Assigning a key
 
-- [ ] In setup, Enter on `M1` → `SET M1`, `find: _`, list of keycodes
-- [ ] Type `f13` → the list narrows to `F13`. **It should be instant**; a
+- [x] In setup, Enter on `M1` → `SET M1`, `find: _`, list of keycodes
+- [x] Type `f13` → the list narrows to `F13`. **It should be instant**; a
       pause of ~1 s per letter means the ASCII preload did not work
-- [ ] Enter → back to the list, `M1  F13`
-- [ ] Close the overlay and press M1 → the PC receives F13
-- [ ] Assign again, this time **holding the CMD key while pressing Enter** →
+- [x] Enter → back to the list, `M1  F13`
+- [x] Close the overlay and press M1 → the PC receives F13
+- [x] Assign again, this time **holding the CMD key while pressing Enter** →
       the filter line shows `+Ctrl` and the assignment reads `Ctrl+...`
-- [ ] Backspace on an M row clears it to `-`; that key then types nothing
+- [x] Backspace on an M row clears it to `-`; that key then types nothing
 
 ### 4d. The layer toggle
 
-- [ ] Press the key right of the spacebar → the M list becomes `M5..M8`, the
+- [x] Press the key right of the spacebar → the M list becomes `M5..M8`, the
       second legend row becomes `-> F1-F10`
-- [ ] Number row now sends **F1..F10**; **Q sends F11, W sends F12**
-- [ ] M5..M8 are independently assignable, and **assigning one must not change
+- [x] Number row now sends **F1..F10**; **Q sends F11, W sends F12**
+- [x] M5..M8 are independently assignable, and **assigning one must not change
       M1..M4** (the slot indexing is the risky part)
-- [ ] Press it again → back to digits and M1..M4
-- [ ] Press it inside the setup overlay → the title flips between
+- [x] Press it again → back to digits and M1..M4
+- [x] Press it inside the setup overlay → the title flips between
       `SETUP M1-M4` and `SETUP M5-M8`
-- [ ] Leave the app and come back → **starts on the base layer** (deliberate)
+- [x] Leave the app and come back → **starts on the base layer** (deliberate)
 
 ### 4e. Profiles and persistence
 
-- [ ] Setup → `Profile` row → Enter → profile list, `*` marks the active one
-- [ ] Select profile 2, assign something to M1, switch back to profile 1 →
+- [x] Setup → `Profile` row → Enter → profile list, `*` marks the active one
+- [x] Select profile 2, assign something to M1, switch back to profile 1 →
       profile 1's assignments are intact
-- [ ] `Rename` → type a name (8 chars max) → Enter → the name shows in the list
-- [ ] **Hold MENU to the launcher, re-enter Keyboard → every assignment,
+- [x] `Rename` → type a name (8 chars max) → Enter → the name shows in the list
+- [x] **Hold MENU to the launcher, re-enter Keyboard → every assignment,
       profile and name survived** (this is the nvm round-trip)
 
 ### 4f. Host presence
 
-- [ ] Unplug USB, keep the battery on → the bolt icon becomes a battery within
+- [x] Unplug USB, keep the battery on → the bolt icon becomes a battery within
       ~1 s; plug back in → bolt returns
 
 **If a key types the wrong character:** note the physical key and what it typed.
@@ -179,7 +179,7 @@ practice settings start at defaults on this deploy.
 
 ---
 
-## 5. Practice app — not yet seen on hardware
+## 5. Practice app  <-- NEXT ACTION — not yet seen on hardware
 
 Everything below is render-verified only, so this is the section most likely to
 surprise.
