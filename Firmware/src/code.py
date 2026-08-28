@@ -175,6 +175,13 @@ def main():
     inp = kt_input.get_input()          # matrix + serial drivers
     t_input = time.monotonic()
 
+    # Deep sleep resets the RP2040's RTC, so a woken device comes up with no
+    # date. sleepmode.py stamped the time into nvm; put it back before any app
+    # can read the clock. No-op when the RTC is already running.
+    from kanatype import power
+
+    power.restore_time_after_sleep()
+
     ctx = Ctx(display, inp, supervisor.runtime.usb_connected, storage.writable())
     # first font load happens in here; pick_app prints the breakdown the moment
     # the menu is painted, and reprints it while DEBUG_BOOT_TIMING is on

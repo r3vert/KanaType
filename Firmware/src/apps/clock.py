@@ -15,7 +15,7 @@ import displayio
 from adafruit_display_text import label
 
 from kanatype import input as kt_input
-from kanatype import layout, ui
+from kanatype import layout, settings, ui
 
 # (name, char offset in its line, width in chars, min, max)
 DATE_FIELDS = (("year", 0, 4, 2020, 2099), ("month", 5, 2, 1, 12), ("day", 8, 2, 1, 31))
@@ -73,6 +73,11 @@ def run(ctx):
     field = 0
     buf = {}
     last_second = -1
+    # A time restored from nvm after a deep sleep is only as good as the moment
+    # the device went to sleep -- the RP2040 cannot tell us how long that was.
+    # Say so, rather than presenting a guess as the time.
+    saved = settings.load_clock()
+    approx = [bool(saved and saved[1])]
 
     def show_view():
         # three labels change together; a torn frame here shows a half-updated
@@ -82,7 +87,12 @@ def run(ctx):
             date_lbl.text = "%04d-%02d-%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
             time_lbl.text = "%02d:%02d:%02d" % (now.tm_hour, now.tm_min, now.tm_sec)
             unset = now.tm_year < 2024
-            hint_lbl.text = "RTC UNSET!  Enter: set" if unset else "Enter: set"
+            if unset:
+                hint_lbl.text = "RTC UNSET!  Enter: set"
+            elif approx[0]:
+                hint_lbl.text = "approx (slept)  Enter: set"
+            else:
+                hint_lbl.text = "Enter: set"
 
     def show_edit():
         # value + caret position + caret width all move at once
@@ -142,6 +152,10 @@ def run(ctx):
                         buf["year"], buf["month"], day, buf["hour"], buf["minute"],
                         0, _weekday(buf["year"], buf["month"], day), -1, -1,
                     ))
+                    # set by hand: exact again, and stored so the next sleep
+                    # has something accurate to carry over
+                    settings.save_clock(clock.datetime, approximate=False)
+                    approx[0] = False
                     editing = False
                     with ui.frame():
                         caret_lbl.text = ""

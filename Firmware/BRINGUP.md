@@ -236,23 +236,44 @@ is screen-off only. For the real power test, run it on battery, unplugged.
 
 ---
 
-## 8. Check the RTC survived sleep  ← the open experiment
+## 8. RTC across deep sleep  ✅ DONE — it does NOT survive
 
-This answers PLAN.md open item #3 and decides whether quick-note timestamps can
-ever be trusted.
+Tested 2026-08-28: set the clock, Sleep, WAKE — the RTC came back unset.
 
-- [ ] Set the clock (task 6) and note the real time
-- [ ] **Unplug USB** so deep sleep is actually allowed
-- [ ] Menu → Sleep
-- [ ] Wait a known interval (10 minutes is plenty)
-- [ ] Press WAKE, open Clock, compare against your phone
+This is structural, not a bug. CircuitPython's deep sleep cuts power to nearly
+all of the RP2040 and restarts `code.py` from the top, and the Feather RP2040
+has no battery-backed RTC domain: the LiPo holds the rail up, but the RTC's
+clock stops and the chip resets on wake. No firmware change recovers the real
+time.
 
-| Result | Meaning | Action |
-|---|---|---|
-| Time is correct | RTC survives deep sleep | quick-note gets real timestamps; record it in PLAN.md |
-| `RTC UNSET!` or frozen at sleep time | clock resets/pauses | M2 falls back to sync-time anchoring + `[time unknown]` |
+**What shipped instead** (untested on hardware — verify below):
 
-- [ ] Record the outcome in `Firmware/PLAN.md` open item #3
+* `sleepmode.py` stamps the wall clock into nvm before sleeping
+* `code.py` restores it on boot, but only if the RTC looks unset — on USB,
+  CircuitPython does a *fake* deep sleep that keeps the RTC ticking, and the
+  stamp would be the older value
+* the time is flagged **approximate**, because how long the device slept is
+  unknowable; Clock shows `approx (slept)` until you set it by hand
+* the stamp lives after the MAGIC-guarded blob under its own marker byte, so
+  this did NOT reset macros or practice settings
+
+- [ ] Set the clock by hand → hint reads `Enter: set` (no `approx`)
+- [ ] **Unplug USB**, Sleep, wait a known interval, WAKE, open Clock
+- [ ] Date and time are roughly right (they will be the time you went to
+      sleep, NOT now) and the hint reads **`approx (slept)`**
+- [ ] Set the time by hand again → `approx` disappears and stays gone across
+      a normal reboot
+- [ ] Plugged into USB: Sleep → WAKE → the clock should be **still correct
+      and NOT flagged approx**, because a fake deep sleep keeps it running
+
+**If it comes back unset even with a stamp stored:** the restore is not
+running. `power.restore_time_after_sleep()` is called from `code.py` right
+after input init; check the serial console for an exception.
+
+Two ways to make the clock genuinely right, both in PLAN.md open item #3 and
+neither built: a periodic `TimeAlarm` re-stamp (cheap in power, needs a
+boot-time "went back to sleep" path), or an external DS3231/PCF8523 with its
+own coin cell on the existing I2C bus (proper fix, needs a v2 board).
 
 ---
 

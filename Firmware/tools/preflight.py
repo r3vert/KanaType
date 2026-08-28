@@ -375,6 +375,50 @@ if os.path.exists(splash):
 else:
     warn("no assets/loading.bmp - loading screen falls back to text")
 
+# ---- clock carry-over across deep sleep -----------------------------------
+# The RTC does not survive deep sleep (hardware-confirmed 2026-08-28), so the
+# time is stamped into nvm. That region sits AFTER the MAGIC-guarded blob and
+# is guarded by its own marker, so it must not collide with the macros and a
+# zeroed nvm must report nothing rather than a bogus date.
+for _i in range(settings._OFF_CLOCK, settings._CLOCK_END):
+    mc.nvm[_i] = 0
+if settings.load_clock() is None:
+    ok("blank nvm reports no stored time")
+else:
+    fail("blank nvm decoded as a stored time: %r" % (settings.load_clock(),))
+
+_dt = types.SimpleNamespace(tm_year=2026, tm_mon=8, tm_mday=28, tm_hour=23,
+                            tm_min=41, tm_sec=7)
+settings.save_clock(_dt, approximate=True)
+_got = settings.load_clock()
+if _got is None:
+    fail("clock round-trip returned nothing")
+elif _got[0][:6] != (2026, 8, 28, 23, 41, 7):
+    fail("clock round-trip gave %r" % (_got[0][:6],))
+elif not _got[1]:
+    fail("approximate flag did not survive")
+else:
+    ok("clock round-trip OK, flagged approximate")
+
+settings.save_clock(_dt, approximate=False)
+if settings.load_clock()[1]:
+    fail("setting the time by hand left it flagged approximate")
+else:
+    ok("a hand-set time is stored exact")
+
+# the two regions must not overlap
+if settings._OFF_CLOCK >= settings._BLOB_END:
+    ok("clock region starts at %d, after the macro blob (%d)"
+       % (settings._OFF_CLOCK, settings._BLOB_END))
+else:
+    fail("clock region overlaps the macro blob")
+_before = settings.load_clock()
+settings.save_macros(1, macros.blank_profiles())
+if settings.load_clock() != _before:
+    fail("save_macros clobbered the stored time")
+else:
+    ok("macro writes leave the stored time intact")
+
 # ------------------------------------------------------- keyboard overlay --
 # The setup overlay is the most intricate logic in the firmware and cannot be
 # reached without hardware, so it is driven here against stub displayio /

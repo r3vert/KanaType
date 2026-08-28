@@ -400,9 +400,30 @@ Still open: multi-key sequences and text snippets (that is where
    `drill.py` (shuffled deck, on-keystroke validation, re-queue at 3 and 13).
 2. **KMK + launcher RAM headroom** — measure `gc.mem_free()` in keyboard app early in M3;
    if tight, keyboard app skips font loading entirely.
-3. **RTC-across-deep-sleep** — still untested, but the instruments now exist:
-   set the time in the **Clock** app, run **Sleep**, wake with WAKE1, reopen
-   Clock. Determines whether quick-note timestamps can be trusted unplugged.
+3. ~~**RTC-across-deep-sleep**~~ — RESOLVED 2026-08-28, negatively: the RTC
+   does **not** survive. Set the time in Clock, run Sleep, wake with WAKE1, and
+   the clock comes back unset. Cause is structural, not a bug: CircuitPython's
+   deep sleep "shuts down power to nearly all of the microcontroller including
+   the CPU and RAM" and restarts code.py from the top, and the Feather RP2040
+   has no battery-backed RTC domain — the battery keeps the rail up but the
+   RTC's clock stops and the chip resets on wake. No firmware change fixes it.
+
+   **Fallback shipped:** `sleepmode.py` stamps the wall clock into nvm before
+   sleeping and `code.py` restores it on the way up, flagged **approximate**
+   because the time spent asleep is unknowable. The Clock app shows
+   `approx (slept)` until the time is set by hand. Quick-note (M2) must treat
+   any approximate timestamp as `[time unknown]` rather than presenting it as
+   fact. The stamp lives after the MAGIC-guarded blob under its own marker
+   byte, so adding it did NOT reset anyone's macros or practice settings.
+
+   Two options if the clock needs to stay genuinely right, neither built:
+   * **Periodic re-stamp:** add a `TimeAlarm` alongside the `PinAlarm` so the
+     device wakes every N minutes, advances the stored time and sleeps again.
+     Cheap — 4 wakes/hour at ~2 s and ~20 mA is ~0.04 mAh/h against ~2 mA of
+     sleep current — but it needs boot to recognise a timer wake and go
+     straight back down without painting the launcher.
+   * **External RTC:** a DS3231 or PCF8523 on the existing I2C bus with its own
+     coin cell. Solves it properly and permanently; costs a part and a v2 board.
 4. **Serial↔matrix parity** — logical key codes must be identical across drivers or M3 becomes
    a rewrite; locked by defining the layout table in `kana.py`/`hw.py` from day one (M0).
 5. CircuitPython **10.2.1** confirmed on the Feather (`OLD/boot_out.txt`); pin the Adafruit
