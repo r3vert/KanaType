@@ -852,6 +852,301 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:C"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "LCSC:YTS810SJK"
 			(pin_names
 				(hide yes)
@@ -1328,379 +1623,433 @@
 		)
 	)
 	(junction
-		(at 161.29 128.27)
+		(at 30.48 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0050ff7d-f916-483d-bd7d-a77439f545e8")
+	)
+	(junction
+		(at 161.29 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "009ff7fc-4db3-4092-b493-a14582d3969a")
 	)
 	(junction
-		(at 146.05 45.72)
+		(at 146.05 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0323ba73-3405-450c-ae4f-00058c685450")
 	)
 	(junction
-		(at 215.9 71.12)
+		(at 215.9 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "04569c27-bd7c-4d6c-8ff5-c4a114119f05")
 	)
 	(junction
-		(at 132.08 128.27)
+		(at 132.08 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0b307797-4345-4c02-80b7-5162bdfd1905")
 	)
 	(junction
-		(at 172.72 120.65)
+		(at 172.72 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0b5310ac-b74e-4cb3-b6b6-eea32b8d2dfa")
 	)
 	(junction
-		(at 186.69 104.14)
+		(at 186.69 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0de58ee9-7e6b-4f52-94ae-7a4bef1e6948")
 	)
 	(junction
-		(at 186.69 54.61)
+		(at 186.69 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0e27a72f-fb72-47ab-856d-b48a6f0355a1")
 	)
 	(junction
-		(at 204.47 62.23)
+		(at 204.47 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "14b9b5b3-6670-4be3-b68c-275feac8e851")
 	)
 	(junction
-		(at 143.51 120.65)
+		(at 143.51 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "15460910-ece5-480f-97ea-882e62b882dc")
 	)
 	(junction
-		(at 172.72 38.1)
+		(at 172.72 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "163fbcd8-227c-4ea9-a203-dce589521bd3")
 	)
 	(junction
-		(at 219.71 144.78)
+		(at 219.71 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "16c1345d-f3cb-46f3-bcce-67077734055e")
 	)
 	(junction
-		(at 247.65 104.14)
+		(at 247.65 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "17d9ab25-e3ba-4df4-9c61-36e91fe6db75")
 	)
 	(junction
-		(at 204.47 45.72)
+		(at 204.47 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "19414985-61ed-4990-94cd-8375e2828677")
 	)
 	(junction
-		(at 200.66 54.61)
+		(at 200.66 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1b5cc869-486d-442c-8e72-f2642bef2cfb")
 	)
 	(junction
-		(at 175.26 128.27)
+		(at 157.48 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1c4b0f0f-443b-482b-8bba-ec6a0adc45ce")
+	)
+	(junction
+		(at 175.26 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1cde79bc-39bc-4ce4-9060-92b1acd55c20")
 	)
 	(junction
-		(at 186.69 71.12)
+		(at 186.69 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1ed8bd00-f80e-4b30-99e9-4c070dbf7e19")
 	)
 	(junction
-		(at 172.72 71.12)
+		(at 172.72 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1f2530e2-4769-4f0a-90c2-bd55806dc2b4")
 	)
 	(junction
-		(at 146.05 128.27)
+		(at 146.05 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1f3aa4a5-1918-4f98-9b3b-d3a7f84e4fb8")
 	)
 	(junction
-		(at 161.29 62.23)
+		(at 161.29 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "22770061-d0ce-4843-a1bc-ea2055385946")
 	)
 	(junction
-		(at 132.08 78.74)
+		(at 132.08 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2537870e-3321-4c09-8d99-8d90a30f36a6")
 	)
 	(junction
-		(at 189.23 144.78)
+		(at 189.23 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "25a24a8c-670c-43db-b115-2c43c055df83")
 	)
 	(junction
-		(at 231.14 71.12)
+		(at 231.14 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "27648a39-af75-46a8-8e5d-65ea681ace33")
 	)
 	(junction
-		(at 146.05 95.25)
+		(at 146.05 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "27ff340b-fcb5-4d9a-9d6c-92bf61e3d48d")
 	)
 	(junction
-		(at 132.08 144.78)
+		(at 132.08 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "288abdad-fd42-4874-a42e-521209ac5867")
 	)
 	(junction
-		(at 219.71 111.76)
+		(at 200.66 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2e9555f4-4141-4074-87b1-5078c7ad0889")
+	)
+	(junction
+		(at 219.71 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2ed54320-c187-4c10-b9f2-b40cbe9bb778")
 	)
 	(junction
-		(at 132.08 95.25)
+		(at 247.65 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f546137-f00c-418d-b2bb-be459571f542")
+	)
+	(junction
+		(at 132.08 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "33a3ade8-7ad0-439e-b791-0a99f7e7788a")
 	)
 	(junction
-		(at 161.29 78.74)
+		(at 161.29 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "33ee765a-a748-4b0b-a3ab-1650effa3d50")
 	)
 	(junction
-		(at 204.47 95.25)
+		(at 50.8 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3568a769-d452-42d5-8201-f6a0f35be175")
+	)
+	(junction
+		(at 204.47 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "36345f42-84b9-48c5-a2b9-54db66171b0c")
 	)
 	(junction
-		(at 175.26 45.72)
+		(at 175.26 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "378c4df6-20fc-4c33-8d67-bb4f222b4fb7")
 	)
 	(junction
-		(at 132.08 111.76)
+		(at 132.08 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "38421f10-ba76-4194-a572-3953acdd98b4")
 	)
 	(junction
-		(at 172.72 54.61)
+		(at 172.72 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "38c98f19-37ff-43dd-9a0a-e2c5417a3f1b")
 	)
 	(junction
-		(at 200.66 87.63)
+		(at 200.66 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3dc2e7e0-25a6-40fe-93b0-ff593c6c90c9")
 	)
 	(junction
-		(at 175.26 111.76)
+		(at 175.26 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "45bb881b-dc0d-4ebe-ae35-a87274be3ac8")
 	)
 	(junction
-		(at 204.47 128.27)
+		(at 204.47 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4718354c-b0ca-48c9-b8d8-ef569a7fb541")
 	)
 	(junction
-		(at 247.65 120.65)
+		(at 247.65 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "47289e06-8518-494b-99db-9b53b7212f66")
 	)
 	(junction
-		(at 161.29 111.76)
+		(at 161.29 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "498ad772-fe97-4ba6-bde3-fe71c9848b2a")
 	)
 	(junction
-		(at 132.08 62.23)
+		(at 132.08 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4c9834e5-8aec-492d-8cc8-a53e5164cb6f")
 	)
 	(junction
-		(at 236.22 144.78)
+		(at 236.22 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4f3453d6-1ad0-48fe-a0cc-346e2efa4856")
 	)
 	(junction
-		(at 215.9 54.61)
+		(at 215.9 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "52b57331-bed8-4944-b7b1-a101176634cd")
 	)
 	(junction
-		(at 231.14 104.14)
+		(at 231.14 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "55bac05f-96e2-45cf-9ae0-60e2e9dc7fcf")
 	)
 	(junction
-		(at 157.48 87.63)
+		(at 157.48 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "56ec0da3-18a9-4646-978e-fe3ccd47fdd2")
 	)
 	(junction
-		(at 215.9 120.65)
+		(at 215.9 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "58184f8f-e282-46f4-ac02-dd4b1dc29ff1")
 	)
 	(junction
-		(at 204.47 111.76)
+		(at 36.83 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "59912813-eae2-435b-babc-10143aedd834")
+	)
+	(junction
+		(at 204.47 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6033f50d-24e4-4a5b-9846-be623fc35725")
 	)
 	(junction
-		(at 189.23 62.23)
+		(at 189.23 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "639f6fa7-d283-4044-857e-b3ef2c7dde7e")
 	)
 	(junction
-		(at 146.05 111.76)
+		(at 146.05 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "67c77611-0f38-4109-a8de-e66423b32bf2")
 	)
 	(junction
-		(at 236.22 128.27)
+		(at 236.22 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6e5c961b-33ac-478c-9f7f-9d1b1561e4f7")
 	)
 	(junction
-		(at 157.48 71.12)
+		(at 157.48 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "70cbbef5-4c1b-4c89-960f-523e3b0de41c")
 	)
 	(junction
-		(at 143.51 71.12)
+		(at 143.51 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "726f1485-12ff-46ab-aa56-681fc4a6f654")
 	)
 	(junction
-		(at 231.14 54.61)
+		(at 215.9 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "75a561dc-fe16-4e32-a4f0-d82cc89c1ee6")
+	)
+	(junction
+		(at 231.14 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "75fe117a-b5c8-49cc-b4ff-69bbeff1eaf2")
 	)
 	(junction
-		(at 157.48 38.1)
+		(at 157.48 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "781c8bab-575a-4f36-ac74-8e2d91b7e89f")
 	)
 	(junction
-		(at 219.71 95.25)
+		(at 219.71 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7b0964d9-fab7-4c85-80f7-1380cbd78533")
 	)
 	(junction
-		(at 143.51 38.1)
+		(at 143.51 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7d1fd2bb-df00-43a7-8b4c-58aebe593561")
 	)
 	(junction
-		(at 236.22 45.72)
+		(at 236.22 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "80416fac-95cb-43d6-b38e-f8e95dd12d2a")
 	)
 	(junction
-		(at 146.05 144.78)
+		(at 146.05 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "854548f2-9363-4721-8bbe-62c9699c67a9")
 	)
 	(junction
-		(at 161.29 45.72)
+		(at 161.29 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "86a1315d-b4da-4a14-8044-180e9ce2bb41")
 	)
 	(junction
-		(at 215.9 38.1)
+		(at 186.69 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "87b37f10-9d6a-4cd2-9282-b7402301c905")
+	)
+	(junction
+		(at 215.9 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8ae2b92c-08ce-4e89-a877-78db8e634798")
 	)
 	(junction
-		(at 172.72 104.14)
+		(at 172.72 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8b5eb894-e0d8-4378-befb-7faf96dca5b4")
 	)
 	(junction
-		(at 157.48 54.61)
+		(at 157.48 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8b647e80-68e4-48d1-a099-032a404b7ccb")
 	)
 	(junction
-		(at 247.65 87.63)
+		(at 247.65 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8baf0a1f-d817-4ce0-9c1d-6a0e2dfe058f")
 	)
 	(junction
-		(at 247.65 54.61)
+		(at 143.51 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "93c7bda4-e580-4b82-a8bf-1fc57c518904")
+	)
+	(junction
+		(at 247.65 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "97641b75-af78-402c-9a68-4c7a93799082")
 	)
 	(junction
-		(at 161.29 95.25)
+		(at 161.29 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "981a5c77-dff1-4cbc-97fd-440f8c903bb9")
 	)
 	(junction
-		(at 231.14 120.65)
+		(at 231.14 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "98f84a8f-a777-4750-b7ad-5e536dc8a7b1")
 	)
 	(junction
-		(at 175.26 144.78)
+		(at 175.26 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9932c914-616d-47a3-8bce-8166c491152b")
@@ -1712,169 +2061,175 @@
 		(uuid "9a5aba06-3b22-478b-b954-3df9cdc14780")
 	)
 	(junction
-		(at 186.69 87.63)
+		(at 186.69 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9b251962-f4e9-4d66-b547-398dd0435262")
 	)
 	(junction
-		(at 132.08 45.72)
+		(at 132.08 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9b4b89e3-555c-46ab-a3ef-251a3b7685aa")
 	)
 	(junction
-		(at 189.23 45.72)
+		(at 189.23 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9e348197-a2ff-452c-84e1-a35aa177ae94")
 	)
 	(junction
-		(at 200.66 71.12)
+		(at 200.66 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a29dbb51-1c2c-4759-977a-1c76bd7d3ebe")
 	)
 	(junction
-		(at 143.51 54.61)
+		(at 143.51 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a2cff7c2-97d4-4d8a-aa7a-d99d3e8c3c9c")
 	)
 	(junction
-		(at 189.23 78.74)
+		(at 189.23 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a2d45bb4-21dd-4dfe-9275-c5508d3ad43e")
 	)
 	(junction
-		(at 172.72 87.63)
+		(at 172.72 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ada30aab-34e4-4b10-80cd-8e0d144e9ec3")
 	)
 	(junction
-		(at 219.71 45.72)
+		(at 219.71 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ade4c73b-39ce-48e7-9827-3785c0ae9cda")
 	)
 	(junction
-		(at 231.14 87.63)
+		(at 231.14 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ae86d85b-1193-4217-849b-9dbc84bf8850")
 	)
 	(junction
-		(at 175.26 78.74)
+		(at 175.26 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b0fe46c7-6c17-4705-888d-a62ab7adc15f")
 	)
 	(junction
-		(at 200.66 38.1)
+		(at 200.66 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b1702e2a-374c-440d-bbd3-e5359ca94f95")
 	)
 	(junction
-		(at 236.22 95.25)
+		(at 236.22 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b2390fd1-3229-4924-b281-b44fc375787a")
 	)
 	(junction
-		(at 146.05 62.23)
+		(at 146.05 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b3ee11e6-3c19-4ebb-aeb1-89f9176357fd")
 	)
 	(junction
-		(at 236.22 111.76)
+		(at 236.22 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b71bb7f7-5347-4198-afe9-3c6f81d3ab66")
 	)
 	(junction
-		(at 219.71 62.23)
+		(at 219.71 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bb097fe4-0042-4de9-9310-714af9b79542")
 	)
 	(junction
-		(at 219.71 128.27)
+		(at 219.71 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bd78e78e-7a11-4f97-b425-39e14092a9b5")
 	)
 	(junction
-		(at 175.26 95.25)
+		(at 175.26 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bf22e7fb-cea8-4fae-8732-6e382c83c0c5")
 	)
 	(junction
-		(at 146.05 78.74)
+		(at 146.05 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c02c86b9-894f-4fc5-81e8-d92419d5303b")
 	)
 	(junction
-		(at 189.23 95.25)
+		(at 189.23 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c1f53c17-2fe2-481a-80d8-21425b566c1a")
 	)
 	(junction
-		(at 247.65 71.12)
+		(at 247.65 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c27bc401-8e4e-4730-a315-ce962ba3e1b7")
 	)
 	(junction
-		(at 175.26 62.23)
+		(at 175.26 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c962a267-97c3-4453-8c3e-76ddb99f2059")
 	)
 	(junction
-		(at 157.48 120.65)
+		(at 157.48 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ccf70dcd-25c6-4638-8d49-22a731a0a102")
 	)
 	(junction
-		(at 219.71 78.74)
+		(at 219.71 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cfe4fcf0-14a3-42d9-a2a8-adfea04a50c3")
 	)
 	(junction
-		(at 186.69 38.1)
+		(at 186.69 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d3d3a0da-e1dd-4462-b5e5-6522251f2dc7")
 	)
 	(junction
-		(at 236.22 78.74)
+		(at 236.22 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "da41086a-09db-4427-a1a2-a0ffcee5f3ac")
 	)
 	(junction
-		(at 215.9 104.14)
+		(at 215.9 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dc12f87e-6e01-482a-afb7-cd478e2a4ad1")
 	)
 	(junction
-		(at 161.29 144.78)
+		(at 161.29 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dd60b7c9-3f72-4a28-8143-6ab0a048dd67")
 	)
 	(junction
-		(at 247.65 38.1)
+		(at 172.72 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "de77b29a-9219-4c62-a7a1-59ce2831ff39")
+	)
+	(junction
+		(at 247.65 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e2245279-6176-4403-bed0-5becccfdae89")
@@ -1886,79 +2241,91 @@
 		(uuid "e4d787d1-b5b9-4e6b-8f24-b35ac87ab420")
 	)
 	(junction
-		(at 143.51 104.14)
+		(at 143.51 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e565502a-5b44-43ed-8a44-9aa7266255b6")
 	)
 	(junction
-		(at 215.9 87.63)
+		(at 215.9 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e6990770-623c-4f57-822a-6dea4019ff2a")
 	)
 	(junction
-		(at 186.69 120.65)
+		(at 186.69 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e89a01e2-eebb-44b7-94ef-d0734c78bc6a")
 	)
 	(junction
-		(at 189.23 111.76)
+		(at 189.23 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e91a0254-3cbf-4eca-9adb-92d998e52083")
 	)
 	(junction
-		(at 157.48 104.14)
+		(at 157.48 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ee5f6367-9dec-4205-aa40-d6a8196cb5b6")
 	)
 	(junction
-		(at 204.47 144.78)
+		(at 204.47 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ef55fdbc-425f-4b3f-beaa-b2e798bde35d")
 	)
 	(junction
-		(at 143.51 87.63)
+		(at 143.51 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f0283250-b6ee-4162-8062-5fc17433a5d5")
 	)
 	(junction
-		(at 200.66 120.65)
+		(at 200.66 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f1e54dcf-f139-4728-9835-ded8ee2c354d")
 	)
 	(junction
-		(at 189.23 128.27)
+		(at 39.37 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f4acdd74-4090-422e-88b4-4fb975065cb8")
+	)
+	(junction
+		(at 231.14 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6c1cf33-b1f4-4aec-8944-e3bf5b590850")
+	)
+	(junction
+		(at 189.23 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f87f1797-0706-4dcd-bf0f-20af3b16ad72")
 	)
 	(junction
-		(at 200.66 104.14)
+		(at 200.66 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f89485f1-2c39-4402-bd8d-706c813db8d9")
 	)
 	(junction
-		(at 236.22 62.23)
+		(at 236.22 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fa432976-5ca1-4431-b755-c4799c2d6677")
 	)
 	(junction
-		(at 204.47 78.74)
+		(at 204.47 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fc93f23e-f090-4576-82ed-02f307fd4afa")
 	)
 	(junction
-		(at 231.14 38.1)
+		(at 231.14 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ffa91d40-2356-4a82-a841-6fa0bebe4583")
@@ -1966,10 +2333,6 @@
 	(no_connect
 		(at 72.39 107.95)
 		(uuid "10c18eec-302f-480b-8a32-9b18e647c982")
-	)
-	(no_connect
-		(at 24.13 97.79)
-		(uuid "1ee63004-f9d6-4c9b-a4dc-1036ad9e9251")
 	)
 	(no_connect
 		(at 72.39 104.14)
@@ -1981,7 +2344,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 123.19) (xy 125.73 128.27)
+			(xy 125.73 133.35) (xy 125.73 138.43)
 		)
 		(stroke
 			(width 0)
@@ -1991,7 +2354,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 38.1) (xy 200.66 38.1)
+			(xy 199.39 48.26) (xy 200.66 48.26)
 		)
 		(stroke
 			(width 0)
@@ -2001,7 +2364,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 104.14) (xy 231.14 104.14)
+			(xy 229.87 114.3) (xy 231.14 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2011,7 +2374,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 38.1) (xy 231.14 54.61)
+			(xy 231.14 48.26) (xy 231.14 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2021,7 +2384,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 111.76) (xy 161.29 111.76)
+			(xy 146.05 121.92) (xy 161.29 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2031,7 +2394,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 111.76) (xy 236.22 111.76)
+			(xy 219.71 121.92) (xy 236.22 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2041,7 +2404,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 111.76) (xy 175.26 111.76)
+			(xy 161.29 121.92) (xy 175.26 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2051,7 +2414,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 142.24) (xy 189.23 144.78)
+			(xy 189.23 152.4) (xy 189.23 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2061,7 +2424,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 54.61) (xy 143.51 71.12)
+			(xy 143.51 64.77) (xy 143.51 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2071,7 +2434,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 104.14) (xy 157.48 104.14)
+			(xy 156.21 114.3) (xy 157.48 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2081,7 +2444,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 104.14) (xy 143.51 104.14)
+			(xy 142.24 114.3) (xy 143.51 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2101,7 +2464,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 43.18) (xy 236.22 45.72)
+			(xy 236.22 53.34) (xy 236.22 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2111,7 +2474,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 128.27) (xy 236.22 128.27)
+			(xy 219.71 138.43) (xy 236.22 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2121,7 +2484,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 95.25) (xy 236.22 95.25)
+			(xy 219.71 105.41) (xy 236.22 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2131,7 +2494,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 62.23) (xy 175.26 62.23)
+			(xy 161.29 72.39) (xy 175.26 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2141,7 +2504,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 87.63) (xy 143.51 87.63)
+			(xy 142.24 97.79) (xy 143.51 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2151,7 +2514,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 92.71) (xy 161.29 95.25)
+			(xy 161.29 102.87) (xy 161.29 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2161,7 +2524,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 59.69) (xy 175.26 62.23)
+			(xy 175.26 69.85) (xy 175.26 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2171,7 +2534,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 24.13) (xy 172.72 38.1)
+			(xy 172.72 27.94) (xy 172.72 35.56)
 		)
 		(stroke
 			(width 0)
@@ -2181,7 +2544,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 24.13) (xy 186.69 38.1)
+			(xy 186.69 27.94) (xy 186.69 35.56)
 		)
 		(stroke
 			(width 0)
@@ -2191,7 +2554,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 59.69) (xy 204.47 62.23)
+			(xy 204.47 69.85) (xy 204.47 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2201,7 +2564,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 104.14) (xy 247.65 120.65)
+			(xy 247.65 114.3) (xy 247.65 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2211,7 +2574,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 111.76) (xy 189.23 111.76)
+			(xy 175.26 121.92) (xy 189.23 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2221,7 +2584,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 144.78) (xy 189.23 144.78)
+			(xy 175.26 154.94) (xy 189.23 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2231,7 +2594,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 95.25) (xy 132.08 95.25)
+			(xy 125.73 105.41) (xy 132.08 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2241,7 +2604,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 38.1) (xy 247.65 54.61)
+			(xy 247.65 48.26) (xy 247.65 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2251,7 +2614,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 87.63) (xy 247.65 104.14)
+			(xy 247.65 97.79) (xy 247.65 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2261,7 +2624,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 87.63) (xy 157.48 104.14)
+			(xy 157.48 97.79) (xy 157.48 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2271,7 +2634,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 144.78) (xy 175.26 144.78)
+			(xy 161.29 154.94) (xy 175.26 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2291,7 +2654,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 139.7) (xy 125.73 144.78)
+			(xy 125.73 149.86) (xy 125.73 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2301,7 +2664,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 87.63) (xy 186.69 104.14)
+			(xy 186.69 97.79) (xy 186.69 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2311,7 +2674,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 71.12) (xy 247.65 87.63)
+			(xy 247.65 81.28) (xy 247.65 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2321,7 +2684,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 78.74) (xy 161.29 78.74)
+			(xy 146.05 88.9) (xy 161.29 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2331,7 +2694,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 71.12) (xy 186.69 71.12)
+			(xy 185.42 81.28) (xy 186.69 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2341,7 +2704,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 109.22) (xy 204.47 111.76)
+			(xy 204.47 119.38) (xy 204.47 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2351,7 +2714,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 76.2) (xy 219.71 78.74)
+			(xy 219.71 86.36) (xy 219.71 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2371,7 +2734,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 78.74) (xy 175.26 78.74)
+			(xy 161.29 88.9) (xy 175.26 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2381,7 +2744,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 95.25) (xy 189.23 95.25)
+			(xy 175.26 105.41) (xy 189.23 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2391,7 +2754,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 78.74) (xy 132.08 78.74)
+			(xy 125.73 88.9) (xy 132.08 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2401,7 +2764,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 109.22) (xy 236.22 111.76)
+			(xy 236.22 119.38) (xy 236.22 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2411,7 +2774,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 54.61) (xy 200.66 54.61)
+			(xy 199.39 64.77) (xy 200.66 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2421,7 +2784,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 24.13) (xy 200.66 38.1)
+			(xy 200.66 27.94) (xy 200.66 35.56)
 		)
 		(stroke
 			(width 0)
@@ -2431,13 +2794,23 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 137.16) (xy 231.14 137.16)
+			(xy 229.87 147.32) (xy 231.14 147.32)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "269a4cef-7068-447d-a15f-eacb78accf64")
+	)
+	(wire
+		(pts
+			(xy 247.65 35.56) (xy 247.65 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27b37752-51c1-4f70-9fe3-e9dd05afcf7d")
 	)
 	(wire
 		(pts
@@ -2451,7 +2824,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 137.16) (xy 186.69 137.16)
+			(xy 185.42 147.32) (xy 186.69 147.32)
 		)
 		(stroke
 			(width 0)
@@ -2461,7 +2834,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 95.25) (xy 146.05 95.25)
+			(xy 132.08 105.41) (xy 146.05 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2471,7 +2844,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 128.27) (xy 146.05 128.27)
+			(xy 132.08 138.43) (xy 146.05 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2481,7 +2854,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 92.71) (xy 146.05 95.25)
+			(xy 146.05 102.87) (xy 146.05 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2491,7 +2864,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 125.73) (xy 219.71 128.27)
+			(xy 219.71 135.89) (xy 219.71 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2501,7 +2874,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 142.24) (xy 146.05 144.78)
+			(xy 146.05 152.4) (xy 146.05 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2511,7 +2884,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 104.14) (xy 172.72 104.14)
+			(xy 171.45 114.3) (xy 172.72 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2521,7 +2894,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 38.1) (xy 186.69 54.61)
+			(xy 186.69 48.26) (xy 186.69 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2531,7 +2904,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 71.12) (xy 200.66 87.63)
+			(xy 200.66 81.28) (xy 200.66 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2541,7 +2914,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 125.73) (xy 189.23 128.27)
+			(xy 189.23 135.89) (xy 189.23 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2551,7 +2924,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 54.61) (xy 231.14 54.61)
+			(xy 229.87 64.77) (xy 231.14 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2561,7 +2934,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 125.73) (xy 132.08 128.27)
+			(xy 132.08 135.89) (xy 132.08 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2571,7 +2944,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 128.27) (xy 246.38 128.27)
+			(xy 236.22 138.43) (xy 246.38 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2581,7 +2954,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 104.14) (xy 200.66 104.14)
+			(xy 199.39 114.3) (xy 200.66 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2591,7 +2964,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 38.1) (xy 215.9 38.1)
+			(xy 214.63 48.26) (xy 215.9 48.26)
 		)
 		(stroke
 			(width 0)
@@ -2611,7 +2984,17 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 45.72) (xy 146.05 45.72)
+			(xy 186.69 35.56) (xy 186.69 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "368b4fad-f295-4024-8b8b-c941b3dddaca")
+	)
+	(wire
+		(pts
+			(xy 132.08 55.88) (xy 146.05 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2621,7 +3004,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 45.72) (xy 246.38 45.72)
+			(xy 236.22 55.88) (xy 246.38 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2631,7 +3014,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 62.23) (xy 161.29 62.23)
+			(xy 146.05 72.39) (xy 161.29 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2641,7 +3024,17 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 128.27) (xy 189.23 128.27)
+			(xy 30.48 63.5) (xy 30.48 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f6a8f12-734c-4697-b647-a4560323f22a")
+	)
+	(wire
+		(pts
+			(xy 175.26 138.43) (xy 189.23 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2651,7 +3044,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 120.65) (xy 186.69 137.16)
+			(xy 186.69 130.81) (xy 186.69 147.32)
 		)
 		(stroke
 			(width 0)
@@ -2661,7 +3054,17 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 142.24) (xy 132.08 144.78)
+			(xy 39.37 71.12) (xy 39.37 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4110c154-18db-42d9-b3bf-5aa66ca28246")
+	)
+	(wire
+		(pts
+			(xy 132.08 152.4) (xy 132.08 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2671,7 +3074,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 54.61) (xy 157.48 54.61)
+			(xy 156.21 64.77) (xy 157.48 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2681,7 +3084,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 120.65) (xy 143.51 120.65)
+			(xy 142.24 130.81) (xy 143.51 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2691,7 +3094,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 104.14) (xy 200.66 120.65)
+			(xy 200.66 114.3) (xy 200.66 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2701,7 +3104,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 76.2) (xy 175.26 78.74)
+			(xy 175.26 86.36) (xy 175.26 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2711,7 +3114,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 43.18) (xy 161.29 45.72)
+			(xy 161.29 53.34) (xy 161.29 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2721,7 +3124,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 120.65) (xy 157.48 137.16)
+			(xy 157.48 130.81) (xy 157.48 147.32)
 		)
 		(stroke
 			(width 0)
@@ -2741,7 +3144,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 120.65) (xy 172.72 120.65)
+			(xy 171.45 130.81) (xy 172.72 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2751,7 +3154,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 87.63) (xy 200.66 87.63)
+			(xy 199.39 97.79) (xy 200.66 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2761,7 +3164,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 54.61) (xy 247.65 71.12)
+			(xy 247.65 64.77) (xy 247.65 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2771,7 +3174,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 54.61) (xy 172.72 54.61)
+			(xy 171.45 64.77) (xy 172.72 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2781,7 +3184,17 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 87.63) (xy 157.48 87.63)
+			(xy 46.99 71.12) (xy 48.26 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aa4dfe9-8fdc-41c4-a699-2b6f9f6ca784")
+	)
+	(wire
+		(pts
+			(xy 156.21 97.79) (xy 157.48 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2791,7 +3204,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 54.61) (xy 231.14 71.12)
+			(xy 231.14 64.77) (xy 231.14 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2801,7 +3214,17 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 78.74) (xy 204.47 78.74)
+			(xy 22.86 80.01) (xy 22.86 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "533be20e-43e8-4f73-b75b-8e335e8bf004")
+	)
+	(wire
+		(pts
+			(xy 189.23 88.9) (xy 204.47 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2811,7 +3234,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 62.23) (xy 146.05 62.23)
+			(xy 132.08 72.39) (xy 146.05 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2821,7 +3244,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 90.17) (xy 125.73 95.25)
+			(xy 125.73 100.33) (xy 125.73 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2831,7 +3254,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 43.18) (xy 125.73 45.72)
+			(xy 125.73 53.34) (xy 125.73 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2841,7 +3264,17 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 111.76) (xy 219.71 111.76)
+			(xy 143.51 35.56) (xy 143.51 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "582d6707-130b-40d3-bf4d-38ab0954573f")
+	)
+	(wire
+		(pts
+			(xy 204.47 121.92) (xy 219.71 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2851,7 +3284,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 104.14) (xy 143.51 120.65)
+			(xy 143.51 114.3) (xy 143.51 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2861,7 +3294,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 38.1) (xy 157.48 38.1)
+			(xy 156.21 48.26) (xy 157.48 48.26)
 		)
 		(stroke
 			(width 0)
@@ -2871,7 +3304,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 71.12) (xy 231.14 71.12)
+			(xy 229.87 81.28) (xy 231.14 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2881,7 +3314,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 120.65) (xy 157.48 120.65)
+			(xy 156.21 130.81) (xy 157.48 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2891,7 +3324,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 128.27) (xy 132.08 128.27)
+			(xy 125.73 138.43) (xy 132.08 138.43)
 		)
 		(stroke
 			(width 0)
@@ -2901,7 +3334,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 104.14) (xy 231.14 120.65)
+			(xy 231.14 114.3) (xy 231.14 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2911,7 +3344,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 144.78) (xy 219.71 144.78)
+			(xy 204.47 154.94) (xy 219.71 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2921,7 +3354,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 43.18) (xy 132.08 45.72)
+			(xy 132.08 53.34) (xy 132.08 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2931,7 +3364,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 24.13) (xy 143.51 38.1)
+			(xy 143.51 27.94) (xy 143.51 35.56)
 		)
 		(stroke
 			(width 0)
@@ -2941,7 +3374,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 92.71) (xy 204.47 95.25)
+			(xy 204.47 102.87) (xy 204.47 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2951,7 +3384,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 109.22) (xy 132.08 111.76)
+			(xy 132.08 119.38) (xy 132.08 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2961,7 +3394,17 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 59.69) (xy 236.22 62.23)
+			(xy 231.14 35.56) (xy 231.14 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61d86901-2ea1-44a2-8970-262137dc0987")
+	)
+	(wire
+		(pts
+			(xy 236.22 69.85) (xy 236.22 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2971,7 +3414,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 104.14) (xy 247.65 104.14)
+			(xy 246.38 114.3) (xy 247.65 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2981,7 +3424,17 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 104.14) (xy 157.48 120.65)
+			(xy 49.53 67.31) (xy 50.8 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64d26e68-aaba-40fe-b067-c7d704a755d9")
+	)
+	(wire
+		(pts
+			(xy 157.48 114.3) (xy 157.48 130.81)
 		)
 		(stroke
 			(width 0)
@@ -2991,7 +3444,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 71.12) (xy 186.69 87.63)
+			(xy 186.69 81.28) (xy 186.69 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3001,7 +3454,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 120.65) (xy 186.69 120.65)
+			(xy 185.42 130.81) (xy 186.69 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3011,7 +3464,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 125.73) (xy 204.47 128.27)
+			(xy 204.47 135.89) (xy 204.47 138.43)
 		)
 		(stroke
 			(width 0)
@@ -3021,7 +3474,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 92.71) (xy 219.71 95.25)
+			(xy 219.71 102.87) (xy 219.71 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3031,7 +3484,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 95.25) (xy 175.26 95.25)
+			(xy 161.29 105.41) (xy 175.26 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3041,7 +3494,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 120.65) (xy 231.14 120.65)
+			(xy 229.87 130.81) (xy 231.14 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3051,7 +3504,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 92.71) (xy 132.08 95.25)
+			(xy 132.08 102.87) (xy 132.08 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3061,7 +3514,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 57.15) (xy 125.73 62.23)
+			(xy 125.73 67.31) (xy 125.73 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3071,7 +3524,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 38.1) (xy 231.14 38.1)
+			(xy 229.87 48.26) (xy 231.14 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3081,7 +3534,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 45.72) (xy 204.47 45.72)
+			(xy 189.23 55.88) (xy 204.47 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3091,7 +3544,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 71.12) (xy 143.51 71.12)
+			(xy 142.24 81.28) (xy 143.51 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3101,7 +3554,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 45.72) (xy 132.08 45.72)
+			(xy 125.73 55.88) (xy 132.08 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3111,7 +3564,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 62.23) (xy 236.22 62.23)
+			(xy 219.71 72.39) (xy 236.22 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3121,7 +3574,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 120.65) (xy 247.65 137.16)
+			(xy 247.65 130.81) (xy 247.65 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3131,7 +3584,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 87.63) (xy 215.9 104.14)
+			(xy 215.9 97.79) (xy 215.9 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3141,7 +3594,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 59.69) (xy 189.23 62.23)
+			(xy 189.23 69.85) (xy 189.23 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3151,7 +3604,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 104.14) (xy 172.72 120.65)
+			(xy 172.72 114.3) (xy 172.72 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3161,7 +3614,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 87.63) (xy 215.9 87.63)
+			(xy 214.63 97.79) (xy 215.9 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3171,7 +3624,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 111.76) (xy 204.47 111.76)
+			(xy 189.23 121.92) (xy 204.47 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3191,7 +3644,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 104.14) (xy 215.9 104.14)
+			(xy 214.63 114.3) (xy 215.9 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3201,7 +3654,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 144.78) (xy 236.22 144.78)
+			(xy 219.71 154.94) (xy 236.22 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3211,7 +3664,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 71.12) (xy 215.9 87.63)
+			(xy 215.9 81.28) (xy 215.9 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3221,7 +3674,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 45.72) (xy 189.23 45.72)
+			(xy 175.26 55.88) (xy 189.23 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3231,7 +3684,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 38.1) (xy 200.66 54.61)
+			(xy 200.66 48.26) (xy 200.66 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3241,7 +3694,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 120.65) (xy 172.72 137.16)
+			(xy 172.72 130.81) (xy 172.72 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3251,7 +3704,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 38.1) (xy 157.48 54.61)
+			(xy 157.48 48.26) (xy 157.48 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3261,7 +3714,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 71.12) (xy 231.14 87.63)
+			(xy 231.14 81.28) (xy 231.14 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3271,7 +3724,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 104.14) (xy 186.69 104.14)
+			(xy 185.42 114.3) (xy 186.69 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3281,7 +3734,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 95.25) (xy 219.71 95.25)
+			(xy 204.47 105.41) (xy 219.71 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3291,7 +3744,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 71.12) (xy 247.65 71.12)
+			(xy 246.38 81.28) (xy 247.65 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3301,7 +3754,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 142.24) (xy 236.22 144.78)
+			(xy 236.22 152.4) (xy 236.22 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3311,7 +3764,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 87.63) (xy 143.51 104.14)
+			(xy 143.51 97.79) (xy 143.51 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3321,7 +3774,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 125.73) (xy 236.22 128.27)
+			(xy 236.22 135.89) (xy 236.22 138.43)
 		)
 		(stroke
 			(width 0)
@@ -3331,7 +3784,17 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 109.22) (xy 161.29 111.76)
+			(xy 25.4 60.96) (xy 31.75 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8510815a-057f-4a2b-8f54-56ea131c7abe")
+	)
+	(wire
+		(pts
+			(xy 161.29 119.38) (xy 161.29 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3341,7 +3804,17 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 71.12) (xy 172.72 71.12)
+			(xy 39.37 60.96) (xy 39.37 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "894cbe76-ab5c-4402-8aca-a4c21b63e2f5")
+	)
+	(wire
+		(pts
+			(xy 171.45 81.28) (xy 172.72 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3351,7 +3824,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 144.78) (xy 204.47 144.78)
+			(xy 189.23 154.94) (xy 204.47 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3361,7 +3834,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 38.1) (xy 172.72 38.1)
+			(xy 171.45 48.26) (xy 172.72 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3371,7 +3844,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 71.12) (xy 157.48 71.12)
+			(xy 156.21 81.28) (xy 157.48 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3381,7 +3854,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 109.22) (xy 189.23 111.76)
+			(xy 189.23 119.38) (xy 189.23 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3391,7 +3864,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 125.73) (xy 146.05 128.27)
+			(xy 146.05 135.89) (xy 146.05 138.43)
 		)
 		(stroke
 			(width 0)
@@ -3401,7 +3874,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 54.61) (xy 143.51 54.61)
+			(xy 142.24 64.77) (xy 143.51 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3411,7 +3884,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 76.2) (xy 161.29 78.74)
+			(xy 161.29 86.36) (xy 161.29 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3421,7 +3894,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 144.78) (xy 161.29 144.78)
+			(xy 146.05 154.94) (xy 161.29 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3431,7 +3904,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 78.74) (xy 236.22 78.74)
+			(xy 219.71 88.9) (xy 236.22 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3441,7 +3914,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 95.25) (xy 246.38 95.25)
+			(xy 236.22 105.41) (xy 246.38 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3451,7 +3924,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 95.25) (xy 204.47 95.25)
+			(xy 189.23 105.41) (xy 204.47 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3461,7 +3934,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 54.61) (xy 200.66 71.12)
+			(xy 200.66 64.77) (xy 200.66 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3471,7 +3944,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 137.16) (xy 215.9 137.16)
+			(xy 214.63 147.32) (xy 215.9 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3481,7 +3954,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 137.16) (xy 247.65 137.16)
+			(xy 246.38 147.32) (xy 247.65 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3491,7 +3964,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 120.65) (xy 247.65 120.65)
+			(xy 246.38 130.81) (xy 247.65 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3501,7 +3974,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 142.24) (xy 204.47 144.78)
+			(xy 204.47 152.4) (xy 204.47 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3511,7 +3984,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 76.2) (xy 189.23 78.74)
+			(xy 189.23 86.36) (xy 189.23 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3521,7 +3994,17 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 62.23) (xy 246.38 62.23)
+			(xy 30.48 63.5) (xy 34.29 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "953b1458-cdbc-4471-b3bd-a335bf5e4853")
+	)
+	(wire
+		(pts
+			(xy 236.22 72.39) (xy 246.38 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3531,7 +4014,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 76.2) (xy 132.08 78.74)
+			(xy 132.08 86.36) (xy 132.08 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3541,7 +4024,17 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 24.13) (xy 215.9 38.1)
+			(xy 92.71 175.26) (xy 92.71 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96950d38-9a5c-4884-b212-d665af64858b")
+	)
+	(wire
+		(pts
+			(xy 215.9 27.94) (xy 215.9 35.56)
 		)
 		(stroke
 			(width 0)
@@ -3551,7 +4044,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 87.63) (xy 231.14 104.14)
+			(xy 231.14 97.79) (xy 231.14 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3561,7 +4054,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 120.65) (xy 215.9 120.65)
+			(xy 214.63 130.81) (xy 215.9 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3571,7 +4064,17 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 137.16) (xy 200.66 137.16)
+			(xy 36.83 60.96) (xy 36.83 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0350d13-2ae0-4d8e-9b7b-61bd6c780848")
+	)
+	(wire
+		(pts
+			(xy 199.39 147.32) (xy 200.66 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3591,7 +4094,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 144.78) (xy 132.08 144.78)
+			(xy 125.73 154.94) (xy 132.08 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3601,7 +4104,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 24.13) (xy 157.48 38.1)
+			(xy 157.48 27.94) (xy 157.48 35.56)
 		)
 		(stroke
 			(width 0)
@@ -3611,7 +4114,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 92.71) (xy 175.26 95.25)
+			(xy 175.26 102.87) (xy 175.26 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3621,7 +4124,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 87.63) (xy 186.69 87.63)
+			(xy 185.42 97.79) (xy 186.69 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3631,7 +4134,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 71.12) (xy 215.9 71.12)
+			(xy 214.63 81.28) (xy 215.9 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3641,7 +4144,17 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 144.78) (xy 246.38 144.78)
+			(xy 215.9 35.56) (xy 215.9 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a732047a-3f56-4a83-8f54-6fc0cf015231")
+	)
+	(wire
+		(pts
+			(xy 236.22 154.94) (xy 246.38 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3651,7 +4164,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 87.63) (xy 200.66 104.14)
+			(xy 200.66 97.79) (xy 200.66 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3661,7 +4174,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 78.74) (xy 146.05 78.74)
+			(xy 132.08 88.9) (xy 146.05 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3671,7 +4184,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 59.69) (xy 146.05 62.23)
+			(xy 146.05 69.85) (xy 146.05 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3681,7 +4194,17 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 38.1) (xy 143.51 54.61)
+			(xy 44.45 67.31) (xy 49.53 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abcf3278-3c41-42c7-811c-951b91f325a0")
+	)
+	(wire
+		(pts
+			(xy 143.51 48.26) (xy 143.51 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3691,7 +4214,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 38.1) (xy 247.65 38.1)
+			(xy 246.38 48.26) (xy 247.65 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3701,7 +4224,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 142.24) (xy 175.26 144.78)
+			(xy 175.26 152.4) (xy 175.26 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3711,7 +4234,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 111.76) (xy 146.05 111.76)
+			(xy 132.08 121.92) (xy 146.05 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3721,7 +4244,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 38.1) (xy 186.69 38.1)
+			(xy 185.42 48.26) (xy 186.69 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3741,7 +4264,17 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 120.65) (xy 143.51 137.16)
+			(xy 104.14 151.13) (xy 104.14 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b23abc12-ec1c-4c25-ad9c-84cfd1771993")
+	)
+	(wire
+		(pts
+			(xy 143.51 130.81) (xy 143.51 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3751,7 +4284,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 54.61) (xy 247.65 54.61)
+			(xy 246.38 64.77) (xy 247.65 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3761,7 +4294,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 24.13) (xy 231.14 38.1)
+			(xy 231.14 27.94) (xy 231.14 35.56)
 		)
 		(stroke
 			(width 0)
@@ -3771,7 +4304,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 128.27) (xy 219.71 128.27)
+			(xy 204.47 138.43) (xy 219.71 138.43)
 		)
 		(stroke
 			(width 0)
@@ -3781,7 +4314,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 38.1) (xy 215.9 54.61)
+			(xy 215.9 48.26) (xy 215.9 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3791,7 +4324,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 95.25) (xy 161.29 95.25)
+			(xy 146.05 105.41) (xy 161.29 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3801,7 +4334,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 43.18) (xy 219.71 45.72)
+			(xy 219.71 53.34) (xy 219.71 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3811,7 +4344,17 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 71.12) (xy 200.66 71.12)
+			(xy 172.72 35.56) (xy 172.72 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7aa36a9-d883-4767-9c77-97a3d3943fe4")
+	)
+	(wire
+		(pts
+			(xy 199.39 81.28) (xy 200.66 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3821,7 +4364,7 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 120.65) (xy 231.14 137.16)
+			(xy 231.14 130.81) (xy 231.14 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3831,7 +4374,17 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 104.14) (xy 215.9 120.65)
+			(xy 34.29 63.5) (xy 34.29 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb435d53-b90e-4270-934f-d03dea9a4e2d")
+	)
+	(wire
+		(pts
+			(xy 215.9 114.3) (xy 215.9 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3841,7 +4394,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 137.16) (xy 157.48 137.16)
+			(xy 156.21 147.32) (xy 157.48 147.32)
 		)
 		(stroke
 			(width 0)
@@ -3851,7 +4404,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 87.63) (xy 172.72 104.14)
+			(xy 172.72 97.79) (xy 172.72 114.3)
 		)
 		(stroke
 			(width 0)
@@ -3861,7 +4414,17 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 78.74) (xy 219.71 78.74)
+			(xy 157.48 35.56) (xy 157.48 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdc63f19-1772-428c-b66c-603eb422daf9")
+	)
+	(wire
+		(pts
+			(xy 204.47 88.9) (xy 219.71 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3871,7 +4434,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 59.69) (xy 161.29 62.23)
+			(xy 161.29 69.85) (xy 161.29 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3881,7 +4444,17 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 142.24) (xy 161.29 144.78)
+			(xy 36.83 67.31) (xy 36.83 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c140f318-0c4a-46bd-a45f-530bcc57eb6b")
+	)
+	(wire
+		(pts
+			(xy 161.29 152.4) (xy 161.29 154.94)
 		)
 		(stroke
 			(width 0)
@@ -3891,7 +4464,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 54.61) (xy 157.48 71.12)
+			(xy 157.48 64.77) (xy 157.48 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3901,7 +4474,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 92.71) (xy 236.22 95.25)
+			(xy 236.22 102.87) (xy 236.22 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3911,7 +4484,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 125.73) (xy 161.29 128.27)
+			(xy 161.29 135.89) (xy 161.29 138.43)
 		)
 		(stroke
 			(width 0)
@@ -3921,7 +4494,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 59.69) (xy 132.08 62.23)
+			(xy 132.08 69.85) (xy 132.08 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3931,7 +4504,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 54.61) (xy 186.69 71.12)
+			(xy 186.69 64.77) (xy 186.69 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3941,7 +4514,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 87.63) (xy 231.14 87.63)
+			(xy 229.87 97.79) (xy 231.14 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3951,7 +4524,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 71.12) (xy 157.48 87.63)
+			(xy 157.48 81.28) (xy 157.48 97.79)
 		)
 		(stroke
 			(width 0)
@@ -3961,7 +4534,7 @@
 	)
 	(wire
 		(pts
-			(xy 31.75 62.23) (xy 31.75 60.96)
+			(xy 25.4 62.23) (xy 25.4 60.96)
 		)
 		(stroke
 			(width 0)
@@ -3971,7 +4544,7 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 54.61) (xy 215.9 54.61)
+			(xy 214.63 64.77) (xy 215.9 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3981,7 +4554,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 24.13) (xy 247.65 38.1)
+			(xy 247.65 27.94) (xy 247.65 35.56)
 		)
 		(stroke
 			(width 0)
@@ -4001,7 +4574,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 137.16) (xy 143.51 137.16)
+			(xy 142.24 147.32) (xy 143.51 147.32)
 		)
 		(stroke
 			(width 0)
@@ -4011,7 +4584,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 125.73) (xy 175.26 128.27)
+			(xy 175.26 135.89) (xy 175.26 138.43)
 		)
 		(stroke
 			(width 0)
@@ -4021,7 +4594,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 54.61) (xy 186.69 54.61)
+			(xy 185.42 64.77) (xy 186.69 64.77)
 		)
 		(stroke
 			(width 0)
@@ -4031,7 +4604,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 76.2) (xy 204.47 78.74)
+			(xy 204.47 86.36) (xy 204.47 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4041,7 +4614,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 111.76) (xy 246.38 111.76)
+			(xy 236.22 121.92) (xy 246.38 121.92)
 		)
 		(stroke
 			(width 0)
@@ -4051,7 +4624,17 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 71.12) (xy 143.51 87.63)
+			(xy 104.14 142.24) (xy 104.14 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d07357a2-afc4-486e-bd64-21bb91019a37")
+	)
+	(wire
+		(pts
+			(xy 143.51 81.28) (xy 143.51 97.79)
 		)
 		(stroke
 			(width 0)
@@ -4061,7 +4644,7 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 64.77) (xy 34.29 60.96)
+			(xy 30.48 82.55) (xy 30.48 77.47)
 		)
 		(stroke
 			(width 0)
@@ -4071,7 +4654,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 43.18) (xy 146.05 45.72)
+			(xy 146.05 53.34) (xy 146.05 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4081,7 +4664,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 62.23) (xy 219.71 62.23)
+			(xy 204.47 72.39) (xy 219.71 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4091,7 +4674,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 87.63) (xy 247.65 87.63)
+			(xy 246.38 97.79) (xy 247.65 97.79)
 		)
 		(stroke
 			(width 0)
@@ -4101,7 +4684,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 54.61) (xy 215.9 71.12)
+			(xy 215.9 64.77) (xy 215.9 81.28)
 		)
 		(stroke
 			(width 0)
@@ -4111,7 +4694,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 128.27) (xy 161.29 128.27)
+			(xy 146.05 138.43) (xy 161.29 138.43)
 		)
 		(stroke
 			(width 0)
@@ -4121,7 +4704,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 87.63) (xy 172.72 87.63)
+			(xy 171.45 97.79) (xy 172.72 97.79)
 		)
 		(stroke
 			(width 0)
@@ -4131,7 +4714,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 54.61) (xy 172.72 71.12)
+			(xy 172.72 64.77) (xy 172.72 81.28)
 		)
 		(stroke
 			(width 0)
@@ -4141,7 +4724,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 38.1) (xy 143.51 38.1)
+			(xy 142.24 48.26) (xy 143.51 48.26)
 		)
 		(stroke
 			(width 0)
@@ -4151,7 +4734,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 144.78) (xy 146.05 144.78)
+			(xy 132.08 154.94) (xy 146.05 154.94)
 		)
 		(stroke
 			(width 0)
@@ -4161,7 +4744,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 106.68) (xy 125.73 111.76)
+			(xy 125.73 116.84) (xy 125.73 121.92)
 		)
 		(stroke
 			(width 0)
@@ -4171,7 +4754,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 128.27) (xy 204.47 128.27)
+			(xy 189.23 138.43) (xy 204.47 138.43)
 		)
 		(stroke
 			(width 0)
@@ -4181,7 +4764,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 38.1) (xy 172.72 54.61)
+			(xy 172.72 48.26) (xy 172.72 64.77)
 		)
 		(stroke
 			(width 0)
@@ -4191,7 +4774,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 142.24) (xy 219.71 144.78)
+			(xy 219.71 152.4) (xy 219.71 154.94)
 		)
 		(stroke
 			(width 0)
@@ -4201,7 +4784,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 120.65) (xy 200.66 137.16)
+			(xy 200.66 130.81) (xy 200.66 147.32)
 		)
 		(stroke
 			(width 0)
@@ -4211,7 +4794,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 43.18) (xy 204.47 45.72)
+			(xy 204.47 53.34) (xy 204.47 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4221,7 +4804,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 45.72) (xy 161.29 45.72)
+			(xy 146.05 55.88) (xy 161.29 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4231,7 +4814,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 45.72) (xy 219.71 45.72)
+			(xy 204.47 55.88) (xy 219.71 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4241,7 +4824,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 120.65) (xy 215.9 137.16)
+			(xy 215.9 130.81) (xy 215.9 147.32)
 		)
 		(stroke
 			(width 0)
@@ -4251,7 +4834,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 128.27) (xy 175.26 128.27)
+			(xy 161.29 138.43) (xy 175.26 138.43)
 		)
 		(stroke
 			(width 0)
@@ -4261,7 +4844,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 71.12) (xy 172.72 87.63)
+			(xy 172.72 81.28) (xy 172.72 97.79)
 		)
 		(stroke
 			(width 0)
@@ -4271,7 +4854,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 109.22) (xy 146.05 111.76)
+			(xy 146.05 119.38) (xy 146.05 121.92)
 		)
 		(stroke
 			(width 0)
@@ -4281,7 +4864,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 62.23) (xy 132.08 62.23)
+			(xy 125.73 72.39) (xy 132.08 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4291,7 +4874,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 43.18) (xy 189.23 45.72)
+			(xy 189.23 53.34) (xy 189.23 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4301,7 +4884,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 45.72) (xy 236.22 45.72)
+			(xy 219.71 55.88) (xy 236.22 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4311,7 +4894,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 62.23) (xy 204.47 62.23)
+			(xy 189.23 72.39) (xy 204.47 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4321,7 +4904,17 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 62.23) (xy 189.23 62.23)
+			(xy 48.26 71.12) (xy 50.8 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f05e5c39-f4ff-4100-accd-c9bed877f47a")
+	)
+	(wire
+		(pts
+			(xy 175.26 72.39) (xy 189.23 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4331,7 +4924,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 59.69) (xy 219.71 62.23)
+			(xy 219.71 69.85) (xy 219.71 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4341,7 +4934,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 78.74) (xy 189.23 78.74)
+			(xy 175.26 88.9) (xy 189.23 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4351,7 +4944,17 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 92.71) (xy 189.23 95.25)
+			(xy 200.66 35.56) (xy 200.66 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3a94fab-a5ce-4038-acf0-1b78e6be5b8f")
+	)
+	(wire
+		(pts
+			(xy 189.23 102.87) (xy 189.23 105.41)
 		)
 		(stroke
 			(width 0)
@@ -4361,7 +4964,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 76.2) (xy 236.22 78.74)
+			(xy 236.22 86.36) (xy 236.22 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4371,7 +4974,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 109.22) (xy 175.26 111.76)
+			(xy 175.26 119.38) (xy 175.26 121.92)
 		)
 		(stroke
 			(width 0)
@@ -4381,7 +4984,7 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 78.74) (xy 246.38 78.74)
+			(xy 236.22 88.9) (xy 246.38 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4391,7 +4994,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 109.22) (xy 219.71 111.76)
+			(xy 219.71 119.38) (xy 219.71 121.92)
 		)
 		(stroke
 			(width 0)
@@ -4401,7 +5004,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 45.72) (xy 175.26 45.72)
+			(xy 161.29 55.88) (xy 175.26 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4411,7 +5014,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 76.2) (xy 146.05 78.74)
+			(xy 146.05 86.36) (xy 146.05 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4421,7 +5024,7 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 137.16) (xy 172.72 137.16)
+			(xy 171.45 147.32) (xy 172.72 147.32)
 		)
 		(stroke
 			(width 0)
@@ -4431,7 +5034,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 111.76) (xy 132.08 111.76)
+			(xy 125.73 121.92) (xy 132.08 121.92)
 		)
 		(stroke
 			(width 0)
@@ -4441,7 +5044,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 104.14) (xy 186.69 120.65)
+			(xy 186.69 114.3) (xy 186.69 130.81)
 		)
 		(stroke
 			(width 0)
@@ -4451,7 +5054,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 73.66) (xy 125.73 78.74)
+			(xy 125.73 83.82) (xy 125.73 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4461,7 +5064,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 120.65) (xy 200.66 120.65)
+			(xy 199.39 130.81) (xy 200.66 130.81)
 		)
 		(stroke
 			(width 0)
@@ -4471,7 +5074,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 43.18) (xy 175.26 45.72)
+			(xy 175.26 53.34) (xy 175.26 55.88)
 		)
 		(stroke
 			(width 0)
@@ -4481,7 +5084,7 @@
 	)
 	(global_label "COL7"
 		(shape input)
-		(at 231.14 24.13 90)
+		(at 231.14 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4491,7 +5094,7 @@
 		)
 		(uuid "00b79527-6684-4c24-a250-4ecdac78a9ce")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 231.14 16.3067 90)
+			(at 231.14 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4553,7 +5156,7 @@
 	)
 	(global_label "SCL"
 		(shape input)
-		(at 36.83 60.96 270)
+		(at 36.83 78.74 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4563,7 +5166,7 @@
 		)
 		(uuid "16ff83cd-847a-436d-ad5c-887ea2af82f1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 36.83 67.4528 90)
+			(at 36.83 85.2328 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4601,7 +5204,7 @@
 	)
 	(global_label "ROW2"
 		(shape input)
-		(at 125.73 57.15 180)
+		(at 125.73 67.31 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4611,7 +5214,7 @@
 		)
 		(uuid "2eafe2f6-eaeb-48d3-8067-f4a54c357619")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 57.15 0)
+			(at 117.4834 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4625,7 +5228,7 @@
 	)
 	(global_label "COL5"
 		(shape input)
-		(at 200.66 24.13 90)
+		(at 200.66 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4635,7 +5238,7 @@
 		)
 		(uuid "32b30c82-a7e4-49aa-a513-3c6e7f139d52")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 200.66 16.3067 90)
+			(at 200.66 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4671,9 +5274,33 @@
 			)
 		)
 	)
+	(global_label "COL8"
+		(shape input)
+		(at 93.98 162.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3acd743b-d960-4772-908e-c5e0ccc46b17")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 86.1567 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "SDA"
 		(shape input)
-		(at 39.37 60.96 270)
+		(at 39.37 78.74 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4683,7 +5310,7 @@
 		)
 		(uuid "4512d8e0-5373-447a-b137-66c0fd3c7c30")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 39.37 67.5133 90)
+			(at 39.37 85.2933 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4745,7 +5372,7 @@
 	)
 	(global_label "COL6"
 		(shape input)
-		(at 215.9 24.13 90)
+		(at 215.9 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4755,7 +5382,7 @@
 		)
 		(uuid "5d6d2927-fe04-4c83-b03e-584b5412e2be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 215.9 16.3067 90)
+			(at 215.9 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4817,7 +5444,7 @@
 	)
 	(global_label "COL8"
 		(shape input)
-		(at 247.65 24.13 90)
+		(at 247.65 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4827,7 +5454,7 @@
 		)
 		(uuid "739c156a-f03f-4224-b302-6e1efc7989d5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 16.3067 90)
+			(at 247.65 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4889,7 +5516,7 @@
 	)
 	(global_label "ROW4"
 		(shape input)
-		(at 125.73 90.17 180)
+		(at 125.73 100.33 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4899,7 +5526,7 @@
 		)
 		(uuid "80c01d0c-49d4-43aa-ae5e-655e08b8131b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 90.17 0)
+			(at 117.4834 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4913,7 +5540,7 @@
 	)
 	(global_label "ROW3"
 		(shape input)
-		(at 125.73 73.66 180)
+		(at 125.73 83.82 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4923,7 +5550,7 @@
 		)
 		(uuid "81299719-a954-4b14-b484-aa0156ce6e06")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 73.66 0)
+			(at 117.4834 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4956,6 +5583,30 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "RESET"
+		(shape input)
+		(at 24.13 97.79 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "87287d41-8f08-4938-8624-87424499c124")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 15.3997 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -5081,7 +5732,7 @@
 	)
 	(global_label "COL2"
 		(shape input)
-		(at 157.48 24.13 90)
+		(at 157.48 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5091,7 +5742,7 @@
 		)
 		(uuid "a3915d94-48eb-4de2-a71d-e956bd289e92")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.48 16.3067 90)
+			(at 157.48 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5201,7 +5852,7 @@
 	)
 	(global_label "COL1"
 		(shape input)
-		(at 143.51 24.13 90)
+		(at 143.51 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5211,7 +5862,7 @@
 		)
 		(uuid "c78dfa4f-2369-4884-9429-4378bcf3052d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.51 16.3067 90)
+			(at 143.51 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5321,7 +5972,7 @@
 	)
 	(global_label "COL3"
 		(shape input)
-		(at 172.72 24.13 90)
+		(at 172.72 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5331,7 +5982,7 @@
 		)
 		(uuid "dc1ccae1-ebb0-4889-89da-f906ca06b1a9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 172.72 16.3067 90)
+			(at 172.72 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5345,7 +5996,7 @@
 	)
 	(global_label "ROW6"
 		(shape input)
-		(at 125.73 123.19 180)
+		(at 125.73 133.35 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5355,7 +6006,7 @@
 		)
 		(uuid "dd7f7a9d-5d3d-48c9-a139-642338fa0677")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 123.19 0)
+			(at 117.4834 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5369,7 +6020,7 @@
 	)
 	(global_label "COL4"
 		(shape input)
-		(at 186.69 24.13 90)
+		(at 186.69 27.94 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5379,7 +6030,7 @@
 		)
 		(uuid "deaaed2b-8b99-45c4-925e-7d5765053417")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 186.69 16.3067 90)
+			(at 186.69 20.1167 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5393,7 +6044,7 @@
 	)
 	(global_label "ROW7"
 		(shape input)
-		(at 125.73 139.7 180)
+		(at 125.73 149.86 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5403,7 +6054,7 @@
 		)
 		(uuid "e1709ceb-7914-4cb4-86ad-cd8d5de0616a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 139.7 0)
+			(at 117.4834 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5417,7 +6068,7 @@
 	)
 	(global_label "ROW1"
 		(shape input)
-		(at 125.73 43.18 180)
+		(at 125.73 53.34 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5427,7 +6078,7 @@
 		)
 		(uuid "e313fc8c-a890-4181-ab14-6c5041abfad3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 43.18 0)
+			(at 117.4834 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5436,6 +6087,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "RESET"
+		(shape input)
+		(at 92.71 175.26 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f66912e9-3e90-4ef0-a0d3-9579707415cd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 92.71 166.5297 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -5465,7 +6140,7 @@
 	)
 	(global_label "ROW5"
 		(shape input)
-		(at 125.73 106.68 180)
+		(at 125.73 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5475,7 +6150,7 @@
 		)
 		(uuid "fff868e6-b1e9-40c4-bd17-f5234ebbbe74")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.4834 106.68 0)
+			(at 117.4834 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5489,7 +6164,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 73.66 0)
+		(at 224.79 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5500,7 +6175,7 @@
 		(fields_autoplaced yes)
 		(uuid "006ba4e2-4ec0-4cdd-9ad3-4c2f580963f6")
 		(property "Reference" "SW29"
-			(at 225.044 66.04 0)
+			(at 225.044 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5510,7 +6185,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 68.58 0)
+			(at 225.044 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5520,7 +6195,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 83.82 0)
+			(at 224.79 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5532,7 +6207,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 73.533 0)
+			(at 222.504 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5544,7 +6219,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 73.66 0)
+			(at 224.79 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5555,7 +6230,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 73.66 0)
+			(at 224.79 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5587,8 +6262,244 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 180.34 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "03058d7a-ff0b-4f19-844b-50824e4045c7")
+		(property "Reference" "#PWR06"
+			(at 180.34 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 180.34 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 180.34 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 180.34 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8c6dcb02-152d-4baf-8f7d-0bef7c9f4d58")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 151.13 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "05603049-113e-4a06-8306-464435f47d75")
+		(property "Reference" "#PWR04"
+			(at 151.13 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 151.13 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 151.13 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 151.13 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 151.13 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8ad1a4e8-ac3f-472f-86ff-47be4d95df47")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 234.95 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0dcb2fa9-9d79-4435-82aa-3fef65a95cb6")
+		(property "Reference" "R7"
+			(at 234.95 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 234.95 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 234.95 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 234.95 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 234.95 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ab9053d0-452d-4281-a8b3-6f50b136e7e0")
+		)
+		(pin "1"
+			(uuid "bba1dad6-8746-4ec4-a77b-29efb1d83f57")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 57.15 0)
+		(at 137.16 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5599,7 +6510,7 @@
 		(fields_autoplaced yes)
 		(uuid "0e00b03d-8bbd-41bd-9fb1-e2c284ff3c66")
 		(property "Reference" "SW9"
-			(at 137.414 49.53 0)
+			(at 137.414 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5609,7 +6520,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 52.07 0)
+			(at 137.414 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5619,7 +6530,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 67.31 0)
+			(at 137.16 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5631,7 +6542,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 57.023 0)
+			(at 134.874 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5643,7 +6554,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 57.15 0)
+			(at 137.16 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5654,7 +6565,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 57.15 0)
+			(at 137.16 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5687,7 +6598,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 106.68 0)
+		(at 151.13 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5698,7 +6609,7 @@
 		(fields_autoplaced yes)
 		(uuid "11eaa521-f412-4452-b466-86d29764d179")
 		(property "Reference" "SW35"
-			(at 151.384 99.06 0)
+			(at 151.384 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5708,7 +6619,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 101.6 0)
+			(at 151.384 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5718,7 +6629,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 116.84 0)
+			(at 151.13 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5730,7 +6641,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 106.553 0)
+			(at 148.844 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5742,7 +6653,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 106.68 0)
+			(at 151.13 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5753,7 +6664,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 106.68 0)
+			(at 151.13 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5786,7 +6697,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 90.17 0)
+		(at 194.31 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5797,7 +6708,7 @@
 		(fields_autoplaced yes)
 		(uuid "1257e91f-2147-48c0-8d9a-107d5e9945b2")
 		(property "Reference" "SW26"
-			(at 194.564 82.55 0)
+			(at 194.564 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5807,7 +6718,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 85.09 0)
+			(at 194.564 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5817,7 +6728,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 100.33 0)
+			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5829,7 +6740,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 90.043 0)
+			(at 192.024 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5841,7 +6752,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 90.17 0)
+			(at 194.31 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5852,7 +6763,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 90.17 0)
+			(at 194.31 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5878,6 +6789,166 @@
 			(project "KanaType"
 				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
 					(reference "SW26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 219.71 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15a6b1aa-c12f-42cf-8dbc-f194f71a56a5")
+		(property "Reference" "R6"
+			(at 219.71 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 219.71 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 219.71 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 219.71 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ee28f57e-d8ad-4be1-9ad4-24d40f364748")
+		)
+		(pin "1"
+			(uuid "f54c58ea-183a-4b6b-86c0-b11f727eb9de")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 26.67 77.47 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1625abd1-2b3e-447f-b29b-3bacffa677e8")
+		(property "Reference" "C1"
+			(at 26.67 69.85 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10 μF"
+			(at 26.67 72.39 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 30.48 76.5048 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 26.67 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 26.67 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "12398e8a-d144-4a69-8535-9fb258e48911")
+		)
+		(pin "2"
+			(uuid "e2ef00f7-fa82-4cfd-90f9-a3c3a376f011")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -5983,8 +7054,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 251.46 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1bddcf9c-6837-4485-ae74-cb2caf12f19b")
+		(property "Reference" "R8"
+			(at 251.46 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 251.46 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 251.46 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 251.46 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 251.46 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a44b5499-905c-4b39-8744-1bae2e97e569")
+		)
+		(pin "1"
+			(uuid "f8adefb5-7c71-46f4-bc54-30d313b978b3")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 73.66 0)
+		(at 209.55 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5995,7 +7146,7 @@
 		(fields_autoplaced yes)
 		(uuid "30a7b4b8-99ba-44d6-8a36-a4669a9acc12")
 		(property "Reference" "SW27"
-			(at 209.804 66.04 0)
+			(at 209.804 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6005,7 +7156,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 68.58 0)
+			(at 209.804 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6015,7 +7166,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 83.82 0)
+			(at 209.55 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6027,7 +7178,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 73.533 0)
+			(at 207.264 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6039,7 +7190,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 73.66 0)
+			(at 209.55 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6050,7 +7201,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 73.66 0)
+			(at 209.55 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6083,7 +7234,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 139.7 0)
+		(at 137.16 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6094,7 +7245,7 @@
 		(fields_autoplaced yes)
 		(uuid "34b085da-8e1b-45ba-b673-102ad8eb277a")
 		(property "Reference" "SW49"
-			(at 137.414 132.08 0)
+			(at 137.414 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6104,7 +7255,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 134.62 0)
+			(at 137.414 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6114,7 +7265,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 149.86 0)
+			(at 137.16 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6126,7 +7277,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 139.573 0)
+			(at 134.874 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6138,7 +7289,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 139.7 0)
+			(at 137.16 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6149,7 +7300,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 139.7 0)
+			(at 137.16 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6175,6 +7326,84 @@
 			(project "KanaType"
 				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
 					(reference "SW49")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 255.27 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "36eb5fae-a058-4d58-adb5-928dc7feb848")
+		(property "Reference" "#PWR011"
+			(at 255.27 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 255.27 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 255.27 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 255.27 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 255.27 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "91843f47-3d18-47bf-9bb6-3f2943ea57e5")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -6339,8 +7568,87 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 82.55 182.88 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "46c9eaa3-2ab6-4b24-be0b-2b826ad22532")
+		(property "Reference" "#PWR012"
+			(at 76.2 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 78.74 182.8799 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 82.55 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 82.55 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "def64715-ca3e-47ae-adee-03b6070753d4")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 123.19 0)
+		(at 166.37 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6351,7 +7659,7 @@
 		(fields_autoplaced yes)
 		(uuid "4a27973c-077f-4510-929b-ef8dd49f34dd")
 		(property "Reference" "SW38"
-			(at 166.624 115.57 0)
+			(at 166.624 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6361,7 +7669,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 118.11 0)
+			(at 166.624 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6371,7 +7679,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 133.35 0)
+			(at 166.37 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6383,7 +7691,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 123.063 0)
+			(at 164.084 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6395,7 +7703,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 123.19 0)
+			(at 166.37 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6406,7 +7714,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 123.19 0)
+			(at 166.37 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6438,8 +7746,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 40.64 67.31 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4d741465-77fa-4f9b-a0fd-642e0c4f041a")
+		(property "Reference" "R9"
+			(at 40.64 60.96 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 40.64 63.5 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 40.64 69.088 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 40.64 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "da91f9a7-cd8d-41f5-bfef-9a0bcb6ccb76")
+		)
+		(pin "1"
+			(uuid "c1831e88-6e07-464e-870d-e87845167a09")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 73.66 0)
+		(at 241.3 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6450,7 +7838,7 @@
 		(fields_autoplaced yes)
 		(uuid "529ea140-db98-43f4-8ea7-8de6ae3152d5")
 		(property "Reference" "SW31"
-			(at 241.554 66.04 0)
+			(at 241.554 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6460,7 +7848,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 68.58 0)
+			(at 241.554 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6470,7 +7858,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 83.82 0)
+			(at 241.3 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6482,7 +7870,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 73.533 0)
+			(at 239.014 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6494,7 +7882,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 73.66 0)
+			(at 241.3 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6505,7 +7893,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 73.66 0)
+			(at 241.3 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6538,7 +7926,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 123.19 0)
+		(at 99.06 160.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6547,9 +7935,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "54ef9be4-87da-4bec-a068-3e8a7ad1286d")
-		(property "Reference" "SW44"
-			(at 209.804 115.57 0)
+		(uuid "53eef37d-7780-46bc-bbcd-cf0dbd1acba0")
+		(property "Reference" "WAKE1"
+			(at 99.314 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6559,7 +7947,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 118.11 0)
+			(at 99.314 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6569,7 +7957,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 133.35 0)
+			(at 99.06 170.18 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6581,7 +7969,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 123.063 0)
+			(at 96.774 159.893 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6593,7 +7981,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 123.19 0)
+			(at 99.06 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6604,7 +7992,106 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 123.19 0)
+			(at 99.06 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "83f83cd0-c8df-4a92-a2ec-80146510849d")
+		)
+		(pin "1"
+			(uuid "bfed81fc-3def-4537-9be3-9ca31b8dff59")
+		)
+		(pin "4"
+			(uuid "95c2fe74-1fe8-4746-ad06-4fe9ad6a4df8")
+		)
+		(pin "3"
+			(uuid "1536c542-8221-45f7-9cbb-2aaab3f9daf7")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "WAKE1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LCSC:YTS810SJK")
+		(at 209.55 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "54ef9be4-87da-4bec-a068-3e8a7ad1286d")
+		(property "Reference" "SW44"
+			(at 209.804 125.73 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 209.804 128.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
+			(at 209.55 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/403590.html"
+			(at 207.264 133.223 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 209.55 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2910644"
+			(at 209.55 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6637,7 +8124,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 57.15 0)
+		(at 224.79 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6648,7 +8135,7 @@
 		(fields_autoplaced yes)
 		(uuid "550385c1-e3e0-43f9-8214-6182784c92cd")
 		(property "Reference" "SW15"
-			(at 225.044 49.53 0)
+			(at 225.044 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6658,7 +8145,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 52.07 0)
+			(at 225.044 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6668,7 +8155,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 67.31 0)
+			(at 224.79 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6680,7 +8167,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 57.023 0)
+			(at 222.504 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6692,7 +8179,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 57.15 0)
+			(at 224.79 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6703,7 +8190,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 57.15 0)
+			(at 224.79 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6735,8 +8222,86 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 104.14 142.24 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5a9fc0f1-d32a-405b-aa82-a1d892af9257")
+		(property "Reference" "#PWR014"
+			(at 104.14 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 104.14 137.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 104.14 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 104.14 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 104.14 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0053681c-a8c4-46d1-9d71-24d44f6989e7")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 57.15 0)
+		(at 194.31 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6747,7 +8312,7 @@
 		(fields_autoplaced yes)
 		(uuid "5c768e5d-5ea9-40af-aecf-2538c877ec22")
 		(property "Reference" "SW13"
-			(at 194.564 49.53 0)
+			(at 194.564 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6757,7 +8322,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 52.07 0)
+			(at 194.564 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6767,7 +8332,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 67.31 0)
+			(at 194.31 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6779,7 +8344,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 57.023 0)
+			(at 192.024 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6791,7 +8356,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 57.15 0)
+			(at 194.31 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6802,7 +8367,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 57.15 0)
+			(at 194.31 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6835,7 +8400,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 106.68 0)
+		(at 166.37 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6846,7 +8411,7 @@
 		(fields_autoplaced yes)
 		(uuid "5ed1fb8e-c7a6-4cca-9b94-1f9e5bb6a938")
 		(property "Reference" "SW37"
-			(at 166.624 99.06 0)
+			(at 166.624 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6856,7 +8421,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 101.6 0)
+			(at 166.624 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6866,7 +8431,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 116.84 0)
+			(at 166.37 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6878,7 +8443,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 106.553 0)
+			(at 164.084 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6890,7 +8455,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 106.68 0)
+			(at 166.37 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6901,7 +8466,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 106.68 0)
+			(at 166.37 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6934,7 +8499,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 40.64 0)
+		(at 151.13 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6945,7 +8510,7 @@
 		(fields_autoplaced yes)
 		(uuid "603c21d4-9ff2-4c53-99a5-14ddaffef3e8")
 		(property "Reference" "SW2"
-			(at 151.384 33.02 0)
+			(at 151.384 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6955,7 +8520,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 35.56 0)
+			(at 151.384 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6965,7 +8530,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 50.8 0)
+			(at 151.13 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6977,7 +8542,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 40.513 0)
+			(at 148.844 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6989,7 +8554,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 40.64 0)
+			(at 151.13 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7000,7 +8565,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 40.64 0)
+			(at 151.13 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7033,7 +8598,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 90.17 0)
+		(at 241.3 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7044,7 +8609,7 @@
 		(fields_autoplaced yes)
 		(uuid "645a0a5e-31b8-49b7-9f84-92c0aea83706")
 		(property "Reference" "SW32"
-			(at 241.554 82.55 0)
+			(at 241.554 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7054,7 +8619,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 85.09 0)
+			(at 241.554 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7064,7 +8629,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 100.33 0)
+			(at 241.3 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7076,7 +8641,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 90.043 0)
+			(at 239.014 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7088,7 +8653,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 90.17 0)
+			(at 241.3 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7099,7 +8664,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 90.17 0)
+			(at 241.3 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7132,7 +8697,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 139.7 0)
+		(at 87.63 180.34 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7141,9 +8706,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "658aa8d1-33a7-4b79-8a4b-3faa973c21af")
-		(property "Reference" "SW61"
-			(at 225.044 132.08 0)
+		(uuid "652e160c-7e93-43f9-a285-79d12db34b93")
+		(property "Reference" "RESET1"
+			(at 87.884 172.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7153,7 +8718,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 134.62 0)
+			(at 87.884 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7163,7 +8728,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 149.86 0)
+			(at 87.63 190.5 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7175,7 +8740,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 139.573 0)
+			(at 85.344 180.213 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7187,7 +8752,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 139.7 0)
+			(at 87.63 180.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7198,7 +8763,106 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 139.7 0)
+			(at 87.63 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "c58561d4-cd5b-425c-9873-8b642ff1480f")
+		)
+		(pin "1"
+			(uuid "56970599-eef0-4524-adcc-8f4a932243cf")
+		)
+		(pin "4"
+			(uuid "bf4f1d67-5b35-4d25-a344-84a1cc9c30c9")
+		)
+		(pin "3"
+			(uuid "0426552a-d811-4e24-be6b-f2a968d6b07a")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "RESET1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LCSC:YTS810SJK")
+		(at 224.79 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "658aa8d1-33a7-4b79-8a4b-3faa973c21af")
+		(property "Reference" "SW61"
+			(at 225.044 142.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 225.044 144.78 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
+			(at 224.79 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/403590.html"
+			(at 222.504 149.733 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 224.79 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2910644"
+			(at 224.79 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7231,7 +8895,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 57.15 0)
+		(at 151.13 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7242,7 +8906,7 @@
 		(fields_autoplaced yes)
 		(uuid "72de44a7-7f6f-4fbb-905e-0bb30978a730")
 		(property "Reference" "SW10"
-			(at 151.384 49.53 0)
+			(at 151.384 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7252,7 +8916,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 52.07 0)
+			(at 151.384 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7262,7 +8926,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 67.31 0)
+			(at 151.13 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7274,7 +8938,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 57.023 0)
+			(at 148.844 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7286,7 +8950,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 57.15 0)
+			(at 151.13 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7297,7 +8961,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 57.15 0)
+			(at 151.13 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7329,8 +8993,86 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 223.52 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "767ab31e-d90d-4a2f-8963-fac1a403bfcc")
+		(property "Reference" "#PWR09"
+			(at 223.52 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 223.52 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 223.52 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 223.52 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 223.52 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "688ed5b5-293a-4593-a710-033017769953")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 90.17 0)
+		(at 180.34 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7341,7 +9083,7 @@
 		(fields_autoplaced yes)
 		(uuid "7745e99d-cb42-435b-8e5b-5b10b14a227b")
 		(property "Reference" "SW24"
-			(at 180.594 82.55 0)
+			(at 180.594 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7351,7 +9093,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 85.09 0)
+			(at 180.594 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7361,7 +9103,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 100.33 0)
+			(at 180.34 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7373,7 +9115,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 90.043 0)
+			(at 178.054 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7385,7 +9127,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 90.17 0)
+			(at 180.34 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7396,7 +9138,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 90.17 0)
+			(at 180.34 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7429,7 +9171,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 106.68 0)
+		(at 209.55 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7440,7 +9182,7 @@
 		(fields_autoplaced yes)
 		(uuid "804a3b7b-0519-4c4c-af18-38fa28474a7c")
 		(property "Reference" "SW43"
-			(at 209.804 99.06 0)
+			(at 209.804 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7450,7 +9192,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 101.6 0)
+			(at 209.804 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7460,7 +9202,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 116.84 0)
+			(at 209.55 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7472,7 +9214,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 106.553 0)
+			(at 207.264 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7484,7 +9226,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 106.68 0)
+			(at 209.55 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7495,7 +9237,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 106.68 0)
+			(at 209.55 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7607,7 +9349,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 40.64 0)
+		(at 166.37 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7618,7 +9360,7 @@
 		(fields_autoplaced yes)
 		(uuid "811fb894-86d6-4253-b1b7-e0a37d0c0378")
 		(property "Reference" "SW3"
-			(at 166.624 33.02 0)
+			(at 166.624 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7628,7 +9370,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 35.56 0)
+			(at 166.624 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7638,7 +9380,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 50.8 0)
+			(at 166.37 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7650,7 +9392,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 40.513 0)
+			(at 164.084 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7662,7 +9404,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 40.64 0)
+			(at 166.37 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7673,7 +9415,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 40.64 0)
+			(at 166.37 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7706,7 +9448,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 90.17 0)
+		(at 224.79 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7717,7 +9459,7 @@
 		(fields_autoplaced yes)
 		(uuid "83f065fa-1157-4922-8149-685e95b410ad")
 		(property "Reference" "SW30"
-			(at 225.044 82.55 0)
+			(at 225.044 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7727,7 +9469,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 85.09 0)
+			(at 225.044 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7737,7 +9479,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 100.33 0)
+			(at 224.79 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7749,7 +9491,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 90.043 0)
+			(at 222.504 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7761,7 +9503,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 90.17 0)
+			(at 224.79 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7772,7 +9514,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 90.17 0)
+			(at 224.79 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7804,8 +9546,86 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 238.76 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8b8122bc-b4f5-4b25-9300-ee1e8e1c88d1")
+		(property "Reference" "#PWR010"
+			(at 238.76 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 238.76 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 238.76 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "79cf23b9-8913-4d2d-9188-ca642b67b601")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 73.66 0)
+		(at 137.16 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7816,7 +9636,7 @@
 		(fields_autoplaced yes)
 		(uuid "8ed54fe2-3508-4852-bfb1-ce90a7acdef0")
 		(property "Reference" "SW17"
-			(at 137.414 66.04 0)
+			(at 137.414 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7826,7 +9646,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 68.58 0)
+			(at 137.414 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7836,7 +9656,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 83.82 0)
+			(at 137.16 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7848,7 +9668,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 73.533 0)
+			(at 134.874 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7860,7 +9680,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 73.66 0)
+			(at 137.16 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7871,7 +9691,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 73.66 0)
+			(at 137.16 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7904,7 +9724,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 90.17 0)
+		(at 151.13 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7915,7 +9735,7 @@
 		(fields_autoplaced yes)
 		(uuid "910be692-adf8-4dc6-883a-aa0bf0d7b61c")
 		(property "Reference" "SW20"
-			(at 151.384 82.55 0)
+			(at 151.384 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7925,7 +9745,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 85.09 0)
+			(at 151.384 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7935,7 +9755,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 100.33 0)
+			(at 151.13 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7947,7 +9767,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 90.043 0)
+			(at 148.844 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7959,7 +9779,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 90.17 0)
+			(at 151.13 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7970,7 +9790,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 90.17 0)
+			(at 151.13 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8003,7 +9823,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 40.64 0)
+		(at 137.16 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8014,7 +9834,7 @@
 		(fields_autoplaced yes)
 		(uuid "923f357b-7af3-4997-b188-faa6e59117a5")
 		(property "Reference" "SW1"
-			(at 137.414 33.02 0)
+			(at 137.414 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8024,7 +9844,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 35.56 0)
+			(at 137.414 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8034,7 +9854,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 50.8 0)
+			(at 137.16 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8046,7 +9866,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 40.513 0)
+			(at 134.874 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8058,7 +9878,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 40.64 0)
+			(at 137.16 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8069,7 +9889,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 40.64 0)
+			(at 137.16 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8102,7 +9922,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 40.64 0)
+		(at 180.34 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8113,7 +9933,7 @@
 		(fields_autoplaced yes)
 		(uuid "925ec445-e23c-45e1-a32c-6439bac0e235")
 		(property "Reference" "SW4"
-			(at 180.594 33.02 0)
+			(at 180.594 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8123,7 +9943,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 35.56 0)
+			(at 180.594 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8133,7 +9953,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 50.8 0)
+			(at 180.34 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8145,7 +9965,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 40.513 0)
+			(at 178.054 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8157,7 +9977,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 40.64 0)
+			(at 180.34 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8168,7 +9988,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 40.64 0)
+			(at 180.34 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8201,7 +10021,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 40.64 0)
+		(at 241.3 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8212,7 +10032,7 @@
 		(fields_autoplaced yes)
 		(uuid "951d3f1e-bbe0-4a09-85dd-5b4513a2c443")
 		(property "Reference" "SW8"
-			(at 241.554 33.02 0)
+			(at 241.554 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8222,7 +10042,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 35.56 0)
+			(at 241.554 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8232,7 +10052,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 50.8 0)
+			(at 241.3 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8244,7 +10064,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 40.513 0)
+			(at 239.014 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8256,7 +10076,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 40.64 0)
+			(at 241.3 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8267,7 +10087,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 40.64 0)
+			(at 241.3 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8300,7 +10120,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 106.68 0)
+		(at 137.16 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8311,7 +10131,7 @@
 		(fields_autoplaced yes)
 		(uuid "965afd58-b0cb-451c-8f9f-ca00cf702938")
 		(property "Reference" "SW33"
-			(at 137.414 99.06 0)
+			(at 137.414 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8321,7 +10141,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 101.6 0)
+			(at 137.414 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8331,7 +10151,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 116.84 0)
+			(at 137.16 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8343,7 +10163,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 106.553 0)
+			(at 134.874 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8355,7 +10175,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 106.68 0)
+			(at 137.16 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8366,7 +10186,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 106.68 0)
+			(at 137.16 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8399,7 +10219,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 106.68 0)
+		(at 241.3 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8410,7 +10230,7 @@
 		(fields_autoplaced yes)
 		(uuid "966ca372-0094-49c8-bd86-1ff4d3d637f9")
 		(property "Reference" "SW47"
-			(at 241.554 99.06 0)
+			(at 241.554 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8420,7 +10240,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 101.6 0)
+			(at 241.554 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8430,7 +10250,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 116.84 0)
+			(at 241.3 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8442,7 +10262,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 106.553 0)
+			(at 239.014 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8454,7 +10274,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 106.68 0)
+			(at 241.3 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8465,7 +10285,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 106.68 0)
+			(at 241.3 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8498,7 +10318,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 123.19 0)
+		(at 194.31 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8509,7 +10329,7 @@
 		(fields_autoplaced yes)
 		(uuid "9965e4b2-5708-43a8-a74d-4795b24df54f")
 		(property "Reference" "SW42"
-			(at 194.564 115.57 0)
+			(at 194.564 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8519,7 +10339,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 118.11 0)
+			(at 194.564 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8529,7 +10349,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 133.35 0)
+			(at 194.31 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8541,7 +10361,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 123.063 0)
+			(at 192.024 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8553,7 +10373,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 123.19 0)
+			(at 194.31 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8564,7 +10384,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 123.19 0)
+			(at 194.31 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8597,7 +10417,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 34.29 64.77 180)
+		(at 30.48 82.55 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8608,7 +10428,7 @@
 		(fields_autoplaced yes)
 		(uuid "999421eb-18d1-40b7-b429-37be9a795c23")
 		(property "Reference" "#PWR015"
-			(at 34.29 60.96 0)
+			(at 30.48 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8619,7 +10439,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 34.29 69.85 0)
+			(at 30.48 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8629,7 +10449,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 34.29 64.77 0)
+			(at 30.48 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8640,7 +10460,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 34.29 64.77 0)
+			(at 30.48 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8651,7 +10471,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 34.29 64.77 0)
+			(at 30.48 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8873,7 +10693,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 40.64 0)
+		(at 224.79 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8884,7 +10704,7 @@
 		(fields_autoplaced yes)
 		(uuid "a1b1d102-4267-4823-bb26-f81496173177")
 		(property "Reference" "SW7"
-			(at 225.044 33.02 0)
+			(at 225.044 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8894,7 +10714,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 35.56 0)
+			(at 225.044 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8904,7 +10724,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 50.8 0)
+			(at 224.79 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8916,7 +10736,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 40.513 0)
+			(at 222.504 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8928,7 +10748,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 40.64 0)
+			(at 224.79 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8939,7 +10759,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 40.64 0)
+			(at 224.79 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8972,7 +10792,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 57.15 0)
+		(at 209.55 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8983,7 +10803,7 @@
 		(fields_autoplaced yes)
 		(uuid "a39fe596-ca58-4094-b5f7-776eecf5f8d0")
 		(property "Reference" "SW14"
-			(at 209.804 49.53 0)
+			(at 209.804 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8993,7 +10813,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 52.07 0)
+			(at 209.804 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9003,7 +10823,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 67.31 0)
+			(at 209.55 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9015,7 +10835,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 57.023 0)
+			(at 207.264 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9027,7 +10847,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 57.15 0)
+			(at 209.55 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9038,7 +10858,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 57.15 0)
+			(at 209.55 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9070,8 +10890,166 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 176.53 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a6a06d42-383b-47c9-8c06-02feee1a40c0")
+		(property "Reference" "R3"
+			(at 176.53 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 176.53 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 176.53 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 176.53 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2edaa04e-4c74-447d-ab02-c83dbdd4acfb")
+		)
+		(pin "1"
+			(uuid "8b9d94a9-6f51-4496-b746-6ac583ebdaf4")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 22.86 80.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a950710a-eecc-493e-95c9-b2f6c21cfee5")
+		(property "Reference" "#PWR017"
+			(at 22.86 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 22.86 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 22.86 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 22.86 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 22.86 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "79c7beb5-c731-4508-8b69-ff394bc5bf31")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 139.7 0)
+		(at 180.34 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9082,7 +11060,7 @@
 		(fields_autoplaced yes)
 		(uuid "b53ef835-543b-40b2-8bfa-1762f832c664")
 		(property "Reference" "SW55"
-			(at 180.594 132.08 0)
+			(at 180.594 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9092,7 +11070,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 134.62 0)
+			(at 180.594 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9102,7 +11080,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 149.86 0)
+			(at 180.34 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9114,7 +11092,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 139.573 0)
+			(at 178.054 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9126,7 +11104,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 139.7 0)
+			(at 180.34 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9137,7 +11115,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 139.7 0)
+			(at 180.34 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9170,7 +11148,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 106.68 0)
+		(at 224.79 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9181,7 +11159,7 @@
 		(fields_autoplaced yes)
 		(uuid "b56fe5a9-66da-4202-9b14-a456447d791c")
 		(property "Reference" "SW45"
-			(at 225.044 99.06 0)
+			(at 225.044 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9191,7 +11169,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 101.6 0)
+			(at 225.044 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9201,7 +11179,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 116.84 0)
+			(at 224.79 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9213,7 +11191,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 106.553 0)
+			(at 222.504 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9225,7 +11203,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 106.68 0)
+			(at 224.79 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9236,7 +11214,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 106.68 0)
+			(at 224.79 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9269,7 +11247,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 123.19 0)
+		(at 241.3 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9280,7 +11258,7 @@
 		(fields_autoplaced yes)
 		(uuid "b658419f-e1a2-4768-aa63-fc36d3c79a16")
 		(property "Reference" "SW48"
-			(at 241.554 115.57 0)
+			(at 241.554 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9290,7 +11268,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 118.11 0)
+			(at 241.554 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9300,7 +11278,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 133.35 0)
+			(at 241.3 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9312,7 +11290,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 123.063 0)
+			(at 239.014 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9324,7 +11302,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 123.19 0)
+			(at 241.3 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9335,7 +11313,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 123.19 0)
+			(at 241.3 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9368,7 +11346,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 90.17 0)
+		(at 137.16 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9379,7 +11357,7 @@
 		(fields_autoplaced yes)
 		(uuid "b9e61d4c-dbd7-47d7-8441-95311fb21dc6")
 		(property "Reference" "SW18"
-			(at 137.414 82.55 0)
+			(at 137.414 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9389,7 +11367,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 85.09 0)
+			(at 137.414 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9399,7 +11377,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 100.33 0)
+			(at 137.16 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9411,7 +11389,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 90.043 0)
+			(at 134.874 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9423,7 +11401,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 90.17 0)
+			(at 137.16 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9434,7 +11412,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 90.17 0)
+			(at 137.16 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9467,7 +11445,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 137.16 123.19 0)
+		(at 137.16 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9478,7 +11456,7 @@
 		(fields_autoplaced yes)
 		(uuid "bad1a1c5-4433-4ec7-a170-4d2979835eee")
 		(property "Reference" "SW34"
-			(at 137.414 115.57 0)
+			(at 137.414 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9488,7 +11466,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 137.414 118.11 0)
+			(at 137.414 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9498,7 +11476,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 137.16 133.35 0)
+			(at 137.16 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9510,7 +11488,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 134.874 123.063 0)
+			(at 134.874 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9522,7 +11500,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 137.16 123.19 0)
+			(at 137.16 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9533,7 +11511,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 137.16 123.19 0)
+			(at 137.16 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9566,7 +11544,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 90.17 0)
+		(at 209.55 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9577,7 +11555,7 @@
 		(fields_autoplaced yes)
 		(uuid "bade9505-bacb-4e75-a849-53870a702ebd")
 		(property "Reference" "SW28"
-			(at 209.804 82.55 0)
+			(at 209.804 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9587,7 +11565,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 85.09 0)
+			(at 209.804 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9597,7 +11575,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 100.33 0)
+			(at 209.55 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9609,7 +11587,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 90.043 0)
+			(at 207.264 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9621,7 +11599,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 90.17 0)
+			(at 209.55 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9632,7 +11610,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 90.17 0)
+			(at 209.55 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9665,7 +11643,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 73.66 0)
+		(at 194.31 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9676,7 +11654,7 @@
 		(fields_autoplaced yes)
 		(uuid "bd8bd8a2-3a5a-4ab6-a333-5974a467210e")
 		(property "Reference" "SW25"
-			(at 194.564 66.04 0)
+			(at 194.564 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9686,7 +11664,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 68.58 0)
+			(at 194.564 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9696,7 +11674,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 83.82 0)
+			(at 194.31 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9708,7 +11686,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 73.533 0)
+			(at 192.024 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9720,7 +11698,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 73.66 0)
+			(at 194.31 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9731,7 +11709,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 73.66 0)
+			(at 194.31 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9764,7 +11742,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 57.15 0)
+		(at 166.37 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9775,7 +11753,7 @@
 		(fields_autoplaced yes)
 		(uuid "bfa81bb2-5f88-4b17-9f9a-e2feb786c35d")
 		(property "Reference" "SW11"
-			(at 166.624 49.53 0)
+			(at 166.624 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9785,7 +11763,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 52.07 0)
+			(at 166.624 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9795,7 +11773,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 67.31 0)
+			(at 166.37 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9807,7 +11785,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 57.023 0)
+			(at 164.084 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9819,7 +11797,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 57.15 0)
+			(at 166.37 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9830,7 +11808,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 57.15 0)
+			(at 166.37 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9863,7 +11841,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 57.15 0)
+		(at 241.3 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9874,7 +11852,7 @@
 		(fields_autoplaced yes)
 		(uuid "c0625126-bef8-4a6c-85ed-310a77e14bbc")
 		(property "Reference" "SW16"
-			(at 241.554 49.53 0)
+			(at 241.554 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9884,7 +11862,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 52.07 0)
+			(at 241.554 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9894,7 +11872,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 67.31 0)
+			(at 241.3 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9906,7 +11884,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 57.023 0)
+			(at 239.014 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9918,7 +11896,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 57.15 0)
+			(at 241.3 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9929,7 +11907,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 57.15 0)
+			(at 241.3 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10040,8 +12018,90 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 104.14 147.32 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c40836ad-3c28-4223-bc4f-2c579810f502")
+		(property "Reference" "R11"
+			(at 106.68 146.0499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1k"
+			(at 106.68 148.5899 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 105.918 147.32 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 104.14 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 104.14 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "6b799a51-d4f7-4cc9-a0f9-2b7e563c2e75")
+		)
+		(pin "1"
+			(uuid "c1a241bf-0aff-406c-be4b-27b7650ed875")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 139.7 0)
+		(at 166.37 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10052,7 +12112,7 @@
 		(fields_autoplaced yes)
 		(uuid "c40d295d-53ad-490b-9b2c-db28e9ac6dfd")
 		(property "Reference" "SW53"
-			(at 166.624 132.08 0)
+			(at 166.624 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10062,7 +12122,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 134.62 0)
+			(at 166.624 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10072,7 +12132,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 149.86 0)
+			(at 166.37 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10084,7 +12144,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 139.573 0)
+			(at 164.084 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10096,7 +12156,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 139.7 0)
+			(at 166.37 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10107,7 +12167,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 139.7 0)
+			(at 166.37 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10140,7 +12200,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 73.66 0)
+		(at 180.34 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10151,7 +12211,7 @@
 		(fields_autoplaced yes)
 		(uuid "c621b5fa-2f47-4430-9cd8-384d9970fb36")
 		(property "Reference" "SW23"
-			(at 180.594 66.04 0)
+			(at 180.594 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10161,7 +12221,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 68.58 0)
+			(at 180.594 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10171,7 +12231,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 83.82 0)
+			(at 180.34 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10183,7 +12243,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 73.533 0)
+			(at 178.054 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10195,7 +12255,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 73.66 0)
+			(at 180.34 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10206,7 +12266,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 73.66 0)
+			(at 180.34 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10239,7 +12299,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 57.15 0)
+		(at 180.34 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10250,7 +12310,7 @@
 		(fields_autoplaced yes)
 		(uuid "c7c6fad5-545d-46cc-90aa-b57278e4fe1a")
 		(property "Reference" "SW12"
-			(at 180.594 49.53 0)
+			(at 180.594 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10260,7 +12320,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 52.07 0)
+			(at 180.594 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10270,7 +12330,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 67.31 0)
+			(at 180.34 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10282,7 +12342,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 57.023 0)
+			(at 178.054 67.183 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10294,7 +12354,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 57.15 0)
+			(at 180.34 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10305,7 +12365,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 57.15 0)
+			(at 180.34 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10337,8 +12397,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 43.18 71.12 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cf2e2b43-2521-43e5-8b67-cf8c70775bb2")
+		(property "Reference" "R10"
+			(at 43.18 64.77 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 43.18 67.31 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 43.18 72.898 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 43.18 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "828de1ad-35ff-42ee-bb6f-bac3115c7217")
+		)
+		(pin "1"
+			(uuid "58ee870a-bd51-4d07-9cf6-5095790dcc61")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 139.7 0)
+		(at 194.31 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10349,7 +12489,7 @@
 		(fields_autoplaced yes)
 		(uuid "d072b58e-4268-43dc-b1e7-930ea9e15efb")
 		(property "Reference" "SW57"
-			(at 194.564 132.08 0)
+			(at 194.564 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10359,7 +12499,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 134.62 0)
+			(at 194.564 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10369,7 +12509,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 149.86 0)
+			(at 194.31 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10381,7 +12521,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 139.573 0)
+			(at 192.024 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10393,7 +12533,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 139.7 0)
+			(at 194.31 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10404,7 +12544,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 139.7 0)
+			(at 194.31 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10437,7 +12577,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 90.17 0)
+		(at 166.37 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10448,7 +12588,7 @@
 		(fields_autoplaced yes)
 		(uuid "d40471b1-1177-4ea1-8e60-c09bf2d529f8")
 		(property "Reference" "SW22"
-			(at 166.624 82.55 0)
+			(at 166.624 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10458,7 +12598,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 85.09 0)
+			(at 166.624 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10468,7 +12608,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 100.33 0)
+			(at 166.37 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10480,7 +12620,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 90.043 0)
+			(at 164.084 100.203 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10492,7 +12632,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 90.17 0)
+			(at 166.37 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10503,7 +12643,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 90.17 0)
+			(at 166.37 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10536,7 +12676,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 166.37 73.66 0)
+		(at 166.37 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10547,7 +12687,7 @@
 		(fields_autoplaced yes)
 		(uuid "d43cacea-67ef-4ce9-a4f5-6c619fefa4be")
 		(property "Reference" "SW21"
-			(at 166.624 66.04 0)
+			(at 166.624 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10557,7 +12697,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 166.624 68.58 0)
+			(at 166.624 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10567,7 +12707,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 166.37 83.82 0)
+			(at 166.37 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10579,7 +12719,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 164.084 73.533 0)
+			(at 164.084 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10591,7 +12731,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 166.37 73.66 0)
+			(at 166.37 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10602,7 +12742,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 166.37 73.66 0)
+			(at 166.37 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10634,8 +12774,86 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 208.28 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d4e81b52-d323-48ca-a4c7-4e1dcdbe35f6")
+		(property "Reference" "#PWR08"
+			(at 208.28 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 208.28 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 208.28 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a67dc64f-8a31-4cc6-b453-c9fd6fa66e48")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 40.64 0)
+		(at 209.55 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10646,7 +12864,7 @@
 		(fields_autoplaced yes)
 		(uuid "d89f4775-cbb5-43e8-b715-9fc12b69c8b3")
 		(property "Reference" "SW6"
-			(at 209.804 33.02 0)
+			(at 209.804 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10656,7 +12874,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 35.56 0)
+			(at 209.804 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10666,7 +12884,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 50.8 0)
+			(at 209.55 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10678,7 +12896,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 40.513 0)
+			(at 207.264 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10690,7 +12908,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 40.64 0)
+			(at 209.55 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10701,7 +12919,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 40.64 0)
+			(at 209.55 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10734,7 +12952,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 241.3 139.7 0)
+		(at 241.3 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10745,7 +12963,7 @@
 		(fields_autoplaced yes)
 		(uuid "dd618a75-8ffd-4070-ab33-1d3bf4d9fee3")
 		(property "Reference" "SW63"
-			(at 241.554 132.08 0)
+			(at 241.554 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10755,7 +12973,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 241.554 134.62 0)
+			(at 241.554 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10765,7 +12983,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 241.3 149.86 0)
+			(at 241.3 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10777,7 +12995,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 239.014 139.573 0)
+			(at 239.014 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10789,7 +13007,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 241.3 139.7 0)
+			(at 241.3 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10800,7 +13018,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 241.3 139.7 0)
+			(at 241.3 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10833,7 +13051,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 209.55 139.7 0)
+		(at 209.55 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10844,7 +13062,7 @@
 		(fields_autoplaced yes)
 		(uuid "de4e91f9-f3d7-4824-bb7f-61029472bdf1")
 		(property "Reference" "SW59"
-			(at 209.804 132.08 0)
+			(at 209.804 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10854,7 +13072,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 209.804 134.62 0)
+			(at 209.804 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10864,7 +13082,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 209.55 149.86 0)
+			(at 209.55 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10876,7 +13094,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 207.264 139.573 0)
+			(at 207.264 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10888,7 +13106,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 209.55 139.7 0)
+			(at 209.55 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10899,7 +13117,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 209.55 139.7 0)
+			(at 209.55 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10932,7 +13150,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 123.19 0)
+		(at 151.13 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10943,7 +13161,7 @@
 		(fields_autoplaced yes)
 		(uuid "df87f603-3a34-4a66-8fd7-67d8b8315f0b")
 		(property "Reference" "SW36"
-			(at 151.384 115.57 0)
+			(at 151.384 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10953,7 +13171,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 118.11 0)
+			(at 151.384 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10963,7 +13181,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 133.35 0)
+			(at 151.13 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10975,7 +13193,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 123.063 0)
+			(at 148.844 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10987,7 +13205,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 123.19 0)
+			(at 151.13 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10998,7 +13216,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 123.19 0)
+			(at 151.13 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11117,7 +13335,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 106.68 0)
+		(at 180.34 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11128,7 +13346,7 @@
 		(fields_autoplaced yes)
 		(uuid "dfed805c-00d2-401b-8ce6-84b9cc5c8a0d")
 		(property "Reference" "SW39"
-			(at 180.594 99.06 0)
+			(at 180.594 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11138,7 +13356,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 101.6 0)
+			(at 180.594 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11148,7 +13366,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 116.84 0)
+			(at 180.34 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11160,7 +13378,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 106.553 0)
+			(at 178.054 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11172,7 +13390,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 106.68 0)
+			(at 180.34 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11183,7 +13401,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 106.68 0)
+			(at 180.34 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11215,8 +13433,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 204.47 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e01915aa-0a88-43d5-b1d3-5cc5348ed6ac")
+		(property "Reference" "R5"
+			(at 204.47 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 204.47 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 204.47 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 204.47 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 204.47 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2721af45-bd0f-42b6-af5b-a47b1e870d39")
+		)
+		(pin "1"
+			(uuid "447a0be7-9035-4e83-9aea-6df618ff48c0")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 106.68 0)
+		(at 194.31 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11227,7 +13525,7 @@
 		(fields_autoplaced yes)
 		(uuid "e252fdb8-c8ec-4074-8a19-b552609f7c6b")
 		(property "Reference" "SW41"
-			(at 194.564 99.06 0)
+			(at 194.564 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11237,7 +13535,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 101.6 0)
+			(at 194.564 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11247,7 +13545,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 116.84 0)
+			(at 194.31 127 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11259,7 +13557,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 106.553 0)
+			(at 192.024 116.713 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11271,7 +13569,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 106.68 0)
+			(at 194.31 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11282,7 +13580,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 106.68 0)
+			(at 194.31 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11315,7 +13613,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 31.75 62.23 0)
+		(at 25.4 62.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11326,7 +13624,7 @@
 		(fields_autoplaced yes)
 		(uuid "e807972d-37ec-4934-9f23-20baa3d0611c")
 		(property "Reference" "#PWR016"
-			(at 31.75 68.58 0)
+			(at 25.4 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11337,7 +13635,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 31.75 67.31 0)
+			(at 25.4 67.31 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11347,7 +13645,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 31.75 62.23 0)
+			(at 25.4 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11358,7 +13656,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 31.75 62.23 0)
+			(at 25.4 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11369,7 +13667,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 31.75 62.23 0)
+			(at 25.4 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11393,7 +13691,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 73.66 0)
+		(at 151.13 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11404,7 +13702,7 @@
 		(fields_autoplaced yes)
 		(uuid "e8609b81-364a-4c34-ad55-0a18222a8791")
 		(property "Reference" "SW19"
-			(at 151.384 66.04 0)
+			(at 151.384 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11414,7 +13712,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 68.58 0)
+			(at 151.384 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11424,7 +13722,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 83.82 0)
+			(at 151.13 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11436,7 +13734,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 73.533 0)
+			(at 148.844 83.693 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11448,7 +13746,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 73.66 0)
+			(at 151.13 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11459,7 +13757,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 73.66 0)
+			(at 151.13 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11491,8 +13789,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 161.29 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e87578e3-3159-45ee-bb54-bc664979cf25")
+		(property "Reference" "R2"
+			(at 161.29 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 161.29 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 161.29 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 161.29 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "0dc8b7b5-293e-4c2c-9ef4-39fc5287e5ec")
+		)
+		(pin "1"
+			(uuid "3a53fa87-8857-49c6-8f46-3af48d3536d3")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 180.34 123.19 0)
+		(at 180.34 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11503,7 +13881,7 @@
 		(fields_autoplaced yes)
 		(uuid "ee48ce1d-98f4-4909-b066-35a8b9266be4")
 		(property "Reference" "SW40"
-			(at 180.594 115.57 0)
+			(at 180.594 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11513,7 +13891,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 180.594 118.11 0)
+			(at 180.594 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11523,7 +13901,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 180.34 133.35 0)
+			(at 180.34 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11535,7 +13913,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 178.054 123.063 0)
+			(at 178.054 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11547,7 +13925,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 180.34 123.19 0)
+			(at 180.34 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11558,7 +13936,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 180.34 123.19 0)
+			(at 180.34 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11590,8 +13968,86 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 165.1 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f1806be6-eaca-431f-ab25-dbb5db65f245")
+		(property "Reference" "#PWR05"
+			(at 165.1 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 165.1 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 165.1 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a6f57ddf-d21f-4cd8-a2e0-ca7cd113523f")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 224.79 123.19 0)
+		(at 224.79 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11602,7 +14058,7 @@
 		(fields_autoplaced yes)
 		(uuid "f2e53260-2001-4f99-be37-0c4702d01de1")
 		(property "Reference" "SW46"
-			(at 225.044 115.57 0)
+			(at 225.044 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11612,7 +14068,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 225.044 118.11 0)
+			(at 225.044 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11622,7 +14078,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 224.79 133.35 0)
+			(at 224.79 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11634,7 +14090,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 222.504 123.063 0)
+			(at 222.504 133.223 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11646,7 +14102,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 224.79 123.19 0)
+			(at 224.79 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11657,7 +14113,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 224.79 123.19 0)
+			(at 224.79 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11689,8 +14145,245 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 50.8 68.58 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f5964844-ad47-41db-9604-2abe1cf3ded4")
+		(property "Reference" "#PWR013"
+			(at 46.99 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 54.61 68.5799 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 50.8 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bcf89bf2-8104-4d47-acc6-41f044421f80")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 190.5 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f6b5b020-536d-4f60-874f-f22ad85eb158")
+		(property "Reference" "R4"
+			(at 190.5 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 190.5 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 190.5 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 190.5 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 190.5 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "9fc5c017-8e91-47c5-91b7-cdd4f340f55d")
+		)
+		(pin "1"
+			(uuid "05f8a8bd-65f4-4e9c-9edd-4c97ba514a0f")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 194.31 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fa6277d6-883e-44a1-bb98-a9ea0de8f072")
+		(property "Reference" "#PWR07"
+			(at 194.31 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 194.31 40.6173 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 194.31 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 194.31 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 194.31 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "69498ffc-08da-4678-95ea-d5a201a38f8f")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 194.31 40.64 0)
+		(at 194.31 50.8 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11701,7 +14394,7 @@
 		(fields_autoplaced yes)
 		(uuid "fd9e2548-10c2-4cad-a09d-064ca2326d6f")
 		(property "Reference" "SW5"
-			(at 194.564 33.02 0)
+			(at 194.564 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11711,7 +14404,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 194.564 35.56 0)
+			(at 194.564 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11721,7 +14414,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 194.31 50.8 0)
+			(at 194.31 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11733,7 +14426,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 192.024 40.513 0)
+			(at 192.024 50.673 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11745,7 +14438,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 194.31 40.64 0)
+			(at 194.31 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11756,7 +14449,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 194.31 40.64 0)
+			(at 194.31 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11789,7 +14482,7 @@
 	)
 	(symbol
 		(lib_id "LCSC:YTS810SJK")
-		(at 151.13 139.7 0)
+		(at 151.13 149.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11800,7 +14493,7 @@
 		(fields_autoplaced yes)
 		(uuid "fde6ac57-fe03-40f5-a92e-59cdcb3dd469")
 		(property "Reference" "SW51"
-			(at 151.384 132.08 0)
+			(at 151.384 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11810,7 +14503,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 151.384 134.62 0)
+			(at 151.384 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11820,7 +14513,7 @@
 			)
 		)
 		(property "Footprint" "LCSC:SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6"
-			(at 151.13 149.86 0)
+			(at 151.13 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11832,7 +14525,7 @@
 			)
 		)
 		(property "Datasheet" "https://item.szlcsc.com/403590.html"
-			(at 148.844 139.573 0)
+			(at 148.844 149.733 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11844,7 +14537,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 151.13 139.7 0)
+			(at 151.13 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11855,7 +14548,7 @@
 			)
 		)
 		(property "LCSC" "C2910644"
-			(at 151.13 139.7 0)
+			(at 151.13 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11960,6 +14653,86 @@
 			(project "KanaType"
 				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
 					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 147.32 35.56 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fff9d383-ca1f-4e38-a9ec-b9fc0a80a051")
+		(property "Reference" "R1"
+			(at 147.32 29.21 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8.2k"
+			(at 147.32 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 147.32 37.338 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 147.32 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3b1b6f9a-8bc5-471c-896b-6fd546a0dff5")
+		)
+		(pin "1"
+			(uuid "13eda999-6453-4ef9-94e2-0b021105ba35")
+		)
+		(instances
+			(project "KanaType"
+				(path "/d9c91550-babd-4382-ba7f-3266d747d051"
+					(reference "R1")
 					(unit 1)
 				)
 			)

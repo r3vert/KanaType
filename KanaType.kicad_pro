@@ -616,12 +616,30 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "LCSC",
+          "name": "LCSC",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -674,7 +692,7 @@
         "uuid": "d9c91550-babd-4382-ba7f-3266d747d051"
       }
     ],
-    "used_designators": "",
+    "used_designators": "R1-12,#PWR4-14,#PWR17,SHIFT2,RESET2,C1",
     "variants": []
   },
   "sheets": [

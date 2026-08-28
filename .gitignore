@@ -5,3 +5,15 @@ KanaType-Output
 production
 .history
 KanaType-backups
+# Python bytecode caches - compileall (preflight) and CircuitPython both
+# generate these; nothing needs them in the repo.
+__pycache__/
+*.pyc
+
+# FAT/OS metadata that came along when the CIRCUITPY drive was copied into
+# Firmware/OLD/ - not part of the project.
+System Volume Information/
+.fseventsd/
+.Trashes
+.Trash-1000
+.metadata_never_index
