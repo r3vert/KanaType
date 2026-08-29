@@ -61,6 +61,14 @@ for role, path in sorted(layout.FONT_PATHS.items()):
     else:
         fail("role %s points at missing file %s" % (role, path))
 
+if len(layout.PROMPT_FONT_NAMES) == len(layout.PROMPT_FONTS):
+    ok("%d prompt fonts, each with a display name (%s)"
+       % (len(layout.PROMPT_FONTS), ", ".join(layout.PROMPT_FONT_NAMES)))
+else:
+    fail("PROMPT_FONT_NAMES has %d entries, PROMPT_FONTS has %d - the picker "
+         "would mislabel a font" % (len(layout.PROMPT_FONT_NAMES),
+                                    len(layout.PROMPT_FONTS)))
+
 missing_style = [r for r in layout.PROMPT_FONTS
                  if r not in layout.DRILL_PROMPT_STYLES]
 missing_path = [r for r in layout.PROMPT_FONTS if r not in layout.FONT_PATHS]
@@ -222,6 +230,49 @@ if len(keymap.MOD_PIN_NAMES) == len(keymap.MOD_KMK_NAMES) == 3:
 else:
     fail("modifier pin/keycode lists disagree")
 
+# ---- romaji correctness ---------------------------------------------------
+# kana.ROWS was typed by hand: row GRANULARITY follows DJT Kana, but the romaji
+# strings have no external source. The drill now shows the reading after a
+# miss, i.e. it TEACHES them, so a typo would teach the wrong thing. Derive
+# Hepburn independently from the rules and compare.
+print("romaji")
+_VOWELS = "aiueo"
+_CONS = {"a": "", "k": "k", "s": "s", "t": "t", "n": "n", "h": "h", "m": "m",
+         "y": "y", "r": "r", "w": "w", "g": "g", "z": "z", "d": "d",
+         "b": "b", "p": "p"}
+_IRREGULAR = {"si": "shi", "ti": "chi", "tu": "tsu", "hu": "fu",
+              "zi": "ji", "di": "ji", "du": "zu"}
+_DIGRAPH = {"ky": "k", "sh": "sh", "ch": "ch", "ny": "n", "hy": "h",
+            "my": "m", "ry": "r", "gy": "g", "j": "j", "dj": "j",
+            "by": "b", "py": "p"}
+_bad = []
+_n = 0
+for _cat, _row, _entries in kana.ROWS:
+    for _i, (_glyph, _romaji) in enumerate(_entries):
+        _n += 1
+        if _cat in ("H", "K"):
+            if _row == "nn":
+                _want = "n"
+            elif _row == "w":
+                _want = ("wa", "wo")[_i]
+            elif _row == "y":
+                _want = ("ya", "yu", "yo")[_i]
+            else:
+                _plain = _CONS[_row] + _VOWELS[_i]
+                _want = _IRREGULAR.get(_plain, _plain)
+        else:
+            _base = _DIGRAPH[_row]
+            _want = _base + (("a", "u", "o")[_i] if _base in ("sh", "ch", "j")
+                             else ("ya", "yu", "yo")[_i])
+        if _want != _romaji:
+            _bad.append("%s/%s %s: table=%s derived=%s"
+                        % (_cat, _row, _glyph, _romaji, _want))
+if _bad:
+    for _m in _bad:
+        fail("romaji mismatch  %s" % _m)
+else:
+    ok("%d readings match an independent Hepburn derivation" % _n)
+
 # ------------------------------------------------------------------- deck --
 print("deck")
 counts = {}
@@ -263,7 +314,7 @@ print("settings")
 mc = types.ModuleType("microcontroller")
 mc.nvm = bytearray(256)   # must exceed settings._BLOB_END or saves no-op
 sys.modules["microcontroller"] = mc
-from kanatype import keytable, macros, settings  # noqa: E402
+from kanatype import clockstore, keytable, macros, settings  # noqa: E402
 
 if settings._BLOB_END <= len(mc.nvm):
     ok("nvm blob is %d bytes" % settings._BLOB_END)
@@ -277,11 +328,12 @@ else:
 
 bad = []
 for role in layout.PROMPT_FONTS:
-    o = {"H": True, "K": False, "HC": True, "KC": False, "instant": True,
-         "font": role}
-    settings.save_practice(o)
-    if settings.load_practice() != o:
-        bad.append(role)
+    for _correct in (False, True):
+        o = {"H": True, "K": False, "HC": True, "KC": False, "instant": True,
+             "correct": _correct, "font": role}
+        settings.save_practice(o)
+        if settings.load_practice() != o:
+            bad.append((role, _correct))
 if bad:
     fail("settings round-trip failed for %r" % bad)
 else:
@@ -336,7 +388,7 @@ mc.nvm[settings._OFF_HASH] ^= 0xFF
 
 # practice and macros share the blob; neither may clobber the other
 saved = {"H": True, "K": True, "HC": False, "KC": False, "instant": False,
-         "font": layout.PROMPT_FONTS[0]}
+         "correct": True, "font": layout.PROMPT_FONTS[0]}
 settings.save_practice(saved)
 if settings.load_macros() and settings.load_practice() == saved:
     ok("practice and macro regions coexist")
@@ -375,57 +427,22 @@ if os.path.exists(splash):
 else:
     warn("no assets/loading.bmp - loading screen falls back to text")
 
-# ---- clock carry-over across deep sleep -----------------------------------
-# The RTC does not survive deep sleep (hardware-confirmed 2026-08-28), so the
-# time is stamped into nvm. That region sits AFTER the MAGIC-guarded blob and
-# is guarded by its own marker, so it must not collide with the macros and a
-# zeroed nvm must report nothing rather than a bogus date.
-for _i in range(settings._OFF_CLOCK, settings._CLOCK_END):
-    mc.nvm[_i] = 0
-if settings.load_clock() is None:
-    ok("blank nvm reports no stored time")
-else:
-    fail("blank nvm decoded as a stored time: %r" % (settings.load_clock(),))
+# ---- CircuitPython stubs --------------------------------------------------
+# Installed HERE, before anything imports a firmware module, so the checks
+# below can exercise real app code on the desktop. kanatype.input imports
+# supervisor, ui imports displayio, and so on.
+_sup = types.ModuleType("supervisor")
 
-_dt = types.SimpleNamespace(tm_year=2026, tm_mon=8, tm_mday=28, tm_hour=23,
-                            tm_min=41, tm_sec=7)
-settings.save_clock(_dt, approximate=True)
-_got = settings.load_clock()
-if _got is None:
-    fail("clock round-trip returned nothing")
-elif _got[0][:6] != (2026, 8, 28, 23, 41, 7):
-    fail("clock round-trip gave %r" % (_got[0][:6],))
-elif not _got[1]:
-    fail("approximate flag did not survive")
-else:
-    ok("clock round-trip OK, flagged approximate")
 
-settings.save_clock(_dt, approximate=False)
-if settings.load_clock()[1]:
-    fail("setting the time by hand left it flagged approximate")
-else:
-    ok("a hand-set time is stored exact")
+class _Runtime(object):
+    usb_connected = True
+    serial_connected = False
+    serial_bytes_available = 0
 
-# the two regions must not overlap
-if settings._OFF_CLOCK >= settings._BLOB_END:
-    ok("clock region starts at %d, after the macro blob (%d)"
-       % (settings._OFF_CLOCK, settings._BLOB_END))
-else:
-    fail("clock region overlaps the macro blob")
-_before = settings.load_clock()
-settings.save_macros(1, macros.blank_profiles())
-if settings.load_clock() != _before:
-    fail("save_macros clobbered the stored time")
-else:
-    ok("macro writes leave the stored time intact")
 
-# ------------------------------------------------------- keyboard overlay --
-# The setup overlay is the most intricate logic in the firmware and cannot be
-# reached without hardware, so it is driven here against stub displayio /
-# adafruit_display_text modules. This has already caught a real bug.
-print("kbdui")
-_PROFILE_ROWS_MAX = macros.PROFILES + 2
-_MENU_ROWS_MAX = macros.COUNT + 3
+_sup.runtime = _Runtime()
+_sup.reload = lambda: None
+sys.modules["supervisor"] = _sup
 
 _disp = types.ModuleType("displayio")
 
@@ -485,6 +502,95 @@ _adt.label = _lbl
 sys.modules["adafruit_display_text"] = _adt
 sys.modules["adafruit_display_text.label"] = _lbl
 
+
+
+# ---- practice config rows -------------------------------------------------
+# _labels() and ROW_KEYS are parallel: run_config dispatches by ROW_KEYS[index],
+# so a row added to one and not the other silently toggles the wrong setting.
+try:
+    from apps.practice import config as _cfg  # noqa: E402
+
+    _opts = dict(_cfg.DEFAULTS)
+    _rows = _cfg._labels(_opts)
+    if len(_rows) != len(_cfg.ROW_KEYS):
+        fail("config has %d rows but %d dispatch keys"
+             % (len(_rows), len(_cfg.ROW_KEYS)))
+    else:
+        _wide = [r for r in _rows
+                 if layout.MENU_ITEM_X + layout.MENU_TEXT_DX
+                 + len(r) * layout.JP_CHAR_W > layout.WIDTH]
+        if _wide:
+            fail("config rows run off the panel: %r" % _wide)
+        else:
+            ok("%d config rows, keys aligned, widest %d px"
+               % (len(_rows), max(len(r) for r in _rows) * layout.JP_CHAR_W))
+    _missing_opt = [k for k in _cfg.ROW_KEYS
+                    if k not in ("font", "start", "reset")
+                    and k not in _cfg.DEFAULTS]
+    if _missing_opt:
+        fail("config rows with no default: %r" % _missing_opt)
+except ImportError as _exc:
+    fail("could not import the practice config: %s" % _exc)
+
+# ---- clock carry-over across deep sleep -----------------------------------
+# The RTC does not survive deep sleep (hardware-confirmed 2026-08-28), so the
+# time is stamped into nvm. That region sits AFTER the MAGIC-guarded blob and
+# is guarded by its own marker, so it must not collide with the macros and a
+# zeroed nvm must report nothing rather than a bogus date.
+for _i in range(clockstore.OFFSET, clockstore.END):
+    mc.nvm[_i] = 0
+if clockstore.load() is None:
+    ok("blank nvm reports no stored time")
+else:
+    fail("blank nvm decoded as a stored time: %r" % (clockstore.load(),))
+
+_dt = types.SimpleNamespace(tm_year=2026, tm_mon=8, tm_mday=28, tm_hour=23,
+                            tm_min=41, tm_sec=7)
+clockstore.save(_dt, approximate=True)
+_got = clockstore.load()
+if _got is None:
+    fail("clock round-trip returned nothing")
+elif _got[0][:6] != (2026, 8, 28, 23, 41, 7):
+    fail("clock round-trip gave %r" % (_got[0][:6],))
+elif not _got[1]:
+    fail("approximate flag did not survive")
+else:
+    ok("clock round-trip OK, flagged approximate")
+
+clockstore.save(_dt, approximate=False)
+if clockstore.load()[1]:
+    fail("setting the time by hand left it flagged approximate")
+else:
+    ok("a hand-set time is stored exact")
+
+# clockstore duplicates the offset rather than importing settings (that import
+# is the boot cost it exists to avoid), so the two must be asserted equal here.
+if clockstore.OFFSET == settings._BLOB_END:
+    ok("clockstore.OFFSET %d == settings._BLOB_END" % clockstore.OFFSET)
+else:
+    fail("clockstore.OFFSET %d != settings._BLOB_END %d - the clock stamp "
+         "overlaps the macro profiles" % (clockstore.OFFSET, settings._BLOB_END))
+
+# the two regions must not overlap
+if clockstore.OFFSET >= settings._BLOB_END:
+    ok("clock region starts at %d, after the macro blob (%d)"
+       % (clockstore.OFFSET, settings._BLOB_END))
+else:
+    fail("clock region overlaps the macro blob")
+_before = clockstore.load()
+settings.save_macros(1, macros.blank_profiles())
+if clockstore.load() != _before:
+    fail("save_macros clobbered the stored time")
+else:
+    ok("macro writes leave the stored time intact")
+
+# ------------------------------------------------------- keyboard overlay --
+# The setup overlay is the most intricate logic in the firmware and cannot be
+# reached without hardware, so it is driven here against stub displayio /
+# adafruit_display_text modules. This has already caught a real bug.
+print("kbdui")
+_PROFILE_ROWS_MAX = macros.PROFILES + 2
+_MENU_ROWS_MAX = macros.COUNT + 3
 
 class _Display(object):
     root_group = None

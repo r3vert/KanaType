@@ -8,9 +8,16 @@ Screen (geometry in layout.DRILL_*): enabled types stacked down the left,
 score as a vertical fraction on the right, typed romaji in a 3-slot box
 beneath it, and the whole middle band for the prompt glyph.
 
-Miss feedback is deliberately minimal for now — no correction text; your
-wrong input simply stays visible in the box until you press Space/Enter.
-(Reworking this is a TODO; that's where a flash/invert would go.)
+Miss feedback: the correct reading appears under the prompt and your wrong
+input stays in the box, so you can see both at once. It clears on the next
+prompt. The reading NEVER appears in the answer box -- that box shows what you
+typed and nothing else, so the two can never be confused.
+
+Correction Type (config):
+  Bypass  - a miss reveals the answer; Space/Enter moves on.
+  Correct - a miss reveals the answer and you must clear the wrong input and
+            type the right one, as the DJT Kana site drills it. Space/Enter
+            do NOT skip; the exit key still leaves.
 """
 import gc
 import random
@@ -90,6 +97,11 @@ class Screen:
                                  x=0, y=kana_y, scale=self.scale)
         self.group.append(self._kana)
 
+        # under it: the correct reading, shown only after a miss
+        self._miss = label.Label(uif, text="", color=0xFFFFFF,
+                                 x=0, y=layout.DRILL_MISS_Y)
+        self.group.append(self._miss)
+
     def score(self, correct, answered):
         # right-aligned inside the 8px-per-digit column
         with self.frame:
@@ -106,6 +118,13 @@ class Screen:
             self._kana.text = text
             width = self.adv * self.scale * len(text)
             self._kana.x = layout.DRILL_PROMPT_CENTER_X - width // 2
+
+    def reveal(self, reading):
+        """Show the correct reading after a miss; "" clears it."""
+        with self.frame:
+            self._miss.text = reading
+            width = len(reading) * layout.JP_CHAR_W
+            self._miss.x = layout.DRILL_PROMPT_CENTER_X - width // 2
 
     def answer(self, buf):
         with self.frame:
@@ -141,6 +160,7 @@ def run(ctx, opts):
         with scr.frame:            # prompt + cleared answer box in one frame
             scr.kana(cur[0])
             scr.answer("")
+            scr.reveal("")         # drop the previous miss's reading
 
     def miss():
         nonlocal answered, wrong
@@ -150,6 +170,7 @@ def run(ctx, opts):
         queue.insert(min(13, len(queue)), cur)
         with scr.frame:
             scr.score(correct, answered)
+            scr.reveal(kdata.reveal(cur[1]))   # the point of a miss
 
     def hit():
         nonlocal correct, answered
@@ -169,11 +190,27 @@ def run(ctx, opts):
             if code == kt_input.EXIT:
                 return
             if wrong:
-                if code in (kt_input.SPACE, kt_input.ENTER):
-                    next_prompt()
+                if not opts.get("correct"):
+                    if code in (kt_input.SPACE, kt_input.ENTER):
+                        next_prompt()
+                    continue
+                # Correct mode: the only way out is typing it properly. buf is
+                # capped at the box width, so a wrong answer that already fills
+                # it forces a backspace before anything else can be entered.
+                if code == kt_input.BACKSPACE:
+                    buf = buf[:-1]
+                    scr.answer(buf)
+                elif len(code) == 1 and "a" <= code <= "z":
+                    if len(buf) < layout.DRILL_ANSWER_SLOTS:
+                        buf += code
+                        scr.answer(buf)
+                    if buf in kdata.answers(cur[1]):
+                        next_prompt()       # corrected; already scored a miss
                 continue
             if code == kt_input.HINT:
-                scr.answer(cur[1])          # reveal in the box, unscored
+                # same place a miss shows it -- the answer box is for your
+                # own typing only
+                scr.reveal(kdata.reveal(cur[1]))
             elif code == kt_input.BACKSPACE:
                 buf = buf[:-1]
                 scr.answer(buf)

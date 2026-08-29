@@ -15,7 +15,7 @@ import displayio
 from adafruit_display_text import label
 
 from kanatype import input as kt_input
-from kanatype import layout, settings, ui
+from kanatype import clockstore, layout, ui
 
 # (name, char offset in its line, width in chars, min, max)
 DATE_FIELDS = (("year", 0, 4, 2020, 2099), ("month", 5, 2, 1, 12), ("day", 8, 2, 1, 31))
@@ -76,8 +76,7 @@ def run(ctx):
     # A time restored from nvm after a deep sleep is only as good as the moment
     # the device went to sleep -- the RP2040 cannot tell us how long that was.
     # Say so, rather than presenting a guess as the time.
-    saved = settings.load_clock()
-    approx = [bool(saved and saved[1])]
+    approx = [clockstore.approximate()]
 
     def show_view():
         # three labels change together; a torn frame here shows a half-updated
@@ -154,7 +153,7 @@ def run(ctx):
                     ))
                     # set by hand: exact again, and stored so the next sleep
                     # has something accurate to carry over
-                    settings.save_clock(clock.datetime, approximate=False)
+                    clockstore.save(clock.datetime, approximate=False)
                     approx[0] = False
                     editing = False
                     with ui.frame():

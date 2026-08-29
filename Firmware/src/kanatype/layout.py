@@ -38,27 +38,32 @@ FONT_PATHS = {
 # Prompt-font choices in picker order = Font 1..N. settings.py persists the
 # INDEX into this tuple, so changing the order/length needs a settings.MAGIC bump.
 PROMPT_FONTS = ("noto", "prompt", "prompt_bold", "jp")
+# What the font picker calls them. "Font 1" told the user nothing about what
+# they were choosing. Index-aligned with PROMPT_FONTS; preflight checks that.
+PROMPT_FONT_NAMES = ("Noto Sans", "Unifont", "Unifont B", "k8x12")
 # (ter-u16b.bdf stays in fonts/ as a spare — near-identical look, 3-item menus.)
 
-# Menu screen (ui.Menu) — metrics for ter-u14b (ascent 12, descent 2):
-# items at pitch 12 put row 4's baseline at 62; descenders end exactly at
-# row 63. All 4 apps visible at once (chosen over u16b, 2026-08-12).
+# List screens (ui.Menu) — the practice config and the font picker; the
+# launcher has its own HOME_* layout. jp font throughout, like every other
+# screen: at the old 8px/char, "Reset to defaults" was 136px on a 128px panel,
+# i.e. literally off the edge, and three more rows were close behind.
+# Title inks y1..y11, so items start at 16; pitch 10 fits five rows with the
+# last descender ending at 62.
 MENU_TITLE_X = 2
-MENU_TITLE_Y = 6
+MENU_TITLE_Y = 5
 MENU_ITEM_X = 2
-MENU_ITEM_Y0 = 20
-MENU_PITCH = 12
-MENU_MAX_VISIBLE = 4
+MENU_ITEM_Y0 = 16
+MENU_PITCH = 10
+MENU_MAX_VISIBLE = 5
 # Cursor is its own 1-char label (moving it = one cheap y update, not four
 # full label re-layouts — that was the menu-scroll lag, fixed 2026-08-13).
 MENU_CURSOR = ">"
-MENU_TEXT_DX = 16  # item text offset, leaves room for the cursor column
+MENU_TEXT_DX = 8   # item text offset, leaves room for the cursor column
 
-# Status indicator: top-right corner, sharing the title row (a bottom status
-# line collides with the last menu item — found by tools/render.py).
-# The launcher shows an ICON here (kanatype/icons.py); the config menu still
-# uses text, so both positions are kept.
-STATUS_X = 94
+# Transient status, right of the title on the same row (jp font, so a
+# 17-character message still fits). Empty unless there is something to say --
+# a permanent "Enter: toggle" hint just ate the corner.
+STATUS_X = 58
 STATUS_Y = MENU_TITLE_Y
 # Icons are right-aligned to STATUS_ICON_RIGHT and centred on STATUS_ICON_CY,
 # so their own art dimensions decide placement — redraw at any size.
@@ -107,6 +112,12 @@ DRILL_ANSWER_Y = 43                  # label center inside the box
 DRILL_ANSWER_SLOTS = 3
 DRILL_ANSWER_BLANK = "-"
 
+# After a miss, the correct reading is shown centred beneath the prompt while
+# the wrong input stays in the box, so the two can be compared directly.
+# y=57 inks 53..63 in the jp font: below every prompt font (the tallest, jp x4,
+# ends at 52) and left of the answer box, which starts at x110.
+DRILL_MISS_Y = 57
+
 # MEASURED from k8x12_kana.bdf - the earlier 8/12 guess was wrong and threw
 # off every right-alignment on the drill screen.
 JP_CHAR_W = 4          # jp-font halfwidth (ASCII) advance
@@ -121,6 +132,34 @@ DRILL_PROMPT_STYLES = {
     "prompt_bold": (16, 2, 30),
     "jp": (8, 4, 32),      # 8px fullwidth kana x4 = 32px
 }
+
+# ------------------------------------------------------------ home screen --
+# Apps down the left in the jp font, clock and power state on the right, split
+# by a rule. The clock is a FOCUS TARGET one past the last app -- Enter on it
+# opens the Clock app, which is why Clock is not in the app list itself.
+HOME_ITEM_X = 2
+HOME_TEXT_DX = 8
+HOME_ITEM_Y0 = 8
+HOME_PITCH = 11
+HOME_DIVIDER = (54, 2, 1, 60)      # x, y, w, h
+HOME_RIGHT_X = 58
+HOME_RIGHT_W = WIDTH - HOME_RIGHT_X - 2
+HOME_TITLE_Y = 7
+HOME_TIME_Y = 22
+HOME_DATE_Y = 35
+HOME_CURSOR_DX = 2                 # clock's focus cursor, right of the rule
+# "~" marks a clock restored after deep sleep. Drawn as its OWN label in the
+# left margin, never prefixed to the string, so the time does not shift when
+# the flag appears. +4 puts its ink on the digits' centre line: measured, the
+# menu font's tilde inks at y-5..-3 while a digit inks at y-4..+5.
+HOME_APPROX_DX = -10
+HOME_APPROX_DY = 4
+# Power state: outline + terminal nub, then the state spelled out beside it.
+# Deliberately NOT a fill gauge -- VBAT is unconnected on this board and every
+# analog pin is taken, so charge level is unmeasurable and a bar would lie.
+HOME_BATT = (72, 48, 20, 9)        # x, y, w, h outline
+HOME_BATT_NUB = (2, 3)             # w, h, centred on the right edge
+HOME_BATT_LABEL_DX = 5
 
 # ---------------------------------------------------------- keyboard app --
 # Base screen. Two columns split by a rule: the LEFT carries the things the

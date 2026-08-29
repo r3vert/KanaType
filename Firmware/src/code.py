@@ -10,7 +10,7 @@ import time
 import displayio
 import supervisor
 
-from kanatype import Ctx, hw, icons, layout
+from kanatype import Ctx, hw, layout
 from kanatype import input as kt_input
 from kanatype import storage, ui
 
@@ -19,9 +19,12 @@ APPS = [
     ("Practice", "apps.practice"),
     ("Quick note", "apps.quicknote"),
     ("Vault", "apps.vault"),
-    ("Clock", "apps.clock"),
     ("Sleep", "apps.sleepmode"),
 ]
+# Clock is NOT in the list: the home screen shows the time, and Enter on the
+# clock panel (the focus target one past the last app) opens it. Keeping a
+# "Clock" row as well would be two doors into the same room.
+CLOCK_APP = "apps.clock"
 # Context-smart auto-launch (2 s splash into the default app) is DISABLED for
 # debugging: it read as a phantom menu click, especially with the countdown
 # status clipped off-screen. Menu is purely interactive; the cursor still
@@ -67,6 +70,25 @@ def boot_line(marks, t_menu, steps=None):
     return line
 
 
+def open_clock():
+    """(rtc object or None, approximate flag).
+
+    The flag is read ONCE: only the Clock app changes it, and reaching that
+    needs leaving the launcher. Reading nvm in the 20 ms poll loop would be
+    50 flash reads a second for an answer that cannot change. clockstore
+    rather than settings, because settings drags in macros + keytable and
+    this is the boot path.
+    """
+    try:
+        import rtc
+
+        from kanatype import clockstore
+
+        return rtc.RTC(), clockstore.approximate()
+    except Exception:
+        return None, False
+
+
 def pick_app(ctx, marks=None):
     # Menu appears IMMEDIATELY. USB enumeration takes ~0.3-0.8s on a cold
     # boot, so the status/context resolves in the background instead of
@@ -80,33 +102,23 @@ def pick_app(ctx, marks=None):
     steps.append(("font", time.monotonic() - t))
 
     t = time.monotonic()
-    # Every glyph the menu can show, in one file pass, before any Label asks
-    # for one and triggers a scan of its own.
-    ui.preload(layout.TITLE + layout.MENU_CURSOR
-               + "".join(name for name, _ in APPS))
+    # Every glyph the home screen can show, in one file pass, before any Label
+    # asks for one and triggers a scan of its own. Digits and separators are
+    # for the clock, "~" marks an approximate one.
+    ui.preload(layout.TITLE + layout.MENU_CURSOR + "0123456789:-USBAT"
+               + "".join(name for name, _ in APPS), "jp")
+    ui.preload("0123456789:~-", "menu")
     steps.append(("glyphs", time.monotonic() - t))
 
     t = time.monotonic()
-    menu = ui.Menu(layout.TITLE, [name for name, _ in APPS])
+    menu = ui.Home([name for name, _ in APPS], ctx.usb)
+    clock, approx = open_clock()
+    now = clock.datetime if clock else None
+    menu.set_clock(now, approx)
     steps.append(("labels", time.monotonic() - t))
 
-    t = time.monotonic()
-    # power-source icon in the title corner; neither shown until USB resolves
-    bolt_icon = ui.status_icon(icons.BOLT)        # USB / external power
-    batt_icon = ui.status_icon(icons.BATTERY)     # running on battery
-    wait_icon = ui.status_icon(icons.TILDE)       # still figuring it out
-    for ic in (bolt_icon, batt_icon, wait_icon):
-        menu.group.append(ic)
-    bolt_icon.hidden = not ctx.usb
-    batt_icon.hidden = True
-    wait_icon.hidden = ctx.usb                    # only while unresolved
-    steps.append(("icons", time.monotonic() - t))
-
     def show_power(on_usb):
-        with ui.frame():
-            bolt_icon.hidden = not on_usb
-            batt_icon.hidden = on_usb
-            wait_icon.hidden = True
+        menu.set_power(on_usb)
 
     t = time.monotonic()
     with ui.frame():
@@ -128,6 +140,7 @@ def pick_app(ctx, marks=None):
     #   appears, or when the grace period expires.
     #   after that -> keep the badge honest if the cable comes or goes, but
     #   never yank the cursor again; that only happens on the first resolve.
+    minute = [now.tm_min if now else -1]
     deadline = time.monotonic() + 1.5
     shown = True if ctx.usb else None
     hopped = ctx.usb
@@ -160,7 +173,14 @@ def pick_app(ctx, marks=None):
                 menu.move(1)
                 moved = True
             elif ev.code == kt_input.ENTER:
-                return APPS[menu.index][1]
+                return CLOCK_APP if menu.clock_selected else APPS[menu.index][1]
+        # repaint the clock only when the MINUTE rolls over; once a second
+        # would be 60x the redraws for the same picture
+        if clock is not None:
+            live_now = clock.datetime
+            if live_now.tm_min != minute[0]:
+                minute[0] = live_now.tm_min
+                menu.set_clock(live_now, approx)
         time.sleep(0.02)
 
 

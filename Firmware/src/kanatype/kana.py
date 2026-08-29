@@ -3,6 +3,18 @@
 Row granularity mirrors DJT Kana: basic rows, dakuten rows, digraph combos,
 each in hiragana and katakana. Categories: H (hira incl. dakuten),
 HC (hira combos), K, KC.
+
+PROVENANCE: the romaji here were typed by hand, not imported. Two independent
+checks guard them, both in tools/preflight.py or run against it:
+
+1. Hepburn is DERIVED from the rules (consonant x vowel, the irregulars
+   shi/chi/tsu/fu/ji/zu, the digraph forms) and compared entry by entry.
+   All 214 match. This runs on every preflight.
+2. Cross-checked 2026-08-28 against DJT Kana's own chart, extracted from a
+   saved copy of the page: identical 214-kana inventory, and 212 of 214
+   readings identical.
+
+The two deliberate differences are WO below.
 """
 
 SAMPLE = "あいう アイウ"
@@ -18,6 +30,9 @@ ROWS = [
     ("H", "m", [("ま", "ma"), ("み", "mi"), ("む", "mu"), ("め", "me"), ("も", "mo")]),
     ("H", "y", [("や", "ya"), ("ゆ", "yu"), ("よ", "yo")]),
     ("H", "r", [("ら", "ra"), ("り", "ri"), ("る", "ru"), ("れ", "re"), ("ろ", "ro")]),
+    # WO: DJT Kana shows "o" (how the particle is PRONOUNCED). We keep "wo"
+    # because this is a typing trainer and "wo" is what you press to produce
+    # it; "o" is accepted too, via VARIANTS.
     ("H", "w", [("わ", "wa"), ("を", "wo")]),
     ("H", "nn", [("ん", "n")]),
     ("H", "g", [("が", "ga"), ("ぎ", "gi"), ("ぐ", "gu"), ("げ", "ge"), ("ご", "go")]),
@@ -84,9 +99,23 @@ VARIANTS = {
 }
 
 
+# Shown in parentheses when a miss reveals the answer. Only WO qualifies: its
+# alternate is a different READING (the particle is pronounced "o", which is
+# what DJT Kana teaches), while the other 16 VARIANTS are alternate TYPINGS of
+# the same sound - si/ti/tu/hu/nn and friends. Printing those on every miss
+# would turn a reading drill into a spelling lesson.
+REVEAL_EXTRA = {"wo": "o"}
+
+
 def answers(canonical):
     """All accepted romaji spellings for a canonical reading."""
     return (canonical,) + VARIANTS.get(canonical, ())
+
+
+def reveal(canonical):
+    """What the drill prints after a miss: "kya", or "wo (o)"."""
+    extra = REVEAL_EXTRA.get(canonical)
+    return "%s (%s)" % (canonical, extra) if extra else canonical
 
 
 def build_deck(categories):

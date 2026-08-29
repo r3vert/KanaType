@@ -44,9 +44,9 @@ def save_time_for_sleep():
     try:
         import rtc
 
-        from kanatype import settings
+        from kanatype import clockstore
 
-        return settings.save_clock(rtc.RTC().datetime, approximate=True)
+        return clockstore.save(rtc.RTC().datetime, approximate=True)
     except Exception:
         return False
 
@@ -63,13 +63,9 @@ def restore_time_after_sleep():
         clock = rtc.RTC()
         if clock.datetime.tm_year >= 2024:
             return False              # the RTC survived; do not clobber it
-        # settings is imported ONLY here, after the year check. It pulls in
-        # keytable + macros -- ~770 lines of source parsed - and this runs on
-        # the boot path, so paying that on every boot to ask a question that
-        # is almost always "no" would undo the boot-time work in PLAN.md.
-        from kanatype import settings
+        from kanatype import clockstore
 
-        saved = settings.load_clock()
+        saved = clockstore.load()
         if saved is None:
             return False
         clock.datetime = time.struct_time(saved[0])

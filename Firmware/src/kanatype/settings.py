@@ -6,17 +6,18 @@ M2 write-session work). Survives reboots, deep sleep, and power loss.
 
 Layout (version-tagged; bump MAGIC when it changes):
   [0:4]  b"KT06" magic
-  [4]    practice flags: bit0 H, bit1 K, bit2 HC, bit3 KC, bit4 instant
+  [4]    practice flags: bit0 H, bit1 K, bit2 HC, bit3 KC, bit4 instant,
+         bit5 correction mode
   [5]    practice font index into FONT_ORDER
   [6:8]  keytable.HASH, big-endian -- see load_macros
   [8]    active macro profile index
   [9:105]  4 profiles x (8-byte name + 8 x (mod bits, key index))
-  [105:113] clock stamp carried across deep sleep, under its OWN marker byte
-            (not MAGIC) so adding it did not reset the regions above
+  [105:113] clock stamp across deep sleep -- owned by kanatype/clockstore.py,
+            under its OWN marker byte (not MAGIC), so adding it reset nothing
 Future consumers (quick-note wake routing etc.) append bytes and bump MAGIC.
 
 The regions are written independently: save_practice touches only [0:6],
-save_macros only [0:4] and [6:105], save_clock only [105:113] — so none of
+save_macros only [0:4] and [6:105], clockstore only [105:113] — so none of
 them clobbers another.
 
 Every function degrades to no-op/None on builds without nvm.
@@ -31,6 +32,10 @@ FONT_ORDER = layout.PROMPT_FONTS  # index stored in nvm byte 5
 
 _CAT_BITS = (("H", 1), ("K", 2), ("HC", 4), ("KC", 8))
 _INSTANT_BIT = 16
+# bit 5 = correction mode. Appended to the EXISTING flags byte, so no MAGIC
+# bump: a device saved under KT06 reads this as 0 = Bypass, which is exactly
+# the behaviour it had before the option existed.
+_CORRECT_BIT = 32
 
 _OFF_HASH = 6
 _OFF_ACTIVE = 8
@@ -64,6 +69,7 @@ def load_practice():
         # once; treat it as "unset" so the caller falls back to its defaults.
         return None
     opts["instant"] = bool(flags & _INSTANT_BIT)
+    opts["correct"] = bool(flags & _CORRECT_BIT)
     opts["font"] = FONT_ORDER[font_i]
     return opts
 
@@ -78,6 +84,8 @@ def save_practice(opts):
             flags |= bit
     if opts.get("instant"):
         flags |= _INSTANT_BIT
+    if opts.get("correct"):
+        flags |= _CORRECT_BIT
     blob = MAGIC + bytes((flags, FONT_ORDER.index(opts.get("font", "prompt"))))
     if bytes(nvm[0:len(blob)]) != blob:  # skip the flash write when unchanged
         nvm[0:len(blob)] = blob
@@ -152,56 +160,10 @@ def save_macros(active, profiles):
         nvm[_OFF_HASH:_BLOB_END] = bytes(blob)
 
 
-# ---- clock carry-over across deep sleep -----------------------------------
-# The RP2040 has no battery-backed RTC domain and CircuitPython's deep sleep
-# "shuts down power to nearly all of the microcontroller" -- confirmed on
-# hardware 2026-08-28: set the clock, sleep, wake, RTC is unset. sleepmode.py
-# stamps the wall clock here on the way down and code.py puts it back on the
-# way up.
-#
-# This region sits AFTER _BLOB_END and is guarded by its own marker byte
-# rather than the file MAGIC, deliberately: bumping MAGIC would reset the
-# macro profiles and practice settings a third time in one day. On a device
-# that has never stored a time these bytes read as zero, the marker fails,
-# and load_clock() reports nothing.
-_OFF_CLOCK = _BLOB_END
-_CLOCK_MARK = 0xC1
-_CLOCK_SIZE = 8          # mark, flags, year-2000, month, day, hour, min, sec
-_CLOCK_END = _OFF_CLOCK + _CLOCK_SIZE
-_CLOCK_APPROX = 0x01     # flags bit 0: restored, so the seconds are a guess
-
-
-def save_clock(dt, approximate=True):
-    """Stamp a time.struct_time into nvm. Returns True if it was written."""
-    nvm = _nvm()
-    if nvm is None or len(nvm) < _CLOCK_END:
-        return False
-    blob = bytes((
-        _CLOCK_MARK,
-        _CLOCK_APPROX if approximate else 0,
-        max(0, min(255, dt.tm_year - 2000)),
-        dt.tm_mon, dt.tm_mday, dt.tm_hour, dt.tm_min, dt.tm_sec,
-    ))
-    if bytes(nvm[_OFF_CLOCK:_CLOCK_END]) != blob:
-        nvm[_OFF_CLOCK:_CLOCK_END] = blob
-    return True
-
-
-def load_clock():
-    """(struct_time-compatible 9-tuple, approximate) or None."""
-    nvm = _nvm()
-    if nvm is None or len(nvm) < _CLOCK_END or nvm[_OFF_CLOCK] != _CLOCK_MARK:
-        return None
-    flags = nvm[_OFF_CLOCK + 1]
-    year = 2000 + nvm[_OFF_CLOCK + 2]
-    mon, day = nvm[_OFF_CLOCK + 3], nvm[_OFF_CLOCK + 4]
-    hour, minute, sec = (nvm[_OFF_CLOCK + 5], nvm[_OFF_CLOCK + 6],
-                         nvm[_OFF_CLOCK + 7])
-    if not (1 <= mon <= 12 and 1 <= day <= 31 and hour < 24
-            and minute < 60 and sec < 60):
-        return None
-    # tm_wday/tm_yday/tm_isdst are ignored by rtc.RTC on assignment
-    return (year, mon, day, hour, minute, sec, 0, -1, -1), bool(flags & _CLOCK_APPROX)
+# The clock carried across deep sleep lives in kanatype/clockstore.py, not
+# here: it is read on every boot and this module imports macros + keytable,
+# which is ~770 lines of source that the boot path should not pay for.
+# clockstore.OFFSET must equal _BLOB_END below; preflight asserts it.
 
 
 def reset():

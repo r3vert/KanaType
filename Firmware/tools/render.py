@@ -142,8 +142,9 @@ def draw_status_icon(grid, art):
               layout.STATUS_ICON_CY - h // 2)
 
 
-def render_menu(items, index=0, status="USB", title="KanaType"):
-    f = menu_font()
+def render_menu(items, index=0, status="", title="Practice"):
+    """Mirrors ui.Menu: the practice config and font picker, jp font."""
+    f = BDFFont(font_path("jp"))
     g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
     draw_label(g, f, layout.MENU_TITLE_X, layout.MENU_TITLE_Y, title)
     top = max(0, min(index - layout.MENU_MAX_VISIBLE + 1, len(items) - layout.MENU_MAX_VISIBLE))
@@ -155,14 +156,7 @@ def render_menu(items, index=0, status="USB", title="KanaType"):
         if item == index:
             draw_label(g, f, layout.MENU_ITEM_X, y, layout.MENU_CURSOR)
         draw_label(g, f, layout.MENU_ITEM_X + layout.MENU_TEXT_DX, y, items[item])
-    # the launcher shows an icon here; anything else is drawn as text
-    key = (status or "").strip().upper()
-    art = {"USB": icons.BOLT, "BOLT": icons.BOLT, "BATT": icons.BATTERY,
-           "BATTERY": icons.BATTERY, "~": icons.TILDE,
-           "WAIT": icons.TILDE}.get(key)
-    if art is not None:
-        draw_status_icon(g, art)
-    elif status:
+    if status:
         draw_label(g, f, layout.STATUS_X, layout.STATUS_Y, status)
     return g
 
@@ -211,7 +205,7 @@ def _font_installed(role):
 
 
 def render_drill(kana="きゃ", typed="ky", cats="H,HC", correct="12",
-                 answered="34", role=None):
+                 answered="34", role=None, miss=""):
     """Practice drill screen preview (geometry from layout.DRILL_*).
     Mirrors the firmware's font fallback chain."""
     if role is None:
@@ -252,6 +246,13 @@ def render_drill(kana="きゃ", typed="ky", cats="H,HC", correct="12",
     pf = BDFFont(font_path(role))
     kx = layout.DRILL_PROMPT_CENTER_X - (adv * scale * len(kana)) // 2
     draw_label(g, pf, kx, kana_y, kana, scale=scale)
+
+    # under it: the correct reading, shown only after a miss
+    if miss:
+        draw_label(g, uif,
+                   layout.DRILL_PROMPT_CENTER_X
+                   - len(miss) * layout.JP_CHAR_W // 2,
+                   layout.DRILL_MISS_Y, miss)
     return g
 
 
@@ -326,8 +327,56 @@ def render_kbd_profiles(names=("Default", "coding99", "", ""), active=1, index=1
     return render_kbd_menu(rows, [""] * len(rows), index, title="PROFILES")
 
 
-# The launcher's menu entries — keep in sync with code.py APPS.
-APPS = ["Keyboard", "Practice", "Quick note", "Vault", "Clock", "Sleep"]
+# The launcher's app entries — keep in sync with code.py APPS. Clock is
+# absent on purpose: the home screen shows the time and Enter on the clock
+# panel opens it.
+APPS = ["Keyboard", "Practice", "Quick note", "Vault", "Sleep"]
+
+
+def render_home(index=0, usb=True, tm="23:41", date="2026-08-28",
+                approx=False):
+    """Launcher home screen — mirrors ui.Home.
+    index == len(APPS) focuses the clock panel."""
+    mf = menu_font()
+    jp = BDFFont(font_path("jp"))
+    g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
+
+    for i, name in enumerate(APPS):
+        draw_label(g, jp, layout.HOME_ITEM_X + layout.HOME_TEXT_DX,
+                   layout.HOME_ITEM_Y0 + i * layout.HOME_PITCH, name)
+    if index == len(APPS):
+        draw_label(g, jp, layout.HOME_DIVIDER[0] + layout.HOME_CURSOR_DX,
+                   layout.HOME_TIME_Y, layout.MENU_CURSOR)
+    else:
+        draw_label(g, jp, layout.HOME_ITEM_X,
+                   layout.HOME_ITEM_Y0 + index * layout.HOME_PITCH,
+                   layout.MENU_CURSOR)
+    mockup.fill_rect(g, *(layout.HOME_DIVIDER + (True,)))
+
+    def centre(text, cw):
+        return layout.HOME_RIGHT_X + (layout.HOME_RIGHT_W - len(text) * cw) // 2
+
+    draw_label(g, jp, centre(layout.TITLE, layout.JP_CHAR_W),
+               layout.HOME_TITLE_Y, layout.TITLE)
+    tx = centre(tm, layout.CHAR_W)
+    draw_label(g, mf, tx, layout.HOME_TIME_Y, tm)
+    if approx:
+        draw_label(g, mf, tx + layout.HOME_APPROX_DX,
+                   layout.HOME_TIME_Y + layout.HOME_APPROX_DY, "~")
+    draw_label(g, jp, centre(date, layout.JP_CHAR_W), layout.HOME_DATE_Y, date)
+
+    bx, by, bw, bh = layout.HOME_BATT
+    nw, nh = layout.HOME_BATT_NUB
+    mockup.fill_rect(g, bx, by, bw, 1, True)
+    mockup.fill_rect(g, bx, by + bh - 1, bw, 1, True)
+    mockup.fill_rect(g, bx, by, 1, bh, True)
+    mockup.fill_rect(g, bx + bw - 1, by, 1, bh, True)
+    mockup.fill_rect(g, bx + bw, by + bh // 2 - nh // 2, nw, nh, True)
+    if usb:
+        draw_icon(g, icons.BOLT, bx + bw // 2 - 3, by + 1)
+    draw_label(g, jp, bx + bw + nw + layout.HOME_BATT_LABEL_DX, by + bh // 2,
+               "USB" if usb else "BATT")
+    return g
 
 
 # --------------------------------------------------------------------- cli --
@@ -351,7 +400,21 @@ def main(argv):
     if not args:
         print(__doc__)
         return 1
-    if args[0] == "menu":
+    if args[0] == "config":
+        names = dict(zip(layout.PROMPT_FONTS, layout.PROMPT_FONT_NAMES))
+        grid = render_menu(
+            ["[x] Hiragana", "[ ] Katakana", "[x] Hira combos",
+             "[ ] Kata combos", "Mode: Instant",
+             "Correction Type: Correct",
+             "Font: %s" % names[layout.PROMPT_FONTS[0]],
+             "Start", "Reset to defaults"],
+            int(args[1]) if len(args) > 1 else 0,
+            args[2] if len(args) > 2 else "", "Practice")
+    elif args[0] == "home":
+        grid = render_home(int(args[1]) if len(args) > 1 else 0,
+                           usb=(len(args) < 3 or args[2] != "batt"),
+                           approx=(len(args) > 3 and args[3] == "approx"))
+    elif args[0] == "menu":
         index = int(args[1]) if len(args) > 1 else 0
         status = args[2] if len(args) > 2 else "USB"
         grid = render_menu(APPS, index, status)
@@ -360,7 +423,7 @@ def main(argv):
     elif args[0] == "loading":
         grid = render_loading(args[1] if len(args) > 1 else "Loading...")
     elif args[0] == "drill":
-        grid = render_drill(*args[1:7]) if len(args) > 1 else render_drill()
+        grid = render_drill(*args[1:8]) if len(args) > 1 else render_drill()
     elif args[0] == "kbd":
         grid = render_kbd_base(
             args[2:6] or ("Ctrl+C", "Ctrl+V", "Ctrl+Shift+V", "Enter"),

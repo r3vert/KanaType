@@ -184,30 +184,37 @@ practice settings start at defaults on this deploy.
 Everything below is render-verified only, so this is the section most likely to
 surprise.
 
-- [ ] Open Practice → config menu appears
-- [ ] Toggle categories with Enter; `[x]` / `[ ]` update instantly
-- [ ] **Font** row opens a submenu listing Font 1–4, each previewing あ at its
-      real drill size on the right — Font 1 (Noto 40px) should look clearly
-      the best
-- [ ] Pick Font 1, Back, then Start
+- [x] Open Practice → config menu appears
+- [x] Toggle categories with Enter; `[x]` / `[ ]` update instantly
+- [x] **Font** row opens a submenu listing the fonts BY NAME (Noto Sans,
+      Unifont, Unifont B, k8x12), each previewing あ at its real drill
+      size on the right — Noto Sans should look clearly the best
+- [x] Pick Noto Sans, Back, then Start
 - [ ] **Start shows the "Loading..." splash for ~4 s**, then the drill. That is
       the one-time glyph preload (~3.1 s prompt font + ~1.2 s jp font); it
       should NOT reappear on later prompts or on re-entry in the same session
 - [ ] Serial prints `drill: font noto, 71 prompt glyphs, N B free` — note N,
       it answers PLAN open item #2. Enable all four scripts and check it again
       (~148 glyphs, ~46 KB more)
-- [ ] Drill screen: types stacked down the **left**, score as a **fraction**
+- [x] Drill screen: types stacked down the **left**, score as a **fraction**
       top-right, **3-slot box** below it, big kana centred
-- [ ] **Multi-kana prompts (きゃ etc.) appear all at once**, never one glyph
+- [x] **Multi-kana prompts (きゃ etc.) appear all at once**, never one glyph
       then the other — this was the tearing fix
-- [ ] Type a correct answer → advances instantly, score increments
-- [ ] Type a wrong letter → your input stays in the box; Space/Enter advances
+- [x] Type a correct answer → advances instantly, score increments
+- [x] Type a wrong letter → your input stays in the box; Space/Enter advances
+- [ ] A miss now prints the correct reading under the prompt; を shows
+      `wo (o)` because the site teaches the pronunciation and we teach the
+      typing
+- [x] **Space still works here.** It used to come from four switches; M2/M3/M4
+      became macro keys, so SW57 is now the ONLY key sending it, and the
+      drill needs it to step past a miss
 - [ ] `/` reveals the reading in the box
-- [ ] Exit combo → back to config; again → back to the menu
+- [x] **MENU key** (under Tab) or **Esc** → back to config; again → launcher.
+      Both send app code `exit`; there is no exit combo any more
 
 **Persistence:**
 
-- [ ] Change categories/mode/font, exit to the menu, re-enter Practice →
+- [x] Change categories/mode/font, exit to the menu, re-enter Practice →
       **your settings are still there**
 - [ ] "Reset to defaults" → Hiragana only, Instant, Font 1, status says
       `Defaults restored`

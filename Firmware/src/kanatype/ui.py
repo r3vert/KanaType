@@ -214,6 +214,104 @@ def splash_art():
     return group
 
 
+def centre_x(text, char_w):
+    """x that centres `text` in the home screen's right panel."""
+    return layout.HOME_RIGHT_X + (layout.HOME_RIGHT_W - len(text) * char_w) // 2
+
+
+class Home:
+    """Launcher home screen: app list, clock, power state.
+
+    The clock is selectable — index == len(items) focuses it, and the caller
+    opens the Clock app on Enter. Labels are built once and only their text or
+    position changes, the same reason ui.Menu keeps its cursor separate: a full
+    re-layout every second was what made the old menu feel slow.
+    """
+
+    def __init__(self, items, usb=False):
+        self.items = items
+        self.index = 0
+        self.group = displayio.Group()
+        jp = font("jp")
+        mf = font("menu")
+
+        for i, name in enumerate(items):
+            self.group.append(label.Label(
+                jp, text=name, color=0xFFFFFF,
+                x=layout.HOME_ITEM_X + layout.HOME_TEXT_DX,
+                y=layout.HOME_ITEM_Y0 + i * layout.HOME_PITCH))
+        self._cursor = label.Label(jp, text=layout.MENU_CURSOR, color=0xFFFFFF,
+                                   x=layout.HOME_ITEM_X, y=layout.HOME_ITEM_Y0)
+        self.group.append(self._cursor)
+        self.group.append(filled_box(*layout.HOME_DIVIDER))
+
+        self.group.append(label.Label(
+            jp, text=layout.TITLE, color=0xFFFFFF,
+            x=centre_x(layout.TITLE, layout.JP_CHAR_W), y=layout.HOME_TITLE_Y))
+        self._time = label.Label(mf, text="", color=0xFFFFFF, x=0,
+                                 y=layout.HOME_TIME_Y)
+        self._date = label.Label(jp, text="", color=0xFFFFFF, x=0,
+                                 y=layout.HOME_DATE_Y)
+        self._approx = label.Label(mf, text="~", color=0xFFFFFF, x=0,
+                                   y=layout.HOME_TIME_Y + layout.HOME_APPROX_DY)
+        self._approx.hidden = True
+        for lbl in (self._time, self._date, self._approx):
+            self.group.append(lbl)
+
+        x, y, w, h = layout.HOME_BATT
+        nw, nh = layout.HOME_BATT_NUB
+        self.group.append(outline_box(x, y, w, h))
+        self.group.append(filled_box(x + w, y + h // 2 - nh // 2, nw, nh))
+        from kanatype import icons
+
+        self._bolt = icon(icons.BOLT, x + w // 2 - 3, y + 1)
+        self.group.append(self._bolt)
+        self._power = label.Label(jp, text="", color=0xFFFFFF,
+                                  x=x + w + nw + layout.HOME_BATT_LABEL_DX,
+                                  y=y + h // 2)
+        self.group.append(self._power)
+
+        self.set_power(usb)
+        self.move(0)
+
+    # ------------------------------------------------------------- updates
+
+    def move(self, delta):
+        with frame():
+            self.index = (self.index + delta) % (len(self.items) + 1)
+            if self.clock_selected:
+                self._cursor.x = layout.HOME_DIVIDER[0] + layout.HOME_CURSOR_DX
+                self._cursor.y = layout.HOME_TIME_Y
+            else:
+                self._cursor.x = layout.HOME_ITEM_X
+                self._cursor.y = (layout.HOME_ITEM_Y0
+                                  + self.index * layout.HOME_PITCH)
+
+    @property
+    def clock_selected(self):
+        return self.index == len(self.items)
+
+    def set_power(self, usb):
+        with frame():
+            self._bolt.hidden = not usb
+            self._power.text = "USB" if usb else "BATT"
+
+    def set_clock(self, now, approximate=False):
+        """now is a struct_time, or None when there is no RTC at all."""
+        with frame():
+            if now is None:
+                self._time.text = "--:--"
+                self._date.text = ""
+            else:
+                self._time.text = "%02d:%02d" % (now.tm_hour, now.tm_min)
+                self._date.text = "%04d-%02d-%02d" % (now.tm_year, now.tm_mon,
+                                                      now.tm_mday)
+            self._time.x = centre_x(self._time.text, layout.CHAR_W)
+            self._date.x = centre_x(self._date.text, layout.JP_CHAR_W)
+            self._approx.x = self._time.x + layout.HOME_APPROX_DX
+            self._approx.hidden = not approximate
+
+
 class Menu:
     """Vertical menu. The cursor is its own tiny label — moving the selection
     updates one y coordinate instead of re-laying-out every visible line,
@@ -223,7 +321,7 @@ class Menu:
         self.items = items
         self.index = 0
         self.group = displayio.Group()
-        f = font("menu")
+        f = font("jp")          # same small font as the launcher and keyboard
         self.group.append(
             label.Label(f, text=title, color=0xFFFFFF, x=layout.MENU_TITLE_X, y=layout.MENU_TITLE_Y)
         )

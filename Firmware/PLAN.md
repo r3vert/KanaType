@@ -201,6 +201,59 @@ killed Practice and Clock on entry, so treat M1 as untested until task 5 of
 
 ### Backlog (post-M2, unscheduled)
 
+**Both of the following are AGREED and MOCKED UP but deliberately NOT built** —
+they were parked on 2026-08-28 to close out this stage. Mockups were rendered
+with tools/render.py primitives; the geometry was never committed to layout.py,
+so building them starts by porting the drafts into HOME_/DRILL_-style constants.
+
+#### 1. Per-group toggles in Practice
+
+Today a category is all-or-nothing. The DJT Kana site lets you enable single
+rows (k-, s-, b-...), and this mirrors that. Real inventory: H and K have 16
+groups each (71 kana), HC and KC have 12 (36 kana).
+
+* each category row in the config becomes a SUBMENU, like the font picker
+* tap Enter on the category = toggle the whole thing on/off; HOLD Enter =
+  open the group grid. The category row shows a count ("Hiragana 16/16") so
+  partial state is visible without opening it
+* the grid has "All on" / "All off" items, so you can shape a category once
+  and then flip it wholesale
+
+Mockup decisions worth keeping:
+
+* 16 groups fit as 8 columns x 2 rows using the row's representative kana as
+  the label. `[x]` brackets were tried FIRST and were unreadable at that
+  density -- ENABLED is shown by inverting the cell instead
+  (displayio: `background_color`), which is legible and much denser
+* the cursor is an UNDERLINE, not a box: a box outline disappears against an
+  inverted (filled) cell
+* the highlighted group's romaji prints in the title row's gap ("h-"), because
+  a kana alone does not tell you which row you are on
+* COMBOS need 5 columns, not 6: at 6 the cell pitch equals the fill width and
+  two adjacent enabled cells merge into one white bar
+
+#### 2. Stats screen
+
+Reachable from the drill at any time via the MENU key (tap for stats, hold to
+leave, or a "Back" row -- undecided). Shows accuracy per category and, drilling
+in, per group.
+
+* 1-bit graphing works by pairing a SOLID fill with a 50% checkerboard dither
+  for the remainder: the dither reads as grey beside solid white, which is the
+  only way to get two levels out of this panel
+* overview: one horizontal bar per category, name left, bar centre, % right
+* per category: the same 8x2 kana grid as the group toggles, with a 3px
+  accuracy bar UNDER each kana. Reusing that layout means the spatial memory
+  transfers between the two screens
+* keep the bar clear of the glyph -- the first draft drew it at +10 and ate
+  the bottom of every kana
+
+Open questions: where the counters live (nvm is nearly full at 113 bytes of
+the region in use; per-group counts for 56 groups would need a lot more), and
+whether stats are per-session or lifetime.
+
+
+
 - **On-device REPL app** ("PyPad"): eval/exec in a persistent namespace,
   custom print injected into the namespace, 8x21 scrollback view, history.
   Namespace pre-seeded with board/ctx/gc/shared-I2C — which quietly restores
