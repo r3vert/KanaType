@@ -69,6 +69,26 @@ else:
          "would mislabel a font" % (len(layout.PROMPT_FONT_NAMES),
                                     len(layout.PROMPT_FONTS)))
 
+# Every shipped font is REDISTRIBUTED with the repo, and OFL/GPL fonts require
+# their license to travel with them. Terminus and Unifont sat here unlicensed
+# until a pre-publish audit caught it; this makes that impossible to repeat.
+FONT_LICENSES = {"ter-": "LICENSE-terminus.txt", "unifont": "LICENSE-unifont.txt",
+                 "k8x12": "LICENSE-k8x12.txt", "notosansjp": "LICENSE-notosansjp.txt"}
+_unlicensed = []
+for _bdf in sorted(f for f in os.listdir(FONTS) if f.endswith(".bdf")):
+    _lic = next((v for k, v in FONT_LICENSES.items() if k in _bdf), None)
+    if _lic is None:
+        _unlicensed.append("%s (no entry in FONT_LICENSES)" % _bdf)
+    elif not os.path.exists(os.path.join(FONTS, _lic)):
+        _unlicensed.append("%s -> %s missing" % (_bdf, _lic))
+if _unlicensed:
+    for _m in _unlicensed:
+        fail("unlicensed font  %s" % _m)
+else:
+    ok("every .bdf has its license file (%d fonts, %d licenses)"
+       % (len([f for f in os.listdir(FONTS) if f.endswith(".bdf")]),
+          len(set(FONT_LICENSES.values()))))
+
 missing_style = [r for r in layout.PROMPT_FONTS
                  if r not in layout.DRILL_PROMPT_STYLES]
 missing_path = [r for r in layout.PROMPT_FONTS if r not in layout.FONT_PATHS]

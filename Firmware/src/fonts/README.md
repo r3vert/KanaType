@@ -14,7 +14,7 @@ down the font chain, and plain text falls back to the built-in ASCII font.
 | `ter-u16b.bdf` | Terminus Bold 8x16 | spare (near-identical, 3-item menus) | https://terminus-font.sourceforge.net/ |
 | `k8x12_kana.bdf` | k8x12 12px, subset to ASCII+kana | "jp" — small UI text | https://littlelimit.net/k8x12.htm |
 
-Terminus is SIL OFL 1.1 — drop its license file here as `LICENSE-terminus.txt`.
+Terminus is SIL OFL 1.1; its `OFL.TXT` is here as `LICENSE-terminus.txt`.
 
 ## The 16px prompt font
 
@@ -37,8 +37,13 @@ shapes than k8x12x3 but thinner strokes; `--bold` dilates it back to a similar
 weight. Enclosed counters (あぬめねゑ) were checked and stay open — see
 `mockups/bold_loop_check.png`.
 
-License: SIL OFL 1.1 and GPLv2+ with the GNU Font Embedding Exception
-(the full notice travels inside the BDF's COPYRIGHT property).
+License: dual, SIL OFL 1.1 and GPLv2+ with the GNU Font Embedding Exception.
+The notice also travels inside the BDF's own COPYRIGHT property; the OFL text
+is here as `LICENSE-unifont.txt`.
+
+**Every .bdf in this directory must have a matching LICENSE-*.txt** — these
+fonts are redistributed with the repo and their licenses require it. preflight
+fails if one is unaccounted for, so add the mapping there when adding a font.
 
 `tools/subset_font.py` is general — use it for any future variety font
 (`--ranges` takes presets or hex ranges). Subsetting is the compression: the
