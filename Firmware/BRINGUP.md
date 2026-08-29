@@ -190,10 +190,10 @@ surprise.
       Unifont, Unifont B, k8x12), each previewing あ at its real drill
       size on the right — Noto Sans should look clearly the best
 - [x] Pick Noto Sans, Back, then Start
-- [ ] **Start shows the "Loading..." splash for ~4 s**, then the drill. That is
+- [x] **Start shows the "Loading..." splash for ~4 s**, then the drill. That is
       the one-time glyph preload (~3.1 s prompt font + ~1.2 s jp font); it
       should NOT reappear on later prompts or on re-entry in the same session
-- [ ] Serial prints `drill: font noto, 71 prompt glyphs, N B free` — note N,
+- [x] Serial prints `drill: font noto, 71 prompt glyphs, N B free` — note N,
       it answers PLAN open item #2. Enable all four scripts and check it again
       (~148 glyphs, ~46 KB more)
 - [x] Drill screen: types stacked down the **left**, score as a **fraction**
@@ -208,7 +208,8 @@ surprise.
 - [x] **Space still works here.** It used to come from four switches; M2/M3/M4
       became macro keys, so SW57 is now the ONLY key sending it, and the
       drill needs it to step past a miss
-- [ ] `/` reveals the reading in the box
+- [x] `/` reveals the reading — now on the same line a miss uses, NOT in
+      the answer box, which shows only what you typed
 - [x] **MENU key** (under Tab) or **Esc** → back to config; again → launcher.
       Both send app code `exit`; there is no exit combo any more
 
@@ -216,8 +217,8 @@ surprise.
 
 - [x] Change categories/mode/font, exit to the menu, re-enter Practice →
       **your settings are still there**
-- [ ] "Reset to defaults" → Hiragana only, Instant, Font 1, status says
-      `Defaults restored`
+- [x] "Reset to defaults" → Hiragana only, Instant, Bypass, Noto Sans,
+      status says `Defaults restored`
 
 ---
 

@@ -453,8 +453,32 @@ Still open: multi-key sequences and text snippets (that is where
 1. ~~**Practice-site reference link**~~ — RESOLVED: DJT Kana
    (https://djtguide.neocities.org/kana/); its mechanics are reimplemented in
    `drill.py` (shuffled deck, on-keystroke validation, re-queue at 3 and 13).
-2. **KMK + launcher RAM headroom** — measure `gc.mem_free()` in keyboard app early in M3;
-   if tight, keyboard app skips font loading entirely.
+2. **RAM headroom** — PARTLY MEASURED 2026-08-28. The drill prints
+   `drill: font <role>, N prompt glyphs, M B free` on entry. Hiragana only,
+   Noto 40px: **71 glyphs, 48 320 B free**. That is comfortable.
+
+   All four scripts, same font: **148 glyphs, 24 304 B free** — it fits, and
+   the drill runs. That gives a MEASURED cost per 40px glyph:
+
+       (48 320 - 24 304) / (148 - 71) = 312 bytes each
+
+   which makes future sizing arithmetic rather than guesswork. The ~320 B
+   figure the preload was designed around was right to within 3%.
+
+   24 KB is workable but it is the floor of what this design leaves. The peak
+   is during the preload itself, so once the drill is running the loop
+   allocates very little — but there is no room for a second 40px font resident
+   at the same time, and a kanji font at this size is out of the question
+   (roughly 312 B x 2000+ glyphs).
+
+   If a future change needs that headroom back, in order of preference: keep
+   preloading only the ENABLED categories (already the behaviour — this is
+   really "do not enable everything at once"), use a smaller prompt font for
+   large decks, or ship PCF so glyphs load on demand in ~ms and never all need
+   to be resident at once (see the boot-time section).
+
+   The keyboard app has not been measured at all; it preloads full ASCII for
+   two fonts and loads KMK, so it is the other candidate for a squeeze.
 3. ~~**RTC-across-deep-sleep**~~ — RESOLVED 2026-08-28, negatively: the RTC
    does **not** survive. Set the time in Clock, run Sleep, wake with WAKE1, and
    the clock comes back unset. Cause is structural, not a bug: CircuitPython's
