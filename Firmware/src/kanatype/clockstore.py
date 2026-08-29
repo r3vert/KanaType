@@ -61,6 +61,22 @@ def load():
     return (year, mon, day, hour, minute, sec, 0, -1, -1), bool(flags & APPROX)
 
 
+def mark_approximate():
+    """Flag the stored time a guess. True if a stamp was there to flag.
+
+    Called when the RTC has just been restored from the stamp: at that moment
+    an unknowable amount of time has passed (a deep sleep, or the device simply
+    sat unpowered), so an exact stamp becomes an approximate clock. Doing it
+    here rather than at save time is what makes RESET behave like sleep.
+    """
+    nvm = _nvm()
+    if nvm is None or len(nvm) < END or nvm[OFFSET] != MARK:
+        return False
+    if not nvm[OFFSET + 1] & APPROX:        # skip the flash write when set
+        nvm[OFFSET + 1] = nvm[OFFSET + 1] | APPROX
+    return True
+
+
 def approximate():
     """True when the stored time came back from a sleep and is a guess."""
     got = load()

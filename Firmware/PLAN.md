@@ -495,6 +495,29 @@ Still open: multi-key sequences and text snippets (that is where
    fact. The stamp lives after the MAGIC-guarded blob under its own marker
    byte, so adding it did NOT reset anyone's macros or practice settings.
 
+   **Accuracy is decided at RESTORE, not at SAVE (fixed 2026-08-29).** The
+   first cut stamped `approximate=True` when writing, which was wrong in both
+   directions and was caught on hardware as "the flag never shows up":
+
+   * a plain **RESET** (or a flat battery) also comes up with a dead RTC, so
+     the restore fires — but the stamp still said exact, and the device
+     presented an arbitrarily stale clock as the truth. That is the worse
+     half: a wrong clock that does not admit it.
+   * a **USB fake deep sleep** keeps the RTC ticking, so the time on the far
+     side is genuinely exact — and would have been flagged approximate.
+
+   `restore_time_after_sleep()` now sets the flag itself, because from up
+   there a deep sleep, a reset and a dead battery are the same event: an
+   unknowable gap. `save_time_for_sleep()` carries the clock's current
+   accuracy forward instead of asserting one. Preflight walks all four boot
+   cases; a negative control confirmed two of them catch the old code.
+
+   Note that `RTC UNSET!` takes precedence over `approx (slept)` in
+   `apps/clock.py`, so the flag is invisible there until the clock has been
+   set by hand at least once. Only Home's `~` shows it before then. That is
+   deliberate — unset is strictly more useful than approximate — but it is
+   why the first hardware test could not have seen the flag either way.
+
    Two options if the clock needs to stay genuinely right, neither built:
    * **Periodic re-stamp:** add a `TimeAlarm` alongside the `PinAlarm` so the
      device wakes every N minutes, advances the stored time and sleeps again.

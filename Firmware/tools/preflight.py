@@ -583,6 +583,96 @@ if clockstore.load()[1]:
 else:
     ok("a hand-set time is stored exact")
 
+# The four ways the clock can arrive at a boot. Hardware testing found the
+# "approx (slept)" flag never appearing, and the cause was that accuracy was
+# decided when the stamp was WRITTEN instead of when it was RESTORED: a plain
+# RESET produced a stale clock presented as exact, and a USB fake-sleep (where
+# the RTC keeps ticking) produced an exact clock flagged approximate. Both
+# directions are checked here because both were wrong at once.
+import time as _time  # noqa: E402
+
+_rtc_stub = types.ModuleType("rtc")
+
+
+class _RTCStub:
+    now = _time.struct_time((2020, 1, 1, 0, 0, 0, 0, -1, -1))
+
+    @property
+    def datetime(self):
+        return _RTCStub.now
+
+    @datetime.setter
+    def datetime(self, value):
+        _RTCStub.now = value
+
+
+_rtc_stub.RTC = _RTCStub
+sys.modules["rtc"] = _rtc_stub
+from kanatype import power  # noqa: E402
+
+_SET = _time.struct_time((2026, 8, 29, 14, 0, 0, 5, -1, -1))
+_LOST = _time.struct_time((2020, 1, 1, 0, 0, 0, 2, -1, -1))
+
+
+def _hand_set():
+    """What apps/clock.py does when you commit a time by hand."""
+    _RTCStub.now = _SET
+    clockstore.save(_SET, approximate=False)
+
+
+# 1. exact clock -> real deep sleep (RTC loses power) -> restored, approximate
+_hand_set()
+power.save_time_for_sleep()
+_RTCStub.now = _LOST
+if not power.restore_time_after_sleep():
+    fail("a real deep sleep did not restore the clock")
+elif _RTCStub.now[:5] != (2026, 8, 29, 14, 0):
+    fail("deep-sleep restore gave %r" % (_RTCStub.now[:5],))
+elif not clockstore.approximate():
+    fail("a clock restored after deep sleep is not flagged approximate")
+else:
+    ok("deep sleep: clock restored and flagged approximate")
+
+# 2. exact clock -> USB fake sleep (RTC keeps ticking) -> untouched and exact
+_hand_set()
+power.save_time_for_sleep()
+_RTCStub.now = _time.struct_time((2026, 8, 29, 14, 5, 0, 5, -1, -1))
+if power.restore_time_after_sleep():
+    fail("a surviving RTC was clobbered by the stored stamp")
+elif _RTCStub.now[:5] != (2026, 8, 29, 14, 5):
+    fail("a surviving RTC was rewound to %r" % (_RTCStub.now[:5],))
+elif clockstore.approximate():
+    fail("a USB fake sleep flagged a still-running clock approximate")
+else:
+    ok("USB fake sleep: clock keeps running, stays exact")
+
+# 3. RESET or a flat battery, with no Sleep involved. The gap is just as
+#    unknowable, so this must behave exactly like case 1.
+_hand_set()
+_RTCStub.now = _LOST
+if not power.restore_time_after_sleep():
+    fail("a reset did not restore the clock from the hand-set stamp")
+elif not clockstore.approximate():
+    fail("a stale clock restored after a reset is presented as exact")
+else:
+    ok("reset: clock restored and flagged approximate")
+
+# 4. an already-approximate clock must not silently become exact again by
+#    surviving a sleep -- only setting it by hand clears the flag
+power.save_time_for_sleep()
+_RTCStub.now = _time.struct_time((2026, 8, 29, 15, 0, 0, 5, -1, -1))
+power.restore_time_after_sleep()
+if not clockstore.approximate():
+    fail("an approximate clock lost its flag across a sleep")
+else:
+    ok("approximate survives a sleep; only a hand-set clears it")
+
+_hand_set()
+if clockstore.approximate():
+    fail("setting the clock by hand did not clear the approximate flag")
+else:
+    ok("setting the clock by hand clears approximate")
+
 # clockstore duplicates the offset rather than importing settings (that import
 # is the boot cost it exists to avoid), so the two must be asserted equal here.
 if clockstore.OFFSET == settings._BLOB_END:

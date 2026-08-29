@@ -11,7 +11,7 @@ makes it fixable.
 
 ## STATUS (updated live)
 
-Last updated 2026-08-28, after the repo went public.
+Last updated 2026-08-29. Wake works; the clock-accuracy flag was fixed.
 
 **Committed AND pushed**: `master` is at `07276c4` on
 github.com/r3vert/KanaType, ten commits, working tree clean. A pre-publish
@@ -26,13 +26,26 @@ defaults, atomic multi-kana prompts, the one-time glyph preload). RAM measured:
 48 320 B free with hiragana, 24 304 B with all four scripts = 312 B per 40px
 glyph, which closes PLAN open item #2.
 
-**Next action is task 6 (Clock).** Everything from here is untested:
+**Task 7 (sleep + wake) is DONE**: WAKE brings the device back, ordinary keys
+do not.
 
-* the Clock's `approx (slept)` flag has never been seen
-* the deep-sleep clock carry-over (task 8) was BUILT after the RTC was proven
-  not to survive, and the fallback itself has never run — its five checks are
-  the ones still open under task 8
-* sleep/wake, the battery-only pass, and the Mac handoff (task 10)
+**Next action is task 6 (Clock), and it now gates task 8.** Testing the sleep
+carry-over reported that `approx (slept)` never appeared across several resets
+and sleeps. Two causes, both since fixed:
+
+* accuracy was decided when the stamp was WRITTEN, not when it was RESTORED.
+  A plain RESET therefore restored a stale time and presented it as exact,
+  while a USB fake-sleep (RTC still ticking, time genuinely exact) would have
+  flagged it approximate. `restore_time_after_sleep()` now sets the flag,
+  because a deep sleep, a RESET and a flat battery are indistinguishable from
+  up there; preflight walks all four boot cases.
+* **`RTC UNSET!` hides `approx`.** With the clock never set, the stamp carries
+  a pre-2024 year, and `apps/clock.py` shows the unset warning in preference
+  to the approximate one. Until the clock is set by hand, the flag cannot
+  appear in the Clock app no matter what nvm holds -- only Home's `~` shows.
+
+So do task 6 first, then task 8. Still untested: the battery-only pass and the
+Mac handoff (task 10).
 
 The only thing left in task 5 is sighting `wo (o)`, which just needs that kana
 to come up.
@@ -246,11 +259,11 @@ surprise.
 
 ---
 
-## 7. Sleep + wake
+## 7. Sleep + wake  ✅ DONE
 
-- [ ] From the menu, choose **Sleep** → "WAKE button wakes me up", screen off
-- [ ] Press any *ordinary* key → **nothing happens** (this is intended)
-- [ ] Press **WAKE** → device wakes and returns to the menu
+- [x] From the menu, choose **Sleep** → "WAKE button wakes me up", screen off
+- [x] Press any *ordinary* key → **nothing happens** (this is intended)
+- [x] Press **WAKE** → device wakes and returns to the menu
 
 **Note:** while USB is connected CircuitPython refuses true deep sleep, so this
 is screen-off only. For the real power test, run it on battery, unplugged.
@@ -273,17 +286,27 @@ time.
 * `code.py` restores it on boot, but only if the RTC looks unset — on USB,
   CircuitPython does a *fake* deep sleep that keeps the RTC ticking, and the
   stamp would be the older value
-* the time is flagged **approximate**, because how long the device slept is
-  unknowable; Clock shows `approx (slept)` until you set it by hand
+* the time is flagged **approximate** at RESTORE time, because how long the
+  device was off is unknowable -- and a RESET or a flat battery is just as
+  unknowable as a sleep, so all three flag it. Clock shows `approx (slept)`
+  until you set it by hand. Flagging it at SAVE time instead was the
+  2026-08-29 bug: it made a reset lie and a USB fake-sleep cry wolf.
 * the stamp lives after the MAGIC-guarded blob under its own marker byte, so
   this did NOT reset macros or practice settings
 
-- [ ] Set the clock by hand → hint reads `Enter: set` (no `approx`)
+**Do task 6 first.** With the clock unset, `RTC UNSET!` is shown in place of
+`approx (slept)`, so none of this is observable in the Clock app.
+
+- [ ] Set the clock by hand → hint reads `Enter: set`, and Home shows no `~`
+- [ ] **Press RESET, no sleep involved** → Clock reads the time you set,
+      frozen (not now), and the hint reads **`approx (slept)`**. This is the
+      case that used to present a stale clock as exact
 - [ ] **Unplug USB**, Sleep, wait a known interval, WAKE, open Clock
 - [ ] Date and time are roughly right (they will be the time you went to
       sleep, NOT now) and the hint reads **`approx (slept)`**
-- [ ] Set the time by hand again → `approx` disappears and stays gone across
-      a normal reboot
+- [ ] Set the time by hand again → `approx` disappears at once. It comes
+      **back** on the next power-cycle, and that is correct: the clock really
+      is stale again by however long the device was off
 - [ ] Plugged into USB: Sleep → WAKE → the clock should be **still correct
       and NOT flagged approx**, because a fake deep sleep keeps it running
 

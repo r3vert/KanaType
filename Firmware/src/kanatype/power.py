@@ -40,13 +40,19 @@ def save_time_for_sleep():
     Deep sleep resets the RP2040's RTC (no battery-backed domain; CircuitPython
     cuts power to nearly all of the chip), so this is the only way the time
     survives. Verified on hardware 2026-08-28.
+
+    The stamp keeps the accuracy the clock has RIGHT NOW; it is the restore
+    that downgrades it to approximate. Stamping approximate=True here was
+    wrong for the USB case, where CircuitPython fake-sleeps, the RTC keeps
+    ticking, and the time on the other side is still exact.
     """
     try:
         import rtc
 
         from kanatype import clockstore
 
-        return clockstore.save(rtc.RTC().datetime, approximate=True)
+        return clockstore.save(rtc.RTC().datetime,
+                               approximate=clockstore.approximate())
     except Exception:
         return False
 
@@ -56,6 +62,10 @@ def restore_time_after_sleep():
 
     Leaves a RUNNING clock alone: on USB, CircuitPython does a fake deep sleep
     that keeps the RTC ticking, and the stored stamp would be the older value.
+
+    A restore ALWAYS lands us on an approximate clock, so it flags the stamp on
+    the way through. The gap is unknowable and its cause does not matter: a
+    deep sleep, a RESET and a flat battery all look identical from up here.
     """
     try:
         import rtc
@@ -69,6 +79,7 @@ def restore_time_after_sleep():
         if saved is None:
             return False
         clock.datetime = time.struct_time(saved[0])
+        clockstore.mark_approximate()
         return True
     except Exception:
         return False
