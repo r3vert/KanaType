@@ -284,24 +284,34 @@ Mockups: `mockups/drill_reflow.png` (variants) and `drill_reflow_cases.png`
   was accepted: the alternative is a reveal that shoves the prompt around
   when it appears.
 
-**The size is a RAM decision, not a taste one.** Measured pool is ~70.5 KB at
-312 B per 40 px glyph, so scaling by glyph area:
+**48 px is the target, and that makes PCF a HARD PREREQUISITE** (decided
+2026-08-29). On BDF the whole prompt font is resident, and the size is a RAM
+decision rather than a taste one. Measured pool is ~70.5 KB at 312 B per 40 px
+glyph, so scaling by glyph area:
 
-    40px  312 B/glyph   hiragana (71): 48.3 KB free   all four (148): 24.3 KB
-    44px  378 B/glyph   hiragana:      43.6 KB free   all four:       14.5 KB
-    48px  449 B/glyph   hiragana:      38.6 KB free   all four:        4.0 KB
+| size | B/glyph | prompt_y | hiragana (71) | all four (148) | on BDF |
+|---|---|---|---|---|---|
+| 40 px | 312 | 42 | 48.3 KB free | 24.3 KB free | ships today |
+| 44 px | 378 | 40 | 43.6 KB free | 14.5 KB free | workable |
+| 48 px | 449 | 38 | 38.6 KB free | **4.0 KB free** | fails on a full deck |
 
-**48 px cannot hold all four scripts.** 4 KB is under the preload peak, so it
-would fail exactly when someone enables everything. Three ways out: ship 48 px
-and have the drill drop a size for large decks, ship 44 px as the safe
-maximum, or do the reflow with the existing 40 px font and take the layout win
-for free (variant B in the mockup, already a clear improvement on today's
-screen). PCF — the open item in the boot-time section — removes the
-constraint entirely by loading glyphs on demand.
+4 KB is under the preload peak, so a 48 px BDF would break exactly when
+someone enables all four scripts. **PCF removes the constraint outright**:
+glyphs load on demand in ~ms and RAM stays proportional to what is actually on
+screen, so the resident-font arithmetic above stops applying. See the PCF
+follow-up in the boot-time section — it is no longer only a boot-speed item,
+this feature depends on it.
 
-The 44/48 px BDFs do not exist yet; they are one `tools/ttf2bdf.py` run from
-Noto Sans JP, which is OFL and redistributable. The mockups were rendered from
-throwaway copies in the scratchpad — nothing was committed.
+All three sizes are recorded above with their measured `prompt_y` so the final
+pick is a constants change and not a re-derivation — the mockup renders all
+three, and the choice is deferred until build time. If PCF slips, 44 px is the
+fallback that still fits every deck, and the reflow alone at 40 px is already
+a clear improvement on today's screen at zero cost.
+
+The 44/48 px BDFs do not exist yet; each is one `tools/ttf2bdf.py` run from
+Noto Sans JP, which is OFL and redistributable (`bdf2pcf` then converts).
+The mockups were rendered from throwaway copies in the scratchpad — nothing
+was committed.
 
 
 
@@ -406,6 +416,11 @@ do the same against the jp font (~1.2 s each) until warm. Two fixes:
   `bdftopcf` is a C tool that is awkward on Windows). Keep BDFs in the repo as
   source for `tools/render.py`, ship PCFs to the device. Verify by reparsing the
   PCF and comparing every glyph bitmap against the BDF it came from.
+
+  **This is now a REQUIREMENT, not just a speed win** (2026-08-29): backlog
+  item 3 (drill screen reflow) targets a 48 px prompt, which does not fit in
+  RAM as a resident BDF once all four scripts are enabled. PCF is what makes
+  the biggest prompt font possible at all, so it lands before that feature.
 
 ### Two crash bugs this uncovered (both fixed 2026-08-27)
 
