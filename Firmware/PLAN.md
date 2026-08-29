@@ -201,10 +201,11 @@ killed Practice and Clock on entry, so treat M1 as untested until task 5 of
 
 ### Backlog (post-M2, unscheduled)
 
-**Both of the following are AGREED and MOCKED UP but deliberately NOT built** —
-they were parked on 2026-08-28 to close out this stage. Mockups were rendered
-with tools/render.py primitives; the geometry was never committed to layout.py,
-so building them starts by porting the drafts into HOME_/DRILL_-style constants.
+**All THREE of the following are AGREED and MOCKED UP but deliberately NOT
+built** — 1 and 2 were parked on 2026-08-28 and 3 on 2026-08-29, to close out
+this stage. Mockups were rendered with tools/render.py primitives; the geometry
+was never committed to layout.py, so building them starts by porting the drafts
+into HOME_/DRILL_-style constants.
 
 #### 1. Per-group toggles in Practice
 
@@ -251,6 +252,56 @@ in, per group.
 Open questions: where the counters live (nvm is nearly full at 113 bytes of
 the region in use; per-group counts for 56 groups would need a lot more), and
 whether stats are per-session or lifetime.
+
+#### 3. Drill screen reflow
+
+The H/K/HC/KC column down the left edge is the least-read thing on the screen
+— you chose the categories five seconds ago in the config menu — and it
+costs the prompt 18 px of width. Move that readout to the stats screen
+(feature 2) and spend the space on the glyph.
+
+* the types column goes away entirely
+* the prompt drops to the BOTTOM of the panel and shifts left, centred on
+  x=50 instead of today's 59
+* the correct reading moves from under the prompt to the TOP band, larger
+* score fraction and typed-answer box stay exactly where they are
+
+Mockups: `mockups/drill_reflow.png` (variants) and `drill_reflow_cases.png`
+(edge cases). Decisions worth keeping:
+
+* **Terminus 14 for the reveal, not k8x12 x2.** Both give an 8 px advance, but
+  the doubled k8x12 is 19 ink rows against Terminus's 10 — it does not fit
+  over a 48 px prompt, and doubling a 12 px font looks visibly coarser beside
+  it. Terminus costs nothing extra either: the launcher already loads the
+  "menu" role and preloads its ASCII, and the drill runs in the same session.
+* **prompt_y must be measured against all 148 kana, not eyeballed on one.**
+  The first draft used y=39 at 48 px, which looked right on kya and clipped
+  U+3085 (small yu) at row 63. Measured extremes: U+3056 (za) inks highest,
+  U+3085 lowest. Correct values are y=38 for 48 px (rows 16..62), y=40 for
+  44 px (21..62), y=42 for 40 px (24..62).
+* **the top band is empty except for the score most of the time**, since the
+  reveal only appears on a miss or on `/`. That is visible in the mockup and
+  was accepted: the alternative is a reveal that shoves the prompt around
+  when it appears.
+
+**The size is a RAM decision, not a taste one.** Measured pool is ~70.5 KB at
+312 B per 40 px glyph, so scaling by glyph area:
+
+    40px  312 B/glyph   hiragana (71): 48.3 KB free   all four (148): 24.3 KB
+    44px  378 B/glyph   hiragana:      43.6 KB free   all four:       14.5 KB
+    48px  449 B/glyph   hiragana:      38.6 KB free   all four:        4.0 KB
+
+**48 px cannot hold all four scripts.** 4 KB is under the preload peak, so it
+would fail exactly when someone enables everything. Three ways out: ship 48 px
+and have the drill drop a size for large decks, ship 44 px as the safe
+maximum, or do the reflow with the existing 40 px font and take the layout win
+for free (variant B in the mockup, already a clear improvement on today's
+screen). PCF — the open item in the boot-time section — removes the
+constraint entirely by loading glyphs on demand.
+
+The 44/48 px BDFs do not exist yet; they are one `tools/ttf2bdf.py` run from
+Noto Sans JP, which is OFL and redistributable. The mockups were rendered from
+throwaway copies in the scratchpad — nothing was committed.
 
 
 
