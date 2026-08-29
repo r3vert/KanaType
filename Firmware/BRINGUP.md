@@ -11,18 +11,31 @@ makes it fixable.
 
 ## STATUS (updated live)
 
-Deployed 3x; device at `L:` with **6.0 MB free**; KMK confirmed in `lib/`.
-**Tasks 1-4 and 8 are DONE.** Next action is **task 5** (Practice) — the drill
-has not run on hardware since the 2026-08 reflow, and it carries two crash
-fixes plus the never-exercised glyph preload.
+Last updated 2026-08-28, after the repo went public.
 
-Deployed again after 3b with three changes: the drill-font preload, and fixes
-for two AttributeError crashes that would have killed **Practice** and **Clock**
-on entry (`layout.DRILL_SCORE_X` and `layout.DRILL_ECHO_Y`, both renamed away in
-the 2026-08 reflow). Preflight now resolves every `layout.*` reference against
-the real module, so that class of bug fails before a deploy instead of on
-hardware.
-Nothing is committed to git yet — task 10 matters.
+**Committed AND pushed**: `master` is at `07276c4` on
+github.com/r3vert/KanaType, ten commits, working tree clean. A pre-publish
+audit removed the Windows username from 61 PCB 3D-model paths, the board UID
+from `OLD/boot_out.txt`, and the 4 MB `fp-info-cache`; Terminus and Unifont
+licenses were added and preflight now enforces that every `.bdf` has one.
+
+**Tasks 1-5 and 8 are DONE on hardware.** Confirmed working: the launcher home
+screen, the keyboard app with macros/profiles/second layer, and Practice
+(config persistence, font picker, correction mode, relocated hint, reset to
+defaults, atomic multi-kana prompts, the one-time glyph preload). RAM measured:
+48 320 B free with hiragana, 24 304 B with all four scripts = 312 B per 40px
+glyph, which closes PLAN open item #2.
+
+**Next action is task 6 (Clock).** Everything from here is untested:
+
+* the Clock's `approx (slept)` flag has never been seen
+* the deep-sleep clock carry-over (task 8) was BUILT after the RTC was proven
+  not to survive, and the fallback itself has never run — its five checks are
+  the ones still open under task 8
+* sleep/wake, the battery-only pass, and the Mac handoff (task 10)
+
+The only thing left in task 5 is sighting `wo (o)`, which just needs that kana
+to come up.
 
 If the drive goes read-only again (it has, repeatedly), run in an **elevated**
 PowerShell. `deploy.ps1` now probes writability first and prints this command
@@ -179,7 +192,7 @@ practice settings start at defaults on this deploy.
 
 ---
 
-## 5. Practice app  <-- NEXT ACTION — not yet seen on hardware
+## 5. Practice app  ✅ DONE (except sighting `wo (o)`)
 
 Everything below is render-verified only, so this is the section most likely to
 surprise.
@@ -222,7 +235,7 @@ surprise.
 
 ---
 
-## 6. Clock — set the time
+## 6. Clock  <-- NEXT ACTION
 
 - [ ] Open Clock → live date/time, seconds ticking
 - [ ] Expect **`RTC UNSET!`** on a cold boot (year reads pre-2024)
@@ -297,8 +310,7 @@ own coin cell on the existing I2C bus (proper fix, needs a v2 board).
 ## 10. Wrap up
 
 - [ ] Note anything that looked wrong, with the screen and the key involved
-- [ ] `git add -A && git commit` — this is a big, working checkpoint and
-      nothing has been committed for a long time
+- [x] `git add -A && git commit` — done, and pushed to origin/master
 - [ ] If moving to the Mac: push, clone there, `chmod +x Firmware/tools/deploy.sh`
 
 ---
