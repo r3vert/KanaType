@@ -456,7 +456,7 @@
 			(uuid "0fbaf880-ce08-4ef5-a638-7dc7f83a2f3d")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -796,7 +796,7 @@
 			(uuid "acfaa1ec-e399-413f-9e0a-905e89373cbf")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1136,7 +1136,7 @@
 			(uuid "857b53ae-caef-44b2-b8b1-9aebf914d3ee")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1476,7 +1476,7 @@
 			(uuid "e632b831-bf56-4883-b042-e4c43139ff38")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1816,7 +1816,7 @@
 			(uuid "32a68b6e-883c-4bee-aaee-cd71372383c9")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2472,7 +2472,7 @@
 			(uuid "ab16be75-7e67-4121-8236-16b7e2a18b81")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3128,7 +3128,7 @@
 			(uuid "aef26336-246a-4a53-a393-8419e08ab15b")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3468,7 +3468,7 @@
 			(uuid "5797e51c-e3c3-4fc4-9ca3-8a56f4cfa3d3")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3808,7 +3808,7 @@
 			(uuid "d5a058a3-82b2-4263-a0c6-1fbc3ce72d7c")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4148,7 +4148,7 @@
 			(uuid "7e2e2424-25c0-42e7-bb47-74607f5c57d2")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4646,7 +4646,7 @@
 			(uuid "0053bdb4-9fee-432c-b299-81b6cddffa5e")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4986,7 +4986,7 @@
 			(uuid "ae99024c-541b-4895-9fe8-6663505126d2")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5326,7 +5326,7 @@
 			(uuid "88f63578-3220-41e1-99b6-68d7c10e35d1")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5666,7 +5666,7 @@
 			(uuid "d835f07e-e98f-4a27-a694-c640ea1fba50")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6164,7 +6164,7 @@
 			(uuid "b83aa8f0-0fe2-42a0-b3bb-f0e38606609f")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6662,7 +6662,7 @@
 			(uuid "991651fb-ba0b-4a9c-a4aa-46ed78802167")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7002,7 +7002,7 @@
 			(uuid "d1536cdb-893a-4c59-8184-deac72041574")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7342,7 +7342,7 @@
 			(uuid "46b3acc3-cf1b-4802-861f-29b85bb530d8")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7682,7 +7682,7 @@
 			(uuid "8cba83e6-e473-4049-86b5-37967b8df160")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8022,7 +8022,7 @@
 			(uuid "0bdc5f61-050a-47be-bf3e-0b1fa728189d")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8362,7 +8362,7 @@
 			(uuid "5b8dce39-b036-4616-82d0-9848c3a2f1ba")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8702,7 +8702,7 @@
 			(uuid "5072d7fc-c9d7-4bd5-ae8e-eb79e0b3377b")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9042,7 +9042,7 @@
 			(uuid "f555f835-fdd8-476c-82f6-8f87901ef7a7")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9382,7 +9382,7 @@
 			(uuid "e5547557-2daf-4cae-b976-e30aa4e42644")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -9722,7 +9722,7 @@
 			(uuid "ab245f26-aae9-4ac3-962d-fa97acaef567")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10062,7 +10062,7 @@
 			(uuid "f95ddb6b-602d-4090-8fa8-28af1bd804ca")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10402,7 +10402,7 @@
 			(uuid "eee3981d-f8e8-4e24-ade0-42e8eb9c8fd2")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10742,7 +10742,7 @@
 			(uuid "be54932e-7e42-446c-8cfc-f1dac32637ab")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11082,7 +11082,7 @@
 			(uuid "cde371e3-4982-44b1-baf4-56c7c8a3f039")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11422,7 +11422,7 @@
 			(uuid "7585724a-127f-4b8d-aead-22ecaa67ddbb")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11920,7 +11920,7 @@
 			(uuid "604748d3-fe8a-40a9-8423-8d05f628040e")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12260,7 +12260,7 @@
 			(uuid "f54e34dd-f202-4279-b33f-cb0489cff653")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12600,7 +12600,7 @@
 			(uuid "70b97ad0-c9da-4d0f-99a5-b9f59ba773ce")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13098,7 +13098,7 @@
 			(uuid "2db8737b-5039-47c0-8bf6-d8f536d286f3")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13438,7 +13438,7 @@
 			(uuid "373f6864-4a56-4bfb-98ca-e0a5eb22fe9d")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13778,7 +13778,7 @@
 			(uuid "1a4ef4bc-6849-49f0-9b51-07311e8c553a")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14118,7 +14118,7 @@
 			(uuid "9e42ce68-1f58-4dd6-82b9-dd9980a39321")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14458,7 +14458,7 @@
 			(uuid "1b806d96-b0c0-4055-be39-0d25966e9a9d")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14798,7 +14798,7 @@
 			(uuid "47dd7f89-9100-4ab1-a5ad-f2db09f3d58a")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15138,7 +15138,7 @@
 			(uuid "25908020-353d-419f-9be5-353238194a4f")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15478,7 +15478,7 @@
 			(uuid "85875626-8d66-4554-8277-73baa77b4284")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15818,7 +15818,7 @@
 			(uuid "c5f32591-1f17-45e3-86c4-f59e300cbd9c")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16440,7 +16440,7 @@
 			(uuid "a1295954-7b29-4778-b9c5-c2cfabf0c7a4")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16780,7 +16780,7 @@
 			(uuid "798d3880-941e-419f-96cd-b98324a6bfb6")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17120,7 +17120,7 @@
 			(uuid "dfa95dd4-ce69-4ea5-b533-1478b7eea477")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17460,7 +17460,7 @@
 			(uuid "abb02f3d-a912-4ebd-bf54-45f0d39327a3")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -17800,7 +17800,7 @@
 			(uuid "6ccc4174-bec8-4a80-9d07-8814b2712c0c")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18140,7 +18140,7 @@
 			(uuid "4bd21e2d-7ad4-45b9-9ec4-0b9676d276f5")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18480,7 +18480,7 @@
 			(uuid "da10e841-eba0-42c3-b3fb-a51b6112002c")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18820,7 +18820,7 @@
 			(uuid "2c6f4c6f-6561-4708-9a66-04005b687e21")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19160,7 +19160,7 @@
 			(uuid "b5a54cf0-3322-4a10-8bc1-6c58fa33a8ef")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19500,7 +19500,7 @@
 			(uuid "221d8e34-52a6-461a-b96e-64657c85f81b")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19840,7 +19840,7 @@
 			(uuid "68af22e8-71dc-40b1-ae56-36b1fb3da991")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20180,7 +20180,7 @@
 			(uuid "25c46de0-3f18-42ab-8336-7c85644c0db4")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20520,7 +20520,7 @@
 			(uuid "08887517-f55e-458f-b68f-496a2b23cc8c")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20860,7 +20860,7 @@
 			(uuid "a8d02e02-7d56-4554-b8a6-f5ea97e05860")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21200,7 +21200,7 @@
 			(uuid "3ddfee2a-163c-42e6-a4ad-079f0e348df1")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21540,7 +21540,7 @@
 			(uuid "37ff5c55-defa-4417-9190-c21824041f32")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21880,7 +21880,7 @@
 			(uuid "c644a998-6fa1-447d-a014-0062a57be57a")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -22220,7 +22220,7 @@
 			(uuid "3a25ab62-ad2a-439b-acab-385c85bf314a")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -23034,7 +23034,7 @@
 			(uuid "c5649888-0d4f-43a8-8ebf-7d737581d8d7")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/keena.THENEWPCAGAIN/Documents/KiCad/9.0/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
+		(model "${KIPRJMOD}/packages3d/SW-SMD_4P-L4.2-W3.2-P2.15-LS4.6.step"
 			(offset
 				(xyz 0 0 0)
 			)

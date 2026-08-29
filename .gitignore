@@ -17,3 +17,7 @@ System Volume Information/
 .Trashes
 .Trash-1000
 .metadata_never_index
+
+# KiCad regenerates this from the installed libraries; 4 MB of machine-
+# specific cache that no clone needs.
+fp-info-cache
