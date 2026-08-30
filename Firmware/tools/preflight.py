@@ -657,6 +657,61 @@ else:
     fail("action row overflows: last ends %d px, underline y=%d"
          % (_ux + _uw, layout.GROUP_ACTION_UNDERLINE_Y))
 
+# ---- practice stats -------------------------------------------------------
+# Every prompt in every deck must map to a group, or its answers vanish from
+# the stats silently.
+_orphans = [k for k, _r in kana.build_deck(list(kana.CATEGORIES))
+            if kana.group_of(k) is None]
+if _orphans:
+    fail("%d deck prompts have no group: %r" % (len(_orphans), _orphans[:5]))
+else:
+    ok("every deck prompt maps to a group")
+
+# The stats grid reuses the toggle grid's COLUMNS but its own rows; both the
+# bar and the cursor must clear the glyph, which inks rows 2..11 of a cell.
+_GLYPH_BOTTOM = 11
+if layout.STATS_CELL_BAR_DY > _GLYPH_BOTTOM:
+    ok("stats bar at +%d clears the glyph (inks to +%d)"
+       % (layout.STATS_CELL_BAR_DY, _GLYPH_BOTTOM))
+else:
+    fail("stats bar at +%d overlaps the glyph, which inks to +%d"
+         % (layout.STATS_CELL_BAR_DY, _GLYPH_BOTTOM))
+
+_bar_end = layout.STATS_CELL_BAR_DY + layout.STATS_CELL_BAR_H - 1
+if layout.STATS_CURSOR_DY > _bar_end:
+    ok("stats cursor at +%d clears the bar (ends +%d)"
+       % (layout.STATS_CURSOR_DY, _bar_end))
+else:
+    fail("stats cursor at +%d is inside the bar (+%d..+%d) - the two would be "
+         "indistinguishable" % (layout.STATS_CURSOR_DY,
+                                layout.STATS_CELL_BAR_DY, _bar_end))
+
+_last = max(len(kana.groups(c)) for c in kana.CATEGORIES) - 1
+_sx, _sy = layout.stats_cell(_last)
+if _sy + layout.STATS_CURSOR_DY < layout.HEIGHT:
+    ok("stats grid fits: last cell cursor at y=%d"
+       % (_sy + layout.STATS_CURSOR_DY))
+else:
+    fail("stats grid overflows: last cursor at y=%d on a %d px panel"
+         % (_sy + layout.STATS_CURSOR_DY, layout.HEIGHT))
+
+_rows_end = layout.stats_row_y(len(kana.CATEGORIES) - 1)
+if _rows_end + layout.STATS_BAR_H // 2 < layout.HEIGHT:
+    ok("stats overview fits %d category rows" % len(kana.CATEGORIES))
+else:
+    fail("stats overview row %d runs off the panel" % _rows_end)
+
+# LAYER opens the stats screen, so it must be on the board and NOT already
+# doing something else in the practice app.
+if "layer" in set(keymap.matrix_app_codes().values()):
+    ok("LAYER key present for the stats screen")
+else:
+    fail("no LAYER key on the board - the stats screen is unreachable")
+if keymap.matrix_app_codes().get(keymap.MENU_KEY) == "exit":
+    ok("MENU is still exit (stats deliberately uses LAYER instead)")
+else:
+    fail("MENU no longer maps to exit; the drill's back-out path changed")
+
 # ---- clock carry-over across deep sleep -----------------------------------
 # The RTC does not survive deep sleep (hardware-confirmed 2026-08-28), so the
 # time is stamped into nvm. That region sits AFTER the MAGIC-guarded blob and

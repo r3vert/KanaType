@@ -163,6 +163,27 @@ def mask_count(category, mask):
     return sum(1 for i in range(total) if mask & (1 << i)), total
 
 
+_GROUP_OF = None
+
+
+def group_of(kana_text):
+    """(category, row_id) a prompt belongs to, or None.
+
+    Built lazily and once: the stats screen needs this per answer, and walking
+    ROWS every time would be 56 rows x 5 entries per keystroke.
+    """
+    global _GROUP_OF
+    if _GROUP_OF is None:
+        _GROUP_OF = {}
+        for cat, row, entries in ROWS:
+            for text, _romaji in entries:
+                # A kana can appear in two categories (it cannot today, but
+                # nothing enforces that), so first writer wins and the deck
+                # order decides -- deterministic either way.
+                _GROUP_OF.setdefault(text, (cat, row))
+    return _GROUP_OF.get(kana_text)
+
+
 def build_deck(categories, masks=None):
     """[(kana, canonical), ...] for the enabled categories.
 

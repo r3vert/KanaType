@@ -184,6 +184,56 @@ def group_action_x(index):
     return x, len(GROUP_ACTIONS[index]) * JP_CHAR_W
 
 
+# ----------------------------------------------------- practice stats screen --
+# Two views. OVERVIEW: one horizontal bar per enabled category, name left, bar
+# centre, percentage right. PER CATEGORY: the SAME 8-column grid as the group
+# toggles (GROUP_* above), with a thin accuracy bar under each kana -- reusing
+# that geometry means the spatial memory transfers between the two screens.
+#
+# A 1-bit panel has no grey, so a bar is drawn as a SOLID fill for the achieved
+# part plus a 50% checkerboard for the remainder: the dither reads as grey
+# beside solid white, which is the only way to get two levels out of this
+# panel. An empty remainder would just look like a short bar with no scale.
+STATS_TITLE_Y = 5
+STATS_ROW_Y0 = 19
+STATS_ROW_PITCH = 12
+STATS_NAME_X = 2
+STATS_BAR_X = 50
+STATS_BAR_W = 52
+STATS_BAR_H = 7
+STATS_PCT_RIGHT = 126
+
+# Per-category view: the SAME COLUMNS as the group grid (so which kana sits
+# where is identical between the two screens, which is the half of the spatial
+# mapping that matters) but its OWN ROW pitch, because a 14px toggle cell has
+# no room for a bar under a 12px glyph.
+#
+# All three offsets are MEASURED against every group label, not guessed. In a
+# cell the kana inks rows 2..11, so:
+#   bar at +13..15   one clear row below the glyph (+12 touches it, and the
+#                    mockup's +10 ate it outright)
+#   cursor at +17    one clear row below the bar; at the toggle grid's +14 it
+#                    landed INSIDE the bar and the two were indistinguishable
+# which needs 21 px of pitch to leave a gap before the next row's glyph.
+STATS_GRID_Y0 = 17
+STATS_GRID_ROW_PITCH = 21
+STATS_CELL_BAR_DY = 13
+STATS_CELL_BAR_H = 3
+STATS_CURSOR_DY = 17
+
+
+def stats_row_y(index):
+    return STATS_ROW_Y0 + index * STATS_ROW_PITCH
+
+
+def stats_cell(index):
+    """(x, y) top-left of a per-category stats cell. Same columns as
+    group_cell(), taller rows."""
+    col, row = index % GROUP_COLS, index // GROUP_COLS
+    return (GROUP_X0 + col * GROUP_COL_PITCH,
+            STATS_GRID_Y0 + row * STATS_GRID_ROW_PITCH)
+
+
 # ------------------------------------------------------------ home screen --
 # Apps down the left in the jp font, clock and power state on the right, split
 # by a rule. The clock is a FOCUS TARGET one past the last app -- Enter on it

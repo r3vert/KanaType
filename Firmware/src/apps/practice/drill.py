@@ -149,6 +149,11 @@ def run(ctx, opts):
     # opts["masks"] is absent on any path that did not come through the config
     # screen; build_deck treats that as every group enabled.
     deck = kdata.build_deck(cats, opts.get("masks"))
+    # Per-session accuracy, keyed by group. Imported here rather than at module
+    # scope so the drill still starts if the stats screen ever fails to import.
+    from apps.practice import stats as stats_ui
+
+    session_stats = {}
     deck_glyphs = len({c for k, _r in deck for c in k})
     # No "Loading..." splash any more: it existed to cover the multi-second
     # glyph preload, and PCF removed the preload.
@@ -179,12 +184,19 @@ def run(ctx, opts):
         nonlocal answered, wrong
         answered += 1
         wrong = True          # buf stays on screen as the only feedback
+        stats_ui.record(session_stats, cur[0], False)
         trace_ram()
         queue.insert(min(3, len(queue)), cur)
         queue.insert(min(13, len(queue)), cur)
         with scr.frame:
             scr.score(correct, answered)
             scr.reveal(kdata.reveal(cur[1]))   # the point of a miss
+
+    def open_stats():
+        from apps.practice import stats as stats_ui
+
+        stats_ui.run(ctx, session_stats, cats)
+        ctx.display.root_group = scr.group
 
     def trace_ram():
         if not (DEBUG_RAM and answered % RAM_EVERY == 0):
@@ -208,6 +220,7 @@ def run(ctx, opts):
         nonlocal correct, answered
         correct += 1
         answered += 1
+        stats_ui.record(session_stats, cur[0], True)
         with scr.frame:            # score bump + next prompt land together
             scr.score(correct, answered)
             next_prompt()
@@ -222,6 +235,11 @@ def run(ctx, opts):
             code = ev.code
             if code == kt_input.EXIT:
                 return
+            if code == kt_input.LAYER:
+                # Checked BEFORE the miss branch, so stats are reachable even
+                # while a correction is pending; the drill state is untouched.
+                open_stats()
+                continue
             if wrong:
                 if not opts.get("correct"):
                     if code in (kt_input.SPACE, kt_input.ENTER):

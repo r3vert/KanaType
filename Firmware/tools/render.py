@@ -321,6 +321,92 @@ def render_groups(cat="H", mask=None, cursor=0, combos_full=False):
     return g
 
 
+def draw_bar(g, x, y, w, h, frac):
+    """1-bit progress bar: solid for the achieved part, 50% checkerboard for
+    the rest. The dither reads as grey beside solid white, which is the only
+    way to show two levels on this panel -- and it keeps the FULL scale
+    visible, so a short bar is obviously 'a small share of something' rather
+    than just a small mark."""
+    filled = int(round(w * max(0.0, min(1.0, frac))))
+    for yy in range(y, y + h):
+        for xx in range(x, x + w):
+            on = (xx - x) < filled or ((xx + yy) % 2 == 0)
+            mockup.set_px(g, xx, yy, on)
+
+
+def render_stats(stats, cats=("H", "K", "HC", "KC"), cursor=0):
+    """Overview: accuracy per category, one bar each.
+
+    stats maps (category, row_id) -> [correct, answered]; a category with no
+    answers yet shows a dash rather than 0%, because 0% and 'not attempted'
+    mean very different things to someone deciding what to drill.
+    """
+    from kanatype import kana
+
+    jp = BDFFont(font_path("jp"))
+    g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
+    draw_label(g, jp, 2, layout.STATS_TITLE_Y, "Stats")
+
+    total_c = sum(v[0] for v in stats.values())
+    total_a = sum(v[1] for v in stats.values())
+    summary = "%d/%d" % (total_c, total_a)
+    draw_label(g, jp, layout.STATS_PCT_RIGHT - len(summary) * layout.JP_CHAR_W,
+               layout.STATS_TITLE_Y, summary)
+
+    names = {"H": "Hiragana", "K": "Katakana",
+             "HC": "Hira combos", "KC": "Kata combos"}
+    for i, cat in enumerate(cats):
+        y = layout.stats_row_y(i)
+        draw_label(g, jp, layout.STATS_NAME_X, y, names[cat])
+        c = sum(v[0] for k, v in stats.items() if k[0] == cat)
+        a = sum(v[1] for k, v in stats.items() if k[0] == cat)
+        top = y - layout.STATS_BAR_H // 2
+        if a:
+            draw_bar(g, layout.STATS_BAR_X, top, layout.STATS_BAR_W,
+                     layout.STATS_BAR_H, float(c) / a)
+            pct = "%d%%" % int(round(100.0 * c / a))
+        else:
+            draw_bar(g, layout.STATS_BAR_X, top, layout.STATS_BAR_W,
+                     layout.STATS_BAR_H, 0.0)
+            pct = "-"
+        draw_label(g, jp, layout.STATS_PCT_RIGHT - len(pct) * layout.JP_CHAR_W,
+                   y, pct)
+        if i == cursor:
+            draw_label(g, jp, layout.STATS_NAME_X - 2, y, ">")
+    return g
+
+
+def render_stats_category(stats, cat="H", cursor=0):
+    """Per-category: the group grid with an accuracy bar under each kana."""
+    from kanatype import kana
+
+    jp = BDFFont(font_path("jp"))
+    g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
+    ids = kana.groups(cat)
+    name = {"H": "Hiragana", "K": "Katakana",
+            "HC": "Hira combos", "KC": "Kata combos"}[cat]
+    draw_label(g, jp, 2, layout.STATS_TITLE_Y, name)
+    if cursor < len(ids):
+        c, a = stats.get((cat, ids[cursor]), (0, 0))
+        detail = "%s %d/%d" % (kana.group_romaji(ids[cursor]), c, a)
+        draw_label(g, jp,
+                   layout.GROUP_ROMAJI_RIGHT - len(detail) * layout.JP_CHAR_W,
+                   layout.STATS_TITLE_Y, detail)
+
+    for i, row_id in enumerate(ids):
+        cx, cy = layout.stats_cell(i)
+        text = kana.group_label(cat, row_id)[0]
+        gx = cx + (layout.GROUP_CELL_W - layout.JP_KANA_W) // 2
+        draw_label(g, jp, gx, cy + layout.GROUP_GLYPH_DY, text)
+        c, a = stats.get((cat, row_id), (0, 0))
+        draw_bar(g, cx, cy + layout.STATS_CELL_BAR_DY, layout.GROUP_CELL_W,
+                 layout.STATS_CELL_BAR_H, (float(c) / a) if a else 0.0)
+        if i == cursor:
+            mockup.fill_rect(g, cx, cy + layout.STATS_CURSOR_DY,
+                             layout.GROUP_CELL_W, 1, True)
+    return g
+
+
 def render_kbd_base(macros=("Ctrl+C", "Ctrl+V", "Ctrl+Shift+V", "Enter"),
                     usb=True, layer=0):
     """Keyboard app base screen: number-row legend + live M assignments.
