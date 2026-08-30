@@ -417,7 +417,7 @@ do the same against the jp font (~1.2 s each) until warm. Two fixes:
   entry, which is the number open item #2 asks for. 46 KB with all four scripts
   is the case to watch.
 
-* **DONE 2026-08-30 (stage 1) - ship PCF instead of BDF.**
+* **DONE 2026-08-30, confirmed on hardware - ship PCF instead of BDF.**
   The PCF loader reads an encoding table at init
   and *seeks* straight to each glyph (`file.seek(indices_offset + 2 * idx)`), so
   no scan ever happens and glyphs cost only what has actually been displayed.
@@ -475,11 +475,18 @@ do the same against the jp font (~1.2 s each) until warm. Two fixes:
   byte1 0x00..0x30 -- ~22 KB of mostly-empty slots. That lives on flash and is
   only ever seeked into, so it costs no RAM.
 
-  **Stage 2, not yet done:** `drill.py` still preloads the whole prompt font at
-  start. That was the right thing for BDF and is now the thing standing between
-  us and the RAM win -- with PCF the glyphs should load on demand, which is
-  what makes a 48 px prompt viable with every script enabled. Do that after
-  stage 1 is confirmed on hardware.
+  **Stage 2 DONE 2026-08-30:** `drill.py` no longer preloads its prompt font,
+  and the "Loading..." splash went with it -- that splash existed only to cover
+  the preload. Practice now enters instantly (confirmed on hardware). The jp
+  font is still preloaded: a fixed ~45 ASCII glyphs every drill shows anyway.
+
+  Hardware also settled the one thing the desktop verifier could not: the
+  device uses `bitmaptools.readinto` rather than the pure-Python bitmap path,
+  and a wrong bit order would have scrambled every glyph. Kana render
+  correctly, so `element_size=4` there is about row padding, as reasoned.
+
+  Still unmeasured: boot's `glyphs` step (595 ms under BDF) and the drill's
+  free-RAM figure. BRINGUP 9b holds both.
 
 ### Two crash bugs this uncovered (both fixed 2026-08-27)
 

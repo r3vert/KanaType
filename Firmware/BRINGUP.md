@@ -335,6 +335,38 @@ own coin cell on the existing I2C bus (proper fix, needs a v2 board).
 
 ---
 
+## 9b. PCF fonts  — PART-CONFIRMED (2026-08-30)
+
+The device loads PCF instead of BDF, and the drill no longer preloads its
+prompt font. Confirmed on hardware:
+
+- [x] Menu, Practice config and the drill all render — a wrong bit order would
+      have scrambled every glyph, so this settles the one thing that could not
+      be checked offline (`bitmaptools.readinto` uses `element_size=4`, not the
+      pure-Python path the desktop verifier replicates)
+- [x] Kana render correctly in the drill
+- [x] **Practice enters instantly, with no "Loading..." splash** — that splash
+      only ever existed to cover the multi-second glyph preload
+
+Still to capture, both serial-only:
+
+- [ ] The boot line's **`glyphs`** step, which was 595 ms under BDF. This is
+      the last of the original 4648 ms and the whole point of the conversion
+- [ ] `drill: font noto, deck can show N kana, M B free`. Compare M against
+      the BDF-era 48 320 B (hiragana) / 24 304 B (all four). It should START
+      well above those and DRIFT DOWN as the deck is worked through, because
+      the library's glyph cache never evicts — that drift is the evidence for
+      the eviction work that a 48 px prompt needs (PLAN.md backlog 3)
+- [ ] A multi-kana prompt (きゃ) still appears as ONE unit, never one glyph
+      then the other
+
+**660 KB of superseded .bdf stay on the device deliberately** as a rollback:
+flip `layout.FONT_PATHS` back to `.bdf` and the fonts are already there.
+preflight warns rather than fails while they are there. Delete with
+`rm P:/fonts/*.bdf` once PCF is signed off.
+
+---
+
 ## 10. Wrap up
 
 - [ ] Note anything that looked wrong, with the screen and the key involved
