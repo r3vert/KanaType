@@ -11,7 +11,7 @@ makes it fixable.
 
 ## STATUS (updated live)
 
-Last updated 2026-08-29. Wake works; the clock-accuracy flag was fixed.
+Last updated 2026-08-30. Clock done; the accuracy fix is confirmed on hardware.
 
 **Committed AND pushed**: `master` is at `07276c4` on
 github.com/r3vert/KanaType, ten commits, working tree clean. A pre-publish
@@ -26,12 +26,16 @@ defaults, atomic multi-kana prompts, the one-time glyph preload). RAM measured:
 48 320 B free with hiragana, 24 304 B with all four scripts = 312 B per 40px
 glyph, which closes PLAN open item #2.
 
-**Task 7 (sleep + wake) is DONE**: WAKE brings the device back, ordinary keys
-do not.
+**Tasks 6 and 7 are DONE.** WAKE brings the device back and ordinary keys do
+not; the Clock sets, commits and survives leaving the app.
 
-**Next action is task 6 (Clock), and it now gates task 8.** Testing the sleep
-carry-over reported that `approx (slept)` never appeared across several resets
-and sleeps. Two causes, both since fixed:
+**The accuracy fix is CONFIRMED on hardware** (2026-08-30): set the clock, press
+RESET, and Clock comes back with the frozen time flagged `approx (slept)`. That
+is the case that used to hand you a stale clock presented as exact.
+
+**Next action is the rest of task 8** -- the four sleep-path boxes, which need
+a battery and an unplugged run. Background on why the flag never appeared in
+the first hardware test; two causes, both since fixed:
 
 * accuracy was decided when the stamp was WRITTEN, not when it was RESTORED.
   A plain RESET therefore restored a stale time and presented it as exact,
@@ -44,8 +48,8 @@ and sleeps. Two causes, both since fixed:
   to the approximate one. Until the clock is set by hand, the flag cannot
   appear in the Clock app no matter what nvm holds -- only Home's `~` shows.
 
-So do task 6 first, then task 8. Still untested: the battery-only pass and the
-Mac handoff (task 10).
+Still untested: the deep-sleep half of task 8 (unplugged), the battery-only
+pass, and the Mac handoff (task 10).
 
 The only thing left in task 5 is sighting `wo (o)`, which just needs that kana
 to come up.
@@ -248,14 +252,14 @@ surprise.
 
 ---
 
-## 6. Clock  <-- NEXT ACTION
+## 6. Clock  ✅ DONE
 
-- [ ] Open Clock → live date/time, seconds ticking
-- [ ] Expect **`RTC UNSET!`** on a cold boot (year reads pre-2024)
-- [ ] Enter → edit mode, dashes underline the active field
-- [ ] LEFT/RIGHT move between year/month/day/hour/minute; UP/DOWN change values
-- [ ] Enter commits → warning clears, seconds tick from :00
-- [ ] Leave and re-enter Clock → time still correct
+- [x] Open Clock → live date/time, seconds ticking
+- [x] Expect **`RTC UNSET!`** on a cold boot (year reads pre-2024)
+- [x] Enter → edit mode, dashes underline the active field
+- [x] LEFT/RIGHT move between year/month/day/hour/minute; UP/DOWN change values
+- [x] Enter commits → warning clears, seconds tick from :00
+- [x] Leave and re-enter Clock → time still correct
 
 ---
 
@@ -270,7 +274,7 @@ is screen-off only. For the real power test, run it on battery, unplugged.
 
 ---
 
-## 8. RTC across deep sleep  ✅ DONE — it does NOT survive
+## 8. RTC across deep sleep  — it does NOT survive; carry-over PART-TESTED  <-- NEXT ACTION
 
 Tested 2026-08-28: set the clock, Sleep, WAKE — the RTC came back unset.
 
@@ -297,8 +301,8 @@ time.
 **Do task 6 first.** With the clock unset, `RTC UNSET!` is shown in place of
 `approx (slept)`, so none of this is observable in the Clock app.
 
-- [ ] Set the clock by hand → hint reads `Enter: set`, and Home shows no `~`
-- [ ] **Press RESET, no sleep involved** → Clock reads the time you set,
+- [x] Set the clock by hand → hint reads `Enter: set`, and Home shows no `~`
+- [x] **Press RESET, no sleep involved** → Clock reads the time you set,
       frozen (not now), and the hint reads **`approx (slept)`**. This is the
       case that used to present a stale clock as exact
 - [ ] **Unplug USB**, Sleep, wait a known interval, WAKE, open Clock
