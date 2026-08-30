@@ -368,8 +368,22 @@ attach after the device has booted.
 ### MEASURED 2026-08-27, and the real cause
 
     before:  display 180ms  input 271ms  menu 4648ms
-    after:   display 180ms  input 270ms  menu  827ms
+    preload: display 180ms  input 270ms  menu  827ms
              [font 64  glyphs 595  labels 95  icons 19  paint 51]
+    PCF:     display 181ms  input 296ms  menu  563ms
+             [font 90  glyphs 128  labels 245  paint 40]
+
+**Read that third line carefully: only `glyphs` is comparable.** The home
+screen was redesigned between the second and third measurements, so `icons`
+folded away and `labels` now builds an app list, a clock and a power icon and
+calls `open_clock()` (which imports rtc and reads nvm) -- that is why it went
+95 -> 245 ms while the total still fell. `font` rose 64 -> 90 ms because PCF
+reads three table headers at init where BDF parsed one.
+
+**`glyphs` 595 -> 128 ms, 4.6x**, and that is the whole thesis of this
+section: the remaining 128 ms is ~100 preloaded glyphs at ~1.3 ms each, each a
+seek and a read rather than a scan of the file. Boot to an interactive menu is
+now ~1.04 s, of which the menu build is 563 ms.
 
 Neither `.mpy` nor font size was the problem. **`adafruit_bitmap_font`'s BDF
 loader keeps no glyph index**: `load_glyphs()` does `file.seek(0)` and reads the

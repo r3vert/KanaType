@@ -348,15 +348,29 @@ prompt font. Confirmed on hardware:
 - [x] **Practice enters instantly, with no "Loading..." splash** — that splash
       only ever existed to cover the multi-second glyph preload
 
-Still to capture, both serial-only:
+MEASURED:
 
-- [ ] The boot line's **`glyphs`** step, which was 595 ms under BDF. This is
-      the last of the original 4648 ms and the whole point of the conversion
-- [ ] `drill: font noto, deck can show N kana, M B free`. Compare M against
-      the BDF-era 48 320 B (hiragana) / 24 304 B (all four). It should START
-      well above those and DRIFT DOWN as the deck is worked through, because
-      the library's glyph cache never evicts — that drift is the evidence for
-      the eviction work that a 48 px prompt needs (PLAN.md backlog 3)
+- [x] **`glyphs` 595 ms -> 128 ms (4.6x)**, menu build 827 -> 563 ms:
+
+          PCF:  display 181ms  input 296ms  menu 563ms
+                [font 90  glyphs 128  labels 245  paint 40]
+
+      Only `glyphs` compares directly against the old line -- the home screen
+      was redesigned in between, so `labels` now builds a clock too. PLAN.md
+      has the full reading.
+- [x] `drill: font noto, deck can show 15 kana, 58480 B free` — 15 distinct
+      glyphs means an HC-only deck: combos reuse their base kana, so 36
+      prompts need only 11 bases plus small ya/yu/yo
+
+Still open, and it needs a BIG deck to show anything:
+
+- [ ] **The free-RAM curve with all four scripts on** (148 distinct glyphs).
+      A single number at drill start cannot show it, so `DEBUG_RAM` in
+      `drill.py` now prints `drill: N answered, M B free` every 10 answers.
+      Expect it to walk DOWN and level off once every kana has been seen; the
+      total fall should approach 148 x 312 B ~= 46 KB. Where it levels is what
+      sizes the eviction floor a 48 px prompt needs (PLAN.md backlog 3).
+      An HC-only deck moves ~4.7 KB and proves nothing.
 - [ ] A multi-kana prompt (きゃ) still appears as ONE unit, never one glyph
       then the other
 

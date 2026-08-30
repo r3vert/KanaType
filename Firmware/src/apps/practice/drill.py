@@ -23,6 +23,15 @@ import gc
 import random
 import time
 
+# Serial-only RAM trace. With PCF the prompt font loads glyphs as they are
+# first shown, and the library's glyph cache never evicts -- so free RAM walks
+# DOWN as the deck is worked through, and levels off once every kana has been
+# seen. That curve is what sizes the eviction floor a 48px prompt needs
+# (PLAN.md backlog 3), and it cannot be read from a single number at start.
+# Set False when the measurement is done.
+DEBUG_RAM = True
+RAM_EVERY = 10          # answers between prints
+
 import displayio
 from adafruit_display_text import label
 
@@ -167,11 +176,16 @@ def run(ctx, opts):
         nonlocal answered, wrong
         answered += 1
         wrong = True          # buf stays on screen as the only feedback
+        trace_ram()
         queue.insert(min(3, len(queue)), cur)
         queue.insert(min(13, len(queue)), cur)
         with scr.frame:
             scr.score(correct, answered)
             scr.reveal(kdata.reveal(cur[1]))   # the point of a miss
+
+    def trace_ram():
+        if DEBUG_RAM and answered % RAM_EVERY == 0:
+            print("drill: %d answered, %d B free" % (answered, gc.mem_free()))
 
     def hit():
         nonlocal correct, answered
@@ -180,6 +194,7 @@ def run(ctx, opts):
         with scr.frame:            # score bump + next prompt land together
             scr.score(correct, answered)
             next_prompt()
+        trace_ram()
 
     with scr.frame:                # first paint arrives complete
         scr.score(0, 0)
