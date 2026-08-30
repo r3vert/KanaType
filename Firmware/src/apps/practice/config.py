@@ -6,7 +6,7 @@ restores DEFAULTS. Saved on Start, on Reset, and on backing out after changes.
 import time
 
 from kanatype import input as kt_input
-from kanatype import layout, settings, ui
+from kanatype import kana, layout, settings, ui
 
 DEFAULTS = {"H": True, "K": False, "HC": False, "KC": False,
             "instant": True, "correct": False, "font": layout.PROMPT_FONTS[0]}
@@ -23,15 +23,24 @@ FONT_CYCLE = layout.PROMPT_FONTS
 FONT_NAME = dict(zip(FONT_CYCLE, layout.PROMPT_FONT_NAMES))
 
 
-def _labels(opts):
+def _labels(opts, masks):
     def box(key):
         return "[x]" if opts[key] else "[ ]"
 
+    def cat(key, name):
+        """"[x] Hiragana" while every group is on, "[x] Hiragana 9/16" once it
+        is partial. Showing 16/16 on every row all the time would be noise on a
+        screen this narrow -- the count is only news when it is not the whole
+        set."""
+        on, total = kana.mask_count(key, masks.get(key, kana.full_mask(key)))
+        suffix = "" if on == total else " %d/%d" % (on, total)
+        return "%s %s%s" % (box(key), name, suffix)
+
     return [
-        "%s Hiragana" % box("H"),
-        "%s Katakana" % box("K"),
-        "%s Hira combos" % box("HC"),
-        "%s Kata combos" % box("KC"),
+        cat("H", "Hiragana"),
+        cat("K", "Katakana"),
+        cat("HC", "Hira combos"),
+        cat("KC", "Kata combos"),
         "Mode: %s" % ("Instant" if opts["instant"] else "Confirm"),
         # Bypass: a miss shows the answer and Space/Enter moves on.
         # Correct: you must clear the wrong input and type the right answer,
@@ -100,13 +109,15 @@ def run_config(ctx):
     """Returns the opts dict, or None if the user backed out to the menu."""
     opts = settings.load_practice() or dict(DEFAULTS)
     loaded = dict(opts)
+    masks = settings.load_groups()
+    loaded_masks = dict(masks)
     # No standing hint in the status corner -- it is for transient messages
     # ("Pick a category!", "Defaults restored"), not a permanent legend.
-    menu = ui.Menu("Practice", _labels(opts))
+    menu = ui.Menu("Practice", _labels(opts, masks))
     ctx.display.root_group = menu.group
 
     def refresh():
-        menu.set_items(_labels(opts))
+        menu.set_items(_labels(opts, masks))
 
     while True:
         for ev in ctx.input.poll():
@@ -114,9 +125,23 @@ def run_config(ctx):
                 menu.move(-1)
             elif ev.code in (kt_input.DOWN, "j"):
                 menu.move(1)
+            elif ev.code == kt_input.RIGHT:
+                # descend into a category's groups. RIGHT rather than a held
+                # Enter: ctx.input reports presses only, so an app cannot time
+                # a hold (see apps/practice/groups.py).
+                key = ROW_KEYS[menu.index]
+                if key in kana.CATEGORIES:
+                    from apps.practice import groups as groups_ui
+
+                    masks[key] = groups_ui.run(ctx, key, masks[key])
+                    with ui.frame():
+                        ctx.display.root_group = menu.group
+                        refresh()
             elif ev.code == kt_input.EXIT:
                 if opts != loaded:
                     settings.save_practice(opts)
+                if masks != loaded_masks:
+                    settings.save_groups(masks)
                 return None
             elif ev.code in (kt_input.ENTER, kt_input.SPACE):
                 key = ROW_KEYS[menu.index]
@@ -131,13 +156,22 @@ def run_config(ctx):
                         ctx.display.root_group = menu.group  # back from picker
                         refresh()
                 elif key == "start":
-                    if any(opts[k] for k in ("H", "K", "HC", "KC")):
+                    # An enabled category with every group switched off would
+                    # contribute nothing, so check the DECK, not the checkboxes
+                    # -- otherwise Start could hand the drill an empty deck.
+                    if kana.build_deck([k for k in kana.CATEGORIES if opts[k]],
+                                       masks):
                         settings.save_practice(opts)
+                        settings.save_groups(masks)
+                        opts["masks"] = masks
                         return opts
                     menu.set_status("Pick a category!")
                 else:  # reset
                     opts.clear()
                     opts.update(DEFAULTS)
+                    masks.clear()
+                    masks.update({c: kana.full_mask(c)
+                                  for c in kana.CATEGORIES})
                     settings.save_practice(opts)
                     refresh()
                     menu.set_status("Defaults restored")

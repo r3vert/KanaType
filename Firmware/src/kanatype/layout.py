@@ -165,10 +165,23 @@ GROUP_ACTION_Y = 57
 GROUP_ACTION_UNDERLINE_Y = 63
 
 
+GROUP_ACTIONS = ("All on", "All off", "Back")
+GROUP_ACTION_X0 = 2
+GROUP_ACTION_GAP = 8
+
+
 def group_cell(index):
     """(x, y) top-left of the index-th cell, filling rows left to right."""
     col, row = index % GROUP_COLS, index // GROUP_COLS
     return (GROUP_X0 + col * GROUP_COL_PITCH, GROUP_Y0 + row * GROUP_ROW_PITCH)
+
+
+def group_action_x(index):
+    """(x, width) of the index-th action label on the bottom row."""
+    x = GROUP_ACTION_X0
+    for name in GROUP_ACTIONS[:index]:
+        x += len(name) * JP_CHAR_W + GROUP_ACTION_GAP
+    return x, len(GROUP_ACTIONS[index]) * JP_CHAR_W
 
 
 # ------------------------------------------------------------ home screen --

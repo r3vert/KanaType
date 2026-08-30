@@ -146,7 +146,9 @@ class Screen:
 
 def run(ctx, opts):
     cats = [c for c in ("H", "K", "HC", "KC") if opts[c]]
-    deck = kdata.build_deck(cats)
+    # opts["masks"] is absent on any path that did not come through the config
+    # screen; build_deck treats that as every group enabled.
+    deck = kdata.build_deck(cats, opts.get("masks"))
     deck_glyphs = len({c for k, _r in deck for c in k})
     # No "Loading..." splash any more: it existed to cover the multi-second
     # glyph preload, and PCF removed the preload.

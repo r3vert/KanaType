@@ -313,14 +313,11 @@ def render_groups(cat="H", mask=None, cursor=0, combos_full=False):
             mockup.fill_rect(g, cx, cy + layout.GROUP_CELL_H,
                              layout.GROUP_CELL_W, 1, True)
 
-    actions = ["All on", "All off", "Back"]
-    x = 2
-    for j, text in enumerate(actions):
+    for j, text in enumerate(layout.GROUP_ACTIONS):
+        x, w = layout.group_action_x(j)
         draw_label(g, jp, x, layout.GROUP_ACTION_Y, text)
-        w = len(text) * layout.JP_CHAR_W
         if cursor == len(ids) + j:
             mockup.fill_rect(g, x, layout.GROUP_ACTION_UNDERLINE_Y, w, 1, True)
-        x += w + 8
     return g
 
 

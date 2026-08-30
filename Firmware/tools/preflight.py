@@ -554,19 +554,25 @@ try:
     from apps.practice import config as _cfg  # noqa: E402
 
     _opts = dict(_cfg.DEFAULTS)
-    _rows = _cfg._labels(_opts)
+    _full = {c: kana.full_mask(c) for c in kana.CATEGORIES}
+    # A PARTIAL mask is the widest a category row ever gets ("[x] Hira combos
+    # 11/12"), so measure that form, not the tidy one.
+    _partial = {c: kana.full_mask(c) >> 1 for c in kana.CATEGORIES}
+    _rows = _cfg._labels(_opts, _full)
+    _rows_partial = _cfg._labels(_opts, _partial)
     if len(_rows) != len(_cfg.ROW_KEYS):
         fail("config has %d rows but %d dispatch keys"
              % (len(_rows), len(_cfg.ROW_KEYS)))
     else:
-        _wide = [r for r in _rows
+        _wide = [r for r in _rows + _rows_partial
                  if layout.MENU_ITEM_X + layout.MENU_TEXT_DX
                  + len(r) * layout.JP_CHAR_W > layout.WIDTH]
         if _wide:
             fail("config rows run off the panel: %r" % _wide)
         else:
-            ok("%d config rows, keys aligned, widest %d px"
-               % (len(_rows), max(len(r) for r in _rows) * layout.JP_CHAR_W))
+            ok("%d config rows, keys aligned, widest %d px (partial counts)"
+               % (len(_rows), max(len(r) for r in _rows_partial)
+                  * layout.JP_CHAR_W))
     _missing_opt = [k for k in _cfg.ROW_KEYS
                     if k not in ("font", "start", "reset")
                     and k not in _cfg.DEFAULTS]
@@ -574,6 +580,82 @@ try:
         fail("config rows with no default: %r" % _missing_opt)
 except ImportError as _exc:
     fail("could not import the practice config: %s" % _exc)
+
+# ---- per-group practice masks ---------------------------------------------
+# The masks are a bit index into kana.groups(cat), so a reordered ROWS would
+# silently remap saved selections; and the region must not overlap the clock.
+_GROUP_COUNTS = {"H": 16, "K": 16, "HC": 12, "KC": 12}
+_bad = {c: len(kana.groups(c)) for c in kana.CATEGORIES
+        if len(kana.groups(c)) != _GROUP_COUNTS[c]}
+if _bad:
+    fail("group counts changed: %r (saved masks would remap)" % _bad)
+else:
+    ok("group counts unchanged (%s)"
+       % ", ".join("%s %d" % (c, _GROUP_COUNTS[c]) for c in kana.CATEGORIES))
+
+if settings.GROUPS_OFFSET == clockstore.END:
+    ok("settings.GROUPS_OFFSET %d == clockstore.END" % settings.GROUPS_OFFSET)
+else:
+    fail("group masks at %d overlap the clock stamp ending at %d"
+         % (settings.GROUPS_OFFSET, clockstore.END))
+
+for _i in range(settings.GROUPS_OFFSET, settings.GROUPS_END):
+    mc.nvm[_i] = 0
+if settings.load_groups() == {c: kana.full_mask(c) for c in kana.CATEGORIES}:
+    ok("blank nvm reads as every group enabled")
+else:
+    fail("blank nvm did not fall back to all-groups-on")
+
+_m = {"H": 0b1010101010101010, "K": 0x00FF, "HC": 0b101010101010, "KC": 1}
+settings.save_groups(_m)
+if settings.load_groups() == _m:
+    ok("group masks round-trip")
+else:
+    fail("group masks round-trip gave %r" % (settings.load_groups(),))
+
+# An all-off mask must not reach the drill as an empty deck.
+settings.save_groups({"H": 0, "K": 1, "HC": 1, "KC": 1})
+if settings.load_groups()["H"] == kana.full_mask("H"):
+    ok("an all-zero mask falls back instead of emptying the deck")
+else:
+    fail("an all-zero mask survived load_groups")
+
+# Region isolation, the failure this layout exists to prevent.
+settings.save_groups(_m)
+_before = settings.load_groups()
+settings.save_macros(1, macros.blank_profiles())
+if settings.load_groups() != _before:
+    fail("save_macros clobbered the group masks")
+else:
+    ok("macro writes leave the group masks intact")
+
+# Every group grid cell must land on the panel.
+_off = []
+for _cat in kana.CATEGORIES:
+    for _i in range(len(kana.groups(_cat))):
+        _x, _y = layout.group_cell(_i)
+        if (_x + layout.GROUP_CELL_W > layout.WIDTH
+                or _y + layout.GROUP_CELL_H > layout.HEIGHT):
+            _off.append((_cat, _i, _x, _y))
+if _off:
+    fail("group cells off the panel: %r" % _off[:4])
+else:
+    ok("every group cell fits the panel (max %d cells)"
+       % max(len(kana.groups(c)) for c in kana.CATEGORIES))
+
+if layout.GROUP_CELL_W < layout.GROUP_COL_PITCH:
+    ok("cell fill %d px < column pitch %d px (enabled cells stay separate)"
+       % (layout.GROUP_CELL_W, layout.GROUP_COL_PITCH))
+else:
+    fail("cell fill %d px >= pitch %d px - adjacent enabled cells merge into "
+         "one bar" % (layout.GROUP_CELL_W, layout.GROUP_COL_PITCH))
+
+_ux, _uw = layout.group_action_x(len(layout.GROUP_ACTIONS) - 1)
+if _ux + _uw <= layout.WIDTH and layout.GROUP_ACTION_UNDERLINE_Y < layout.HEIGHT:
+    ok("action row fits, underline at y=%d" % layout.GROUP_ACTION_UNDERLINE_Y)
+else:
+    fail("action row overflows: last ends %d px, underline y=%d"
+         % (_ux + _uw, layout.GROUP_ACTION_UNDERLINE_Y))
 
 # ---- clock carry-over across deep sleep -----------------------------------
 # The RTC does not survive deep sleep (hardware-confirmed 2026-08-28), so the
