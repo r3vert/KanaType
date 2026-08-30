@@ -114,8 +114,15 @@ def draw_label(grid, font, x, y, text, scale=1):
 
 def font_path(role):
     """Resolve a font ROLE ('menu'/'jp'/'noto'/...) via layout.FONT_PATHS —
-    the same table the firmware uses."""
+    the same table the firmware uses.
+
+    FONT_PATHS names the .pcf the DEVICE loads; this returns the .bdf beside
+    it, which is the source both this renderer and tools/bdf2pcf.py read. One
+    table still decides which font a role means, so a role change follows into
+    the previews automatically."""
     name = os.path.basename(layout.FONT_PATHS[role])
+    if name.endswith(".pcf"):
+        name = name[:-4] + ".bdf"
     p = os.path.join(SRC, "fonts", name)
     if not os.path.exists(p):
         raise SystemExit(

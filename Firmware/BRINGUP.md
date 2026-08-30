@@ -29,13 +29,11 @@ glyph, which closes PLAN open item #2.
 **Tasks 6 and 7 are DONE.** WAKE brings the device back and ordinary keys do
 not; the Clock sets, commits and survives leaving the app.
 
-**The accuracy fix is CONFIRMED on hardware** (2026-08-30): set the clock, press
-RESET, and Clock comes back with the frozen time flagged `approx (slept)`. That
-is the case that used to hand you a stale clock presented as exact.
-
-**Next action is the rest of task 8** -- the four sleep-path boxes, which need
-a battery and an unplugged run. Background on why the flag never appeared in
-the first hardware test; two causes, both since fixed:
+**Task 8 is DONE** (2026-08-30). The accuracy fix is confirmed on hardware in
+both directions: set the clock and press RESET, and Clock comes back with the
+frozen time flagged `approx (slept)`; sleep and wake on USB and it stays exact.
+Background on why the flag never appeared in the first hardware test; two
+causes, both since fixed:
 
 * accuracy was decided when the stamp was WRITTEN, not when it was RESTORED.
   A plain RESET therefore restored a stale time and presented it as exact,
@@ -48,8 +46,11 @@ the first hardware test; two causes, both since fixed:
   to the approximate one. Until the clock is set by hand, the flag cannot
   appear in the Clock app no matter what nvm holds -- only Home's `~` shows.
 
-Still untested: the deep-sleep half of task 8 (unplugged), the battery-only
-pass, and the Mac handoff (task 10).
+**Next action is task 9 (battery-only pass).** Also untested: the Mac handoff
+(task 10).
+
+**M2 is unblocked and PCF is in progress** -- PCF stopped being a boot-speed
+nice-to-have when the drill reflow targeted a 48 px prompt (PLAN.md backlog 3).
 
 The only thing left in task 5 is sighting `wo (o)`, which just needs that kana
 to come up.
@@ -274,7 +275,7 @@ is screen-off only. For the real power test, run it on battery, unplugged.
 
 ---
 
-## 8. RTC across deep sleep  — it does NOT survive; carry-over PART-TESTED  <-- NEXT ACTION
+## 8. RTC across deep sleep  ✅ DONE — it does NOT survive, and the carry-over works
 
 Tested 2026-08-28: set the clock, Sleep, WAKE — the RTC came back unset.
 
@@ -305,13 +306,13 @@ time.
 - [x] **Press RESET, no sleep involved** → Clock reads the time you set,
       frozen (not now), and the hint reads **`approx (slept)`**. This is the
       case that used to present a stale clock as exact
-- [ ] **Unplug USB**, Sleep, wait a known interval, WAKE, open Clock
-- [ ] Date and time are roughly right (they will be the time you went to
+- [x] **Unplug USB**, Sleep, wait a known interval, WAKE, open Clock
+- [x] Date and time are roughly right (they will be the time you went to
       sleep, NOT now) and the hint reads **`approx (slept)`**
-- [ ] Set the time by hand again → `approx` disappears at once. It comes
+- [x] Set the time by hand again → `approx` disappears at once. It comes
       **back** on the next power-cycle, and that is correct: the clock really
       is stale again by however long the device was off
-- [ ] Plugged into USB: Sleep → WAKE → the clock should be **still correct
+- [x] Plugged into USB: Sleep → WAKE → the clock should be **still correct
       and NOT flagged approx**, because a fake deep sleep keeps it running
 
 **If it comes back unset even with a stamp stored:** the restore is not
@@ -325,7 +326,7 @@ own coin cell on the existing I2C bus (proper fix, needs a v2 board).
 
 ---
 
-## 9. Battery-only pass
+## 9. Battery-only pass  <-- NEXT ACTION
 
 - [ ] Unplug and power from the LiPo alone
 - [ ] Boot → menu shows the **battery** icon, cursor starts on **Quick note**

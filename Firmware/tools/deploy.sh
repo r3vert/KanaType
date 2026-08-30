@@ -11,5 +11,7 @@ if [ -z "$DST" ]; then
     exit 1
 fi
 SRC="$(cd "$(dirname "$0")/../src" && pwd)"
-rsync -r --exclude '__pycache__' --exclude '.DS_Store' "$SRC/" "$DST/"
+# *.bdf is excluded: the device loads PCF. The .bdf files stay in the repo as
+# the source tools/render.py and tools/bdf2pcf.py read.
+rsync -r --exclude '__pycache__' --exclude '.DS_Store' --exclude '*.bdf' "$SRC/" "$DST/"
 echo "Deployed src/ to $DST (device auto-reloads)."

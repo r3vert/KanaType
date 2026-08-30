@@ -61,6 +61,32 @@ for role, path in sorted(layout.FONT_PATHS.items()):
     else:
         fail("role %s points at missing file %s" % (role, path))
 
+# The device loads .pcf; the .bdf beside it is the source that tools/render.py
+# reads and that bdf2pcf regenerates from. A .pcf that no longer matches its
+# .bdf is the failure mode this whole conversion introduces, so verify the
+# round-trip rather than trusting that someone re-ran the tool.
+import bdf2pcf  # noqa: E402
+
+for role in sorted(layout.FONT_PATHS):
+    pcf = os.path.join(FONTS, os.path.basename(layout.FONT_PATHS[role]))
+    bdf = os.path.splitext(pcf)[0] + ".bdf"
+    if not os.path.exists(bdf):
+        fail("role %s has no .bdf source beside %s"
+             % (role, os.path.basename(pcf)))
+        continue
+    if not os.path.exists(pcf):
+        continue                    # already reported above
+    if os.path.getmtime(pcf) < os.path.getmtime(bdf):
+        fail("%s is OLDER than its .bdf - re-run tools/bdf2pcf.py --all"
+             % os.path.basename(pcf))
+        continue
+    problems = bdf2pcf.verify(pcf, bdf)
+    if problems:
+        for _p in problems[:3]:
+            fail("%s: %s" % (os.path.basename(pcf), _p))
+    else:
+        ok("%-12s pcf round-trips against its bdf" % role)
+
 if len(layout.PROMPT_FONT_NAMES) == len(layout.PROMPT_FONTS):
     ok("%d prompt fonts, each with a display name (%s)"
        % (len(layout.PROMPT_FONTS), ", ".join(layout.PROMPT_FONT_NAMES)))
@@ -101,9 +127,9 @@ else:
 deck = kana.build_deck(["H", "K", "HC", "KC"])
 chars = set(c for k, _r in deck for c in k)
 for role in layout.PROMPT_FONTS:
-    p = os.path.join(FONTS, os.path.basename(layout.FONT_PATHS.get(role, "")))
-    if not os.path.exists(p):
+    if role not in layout.FONT_PATHS:
         continue
+    p = render.font_path(role)      # resolves the .bdf source behind the .pcf
     font = render.BDFFont(p)
     absent = sorted(c for c in chars if ord(c) not in font.glyphs)
     if absent:
@@ -114,10 +140,7 @@ for role in layout.PROMPT_FONTS:
 lit = ("abcdefghijklmnopqrstuvwxyz"
        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -/:.!,[]")
 for role in ("jp", "menu"):
-    uif = os.path.join(FONTS, os.path.basename(layout.FONT_PATHS[role]))
-    if not os.path.exists(uif):
-        continue
-    font = render.BDFFont(uif)
+    font = render.BDFFont(render.font_path(role))
     absent = sorted(c for c in lit if ord(c) not in font.glyphs)
     if absent:
         fail("%s font missing UI characters: %s" % (role, "".join(absent)))
@@ -841,7 +864,9 @@ else:
     ok("device mounted at %s" % drive)
     dev_fonts = os.path.join(drive, "fonts")
     if os.path.isdir(dev_fonts):
-        wanted = set(os.listdir(FONTS))
+        # deploy excludes *.bdf now that the device loads PCF, so a .bdf
+        # sitting in device fonts/ is left over from an older deploy.
+        wanted = {f for f in os.listdir(FONTS) if not f.endswith(".bdf")}
         stale = [f for f in sorted(os.listdir(dev_fonts))
                  if f not in wanted and not f.startswith(".")]
         if stale:

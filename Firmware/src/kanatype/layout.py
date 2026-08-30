@@ -11,28 +11,32 @@ All y values are label CENTER lines (adafruit_display_text convention).
 WIDTH = 128
 HEIGHT = 64
 
-# Font roles — ui.py loads these on-device; tools/render.py loads the same
-# files from src/fonts/. Change a role here and both worlds follow.
+# Font roles. These are the DEVICE paths, and the device loads PCF: the
+# adafruit_bitmap_font BDF loader keeps no glyph index and rescans the whole
+# file for any uncached code point, while its PCF loader seeks straight to
+# each glyph (PLAN.md has the measurements). The .bdf beside each .pcf is the
+# SOURCE and stays in the repo for tools/render.py; `tools/bdf2pcf.py --all`
+# regenerates the .pcf files and preflight fails if one is stale.
 FONT_PATHS = {
     # Terminus bold 8x14, subset to ASCII (169 KB/1356 glyphs -> 15 KB/95).
     # This is the FIRST font loaded on every boot, so its parse time is the
     # black screen you stare at; the UI never draws anything but ASCII.
-    "menu": "/fonts/ter-u14b_ascii.bdf",
+    "menu": "/fonts/ter-u14b_ascii.pcf",
     # k8x12 subset to ASCII+kana by tools/subset_font.py (845 KB -> 29 KB;
     # kanji dropped 2026-08 - no on-device use yet). 4px halfwidth, 8px
     # fullwidth, 12px tall.
-    "jp": "/fonts/k8x12_kana.bdf",
+    "jp": "/fonts/k8x12_kana.pcf",
     # 16px kana subset - big drill prompt (x2 = 32px). Unifont JP, subset to
     # ASCII+kana by tools/subset_font.py (Shinonome's upstream is dead: see
     # fonts/README.md). Advance 16 fullwidth / 8 halfwidth, ascent 14.
-    "prompt": "/fonts/unifont_jp16_kana.bdf",
+    "prompt": "/fonts/unifont_jp16_kana.pcf",
     # Same font dilated 1px right+down (subset_font.py --bold): heavier weight,
     # counters verified still open (mockups/bold_loop_check.png).
-    "prompt_bold": "/fonts/unifont_jp16_kana_bold.bdf",
+    "prompt_bold": "/fonts/unifont_jp16_kana_bold.pcf",
     # Noto Sans JP rasterized natively at 40px by tools/ttf2bdf.py (scale 1 =
     # full 40px of detail, unlike scaling a 16px source up). Advance 40
     # fullwidth / ~20 halfwidth, tight ascent 35 / descent 11. SIL OFL.
-    "noto": "/fonts/notosansjp40.bdf",
+    "noto": "/fonts/notosansjp40.pcf",
 }
 
 # Prompt-font choices in picker order = Font 1..N. settings.py persists the

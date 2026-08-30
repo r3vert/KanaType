@@ -405,7 +405,7 @@ do the same against the jp font (~1.2 s each) until warm. Two fixes:
   entry, which is the number open item #2 asks for. 46 KB with all four scripts
   is the case to watch.
 
-* **FOLLOW-UP (chosen 2026-08-27, after bring-up) - ship PCF instead of BDF.**
+* **DONE 2026-08-30 (stage 1) - ship PCF instead of BDF.**
   The PCF loader reads an encoding table at init
   and *seeks* straight to each glyph (`file.seek(indices_offset + 2 * idx)`), so
   no scan ever happens and RAM stays proportional to glyphs actually used. Also
@@ -417,10 +417,55 @@ do the same against the jp font (~1.2 s each) until warm. Two fixes:
   source for `tools/render.py`, ship PCFs to the device. Verify by reparsing the
   PCF and comparing every glyph bitmap against the BDF it came from.
 
-  **This is now a REQUIREMENT, not just a speed win** (2026-08-29): backlog
-  item 3 (drill screen reflow) targets a 48 px prompt, which does not fit in
-  RAM as a resident BDF once all four scripts are enabled. PCF is what makes
-  the biggest prompt font possible at all, so it lands before that feature.
+  **This was a REQUIREMENT, not just a speed win** (2026-08-29): backlog item 3
+  (drill screen reflow) targets a 48 px prompt, which does not fit in RAM as a
+  resident BDF once all four scripts are enabled. PCF is what makes the biggest
+  prompt font possible at all, so it landed first.
+
+  **`tools/bdf2pcf.py` (2026-08-30).** Written rather than installed: no
+  pure-Python converter exists, and the X.org `bdftopcf` is a C tool. It emits
+  only the four tables the Adafruit reader actually reads (METRICS, BITMAPS,
+  BDF_ENCODINGS, BDF_ACCELERATORS); PROPERTIES is skipped on purpose because
+  the library's own `_read_properties()` subscripts a namedtuple and would
+  raise if anything called it. The reader is stricter than the PCF spec in one
+  place -- it rejects any bitmap format that is not 0xE (rows padded to 4
+  bytes, most significant byte and bit first).
+
+  Facts that cost time and should not be re-derived:
+
+  * `default_char` in the encoding table must be written as **-1**, not
+    0xFFFF: the reader unpacks those five fields as SIGNED shorts.
+  * the metrics mapping has to be exact or every glyph shifts. The reader
+    builds `Glyph(width=rsb-lsb, height=ascent+descent, dx=lsb, dy=-descent,
+    shift_x=character_width)`, so from a BDF: `lsb=BBX xoff`,
+    `rsb=xoff+w`, `ascent=h+yoff`, `descent=-yoff`, `character_width=DWIDTH`.
+  * `font_ascent`/`font_descent` in the accelerator table must equal the BDF's,
+    because `Label` places text at `font.ascent // 2`.
+  * the bitmap packing question -- the device uses
+    `bitmaptools.readinto(..., element_size=4, reverse_pixels_in_element=True)`
+    rather than the pure-Python path -- resolves itself: the library's two
+    paths must agree, and the pure-Python one is unambiguous (pixel 0 is bit 7
+    of byte 0, rows padded to 4 bytes). `element_size` there is about row
+    padding, not byte assembly.
+
+  Verification is glyph-by-glyph against the source BDF, by a reader written to
+  follow `pcf.py` line by line rather than to share the writer's assumptions.
+  Conversion self-verifies, preflight re-verifies every role, and preflight
+  also fails when a `.pcf` is older than its `.bdf` -- both guards were checked
+  with negative controls (a single flipped pixel is caught; the first attempt
+  at that control flipped a byte in unused encoding padding and passed, which
+  is exactly why the control was run).
+
+  Sizes: 33 KB jp, 69 KB noto (was 108), 6 KB menu (was 14), 42 KB each unifont.
+  `k8x12_kana` barely shrinks because its encoding table is a dense grid over
+  byte1 0x00..0x30 -- ~22 KB of mostly-empty slots. That lives on flash and is
+  only ever seeked into, so it costs no RAM.
+
+  **Stage 2, not yet done:** `drill.py` still preloads the whole prompt font at
+  start. That was the right thing for BDF and is now the thing standing between
+  us and the RAM win -- with PCF the glyphs should load on demand, which is
+  what makes a 48 px prompt viable with every script enabled. Do that after
+  stage 1 is confirmed on hardware.
 
 ### Two crash bugs this uncovered (both fixed 2026-08-27)
 

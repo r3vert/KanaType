@@ -29,7 +29,10 @@ try {
 
 # /R:2 /W:2 because robocopy defaults to a million retries 30 seconds apart,
 # which turns any transient failure into a deploy that hangs for days.
-$out = robocopy $src $dst /E /NFL /NDL /NJH /NJS /R:2 /W:2
+# /XF *.bdf: the device loads PCF now. The .bdf files stay in the repo as the
+# source tools/render.py and tools/bdf2pcf.py read, but shipping them too
+# would put 660 KB of dead weight on the device.
+$out = robocopy $src $dst /E /NFL /NDL /NJH /NJS /R:2 /W:2 /XF *.bdf
 $code = $LASTEXITCODE
 $errors = $out | Select-String -SimpleMatch "ERROR"
 if ($code -ge 8 -or $errors) {
