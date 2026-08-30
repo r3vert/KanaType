@@ -364,13 +364,23 @@ MEASURED:
 
 Still open, and it needs a BIG deck to show anything:
 
-- [ ] **The free-RAM curve with all four scripts on** (148 distinct glyphs).
-      A single number at drill start cannot show it, so `DEBUG_RAM` in
-      `drill.py` now prints `drill: N answered, M B free` every 10 answers.
-      Expect it to walk DOWN and level off once every kana has been seen; the
-      total fall should approach 148 x 312 B ~= 46 KB. Where it levels is what
-      sizes the eviction floor a 48 px prompt needs (PLAN.md backlog 3).
-      An HC-only deck moves ~4.7 KB and proves nothing.
+- [ ] **The glyph-cache curve with all four scripts on** (148 distinct glyphs).
+      `DEBUG_RAM` in `drill.py` prints every 10 answers:
+
+          drill: N answered, C/148 prompt glyphs, M B free
+
+      Watch **C**, not M: it should climb toward 148 and stop, and where the
+      free figure settles at that point is the eviction floor a 48 px prompt
+      needs (PLAN.md backlog 3). An HC-only deck tops out at 15 glyphs and
+      proves nothing.
+
+      **The first attempt at this measurement was invalid** and is worth not
+      repeating: the trace called `gc.mem_free()` without `gc.collect()` first,
+      so it reported free heap including uncollected garbage. Over 60 answers
+      it printed 46/57/59/52/55/50 KB — a sawtooth that rises as often as it
+      falls, because it was showing the allocator rather than the glyph cache.
+      Now it collects first and prints the resident glyph COUNT, which needs
+      no inference at all.
 - [ ] A multi-kana prompt (きゃ) still appears as ONE unit, never one glyph
       then the other
 

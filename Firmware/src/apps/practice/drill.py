@@ -147,6 +147,7 @@ class Screen:
 def run(ctx, opts):
     cats = [c for c in ("H", "K", "HC", "KC") if opts[c]]
     deck = kdata.build_deck(cats)
+    deck_glyphs = len({c for k, _r in deck for c in k})
     # No "Loading..." splash any more: it existed to cover the multi-second
     # glyph preload, and PCF removed the preload.
     scr = Screen(cats, opts["font"], "".join(k for k, _ in deck))
@@ -184,8 +185,22 @@ def run(ctx, opts):
             scr.reveal(kdata.reveal(cur[1]))   # the point of a miss
 
     def trace_ram():
-        if DEBUG_RAM and answered % RAM_EVERY == 0:
-            print("drill: %d answered, %d B free" % (answered, gc.mem_free()))
+        if not (DEBUG_RAM and answered % RAM_EVERY == 0):
+            return
+        # gc.collect() FIRST. mem_free() on its own reports the free heap
+        # including garbage that has not been collected yet, which is a
+        # sawtooth: the first version of this trace printed 46/57/59/52/55/50
+        # KB over 60 answers and showed the allocator, not the glyph cache.
+        gc.collect()
+        # Resident glyph COUNT is the direct measurement and needs no
+        # inference. GlyphCache._glyphs is private, hence defensive: this is a
+        # bring-up readout, not a feature.
+        try:
+            cached = len(ui.font(scr.font_role)._glyphs)
+        except Exception:
+            cached = -1
+        print("drill: %d answered, %d/%d prompt glyphs, %d B free"
+              % (answered, cached, deck_glyphs, gc.mem_free()))
 
     def hit():
         nonlocal correct, answered
