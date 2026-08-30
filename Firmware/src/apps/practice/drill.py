@@ -50,20 +50,22 @@ class Screen:
         self.font_role = font_role
         self.adv, self.scale, kana_y = layout.DRILL_PROMPT_STYLES[font_role]
 
-        # ONE pass over each .bdf, up front. The BDF loader keeps no glyph
-        # index, so any character it has not cached costs a full rescan of the
-        # file -- ~3.1 s for notosansjp40 -- and without this that happens on
-        # the FIRST appearance of every kana, mid-drill. (PLAN.md, boot-time
-        # work.) load_glyphs skips what it already holds, so re-entering the
-        # drill in the same session is free.
-        ui.preload(prompt_chars, font_role)
+        # The PROMPT font is deliberately NOT preloaded. Under BDF it had to be
+        # -- that loader keeps no glyph index, so the first appearance of each
+        # kana cost a full rescan of the file (~3.1 s for notosansjp40), which
+        # meant paying for every glyph in the deck up front behind a splash.
+        # PCF seeks straight to each glyph, so they load in ~ms when first
+        # shown and a short session never pays for kana it did not display.
+        # (Caveat in PLAN.md: the library's glyph cache never evicts, so a LONG
+        # session still converges on the whole deck being resident.)
+        #
+        # The jp font IS preloaded: it is the score, the answer box and the
+        # reveal line, a fixed ~45 ASCII glyphs that every drill shows anyway,
+        # and batching them keeps allocation out of the keystroke path.
         ui.preload("".join(cats) + "0123456789abcdefghijklmnopqrstuvwxyz"
                    + layout.DRILL_ANSWER_BLANK, "jp")
-        # 40px glyph bitmaps are the biggest RAM item in the app (~320 B each,
-        # so ~46 KB with all four scripts enabled). Serial only -- this is the
-        # number PLAN open item #2 wants.
         gc.collect()
-        print("drill: font %s, %d prompt glyphs, %d B free"
+        print("drill: font %s, deck can show %d kana, %d B free"
               % (font_role, len(set(prompt_chars)), gc.mem_free()))
 
         uif = ui.font("jp")
@@ -136,9 +138,8 @@ class Screen:
 def run(ctx, opts):
     cats = [c for c in ("H", "K", "HC", "KC") if opts[c]]
     deck = kdata.build_deck(cats)
-    # Screen() parses every glyph the deck can show, which takes a few seconds
-    # with the 40px font; the splash already has "Loading..." baked in.
-    ctx.display.root_group = ui.splash_art()
+    # No "Loading..." splash any more: it existed to cover the multi-second
+    # glyph preload, and PCF removed the preload.
     scr = Screen(cats, opts["font"], "".join(k for k, _ in deck))
     ctx.display.root_group = scr.group
 

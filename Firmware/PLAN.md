@@ -296,11 +296,23 @@ glyph, so scaling by glyph area:
 | 48 px | 449 | 38 | 38.6 KB free | **4.0 KB free** | fails on a full deck |
 
 4 KB is under the preload peak, so a 48 px BDF would break exactly when
-someone enables all four scripts. **PCF removes the constraint outright**:
-glyphs load on demand in ~ms and RAM stays proportional to what is actually on
-screen, so the resident-font arithmetic above stops applying. See the PCF
-follow-up in the boot-time section — it is no longer only a boot-speed item,
-this feature depends on it.
+someone enables all four scripts.
+
+**PCF (done 2026-08-30) is necessary but NOT sufficient** -- an earlier draft
+of this section claimed it removed the constraint outright, and that was wrong.
+PCF means glyphs load on demand in ~ms instead of all at once behind a splash,
+so a short session only pays for what it displayed. But
+`adafruit_bitmap_font`'s `GlyphCache` **never evicts** (checked in the library
+source), and a drill is precisely the thing that eventually shows every kana in
+the deck. Left alone, a long session converges on the same resident total as
+preloading did. PCF moves the failure later; it does not remove it.
+
+**What 48 px actually needs is eviction**, and PCF is what makes eviction
+affordable: clear the prompt font's glyph cache when free RAM drops below a
+floor, and the glyphs that are needed again come back in ~ms. Under BDF the
+same clear would have cost a 3.1 s rescan on the very next kana, which is why
+it was never an option. Not built -- it belongs with the reflow, where the
+floor can be tuned against a font that actually exists.
 
 All three sizes are recorded above with their measured `prompt_y` so the final
 pick is a constants change and not a re-derivation — the mockup renders all
@@ -408,9 +420,11 @@ do the same against the jp font (~1.2 s each) until warm. Two fixes:
 * **DONE 2026-08-30 (stage 1) - ship PCF instead of BDF.**
   The PCF loader reads an encoding table at init
   and *seeks* straight to each glyph (`file.seek(indices_offset + 2 * idx)`), so
-  no scan ever happens and RAM stays proportional to glyphs actually used. Also
-  takes boot's `glyphs 595` to near zero, and removes the drill-start wait and
-  its RAM spike entirely (glyphs load on demand in ~ms). Needs a
+  no scan ever happens and glyphs cost only what has actually been displayed.
+  Also takes boot's `glyphs 595` to near zero and removes the drill-start wait
+  (glyphs load on demand in ~ms). It does NOT bound total RAM: the library's
+  glyph cache never evicts, so a long session still accumulates the whole deck
+  -- see the eviction note under backlog item 3. Needs a
   `tools/bdf2pcf.py` (no
   pure-Python converter exists - the Adafruit one I expected is not real; X.org
   `bdftopcf` is a C tool that is awkward on Windows). Keep BDFs in the repo as
@@ -585,8 +599,9 @@ Still open: multi-key sequences and text snippets (that is where
    If a future change needs that headroom back, in order of preference: keep
    preloading only the ENABLED categories (already the behaviour — this is
    really "do not enable everything at once"), use a smaller prompt font for
-   large decks, or ship PCF so glyphs load on demand in ~ms and never all need
-   to be resident at once (see the boot-time section).
+   large decks, or ship PCF so glyphs load on demand in ~ms rather than all at
+   once (DONE 2026-08-30 -- though the glyph cache never evicts, so this bounds
+   the drill-start spike, not the eventual total; see the boot-time section).
 
    The keyboard app has not been measured at all; it preloads full ASCII for
    two fonts and loads KMK, so it is the other candidate for a squeeze.

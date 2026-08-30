@@ -864,11 +864,17 @@ else:
     ok("device mounted at %s" % drive)
     dev_fonts = os.path.join(drive, "fonts")
     if os.path.isdir(dev_fonts):
-        # deploy excludes *.bdf now that the device loads PCF, so a .bdf
-        # sitting in device fonts/ is left over from an older deploy.
+        # deploy excludes *.bdf now that the device loads PCF. A leftover .bdf
+        # is dead weight but also a working ROLLBACK: flip layout.FONT_PATHS
+        # back and the fonts are already there. Kept deliberately until PCF is
+        # signed off, so it warns; anything else on the device is a real stale
+        # file and still fails.
         wanted = {f for f in os.listdir(FONTS) if not f.endswith(".bdf")}
-        stale = [f for f in sorted(os.listdir(dev_fonts))
+        extra = [f for f in sorted(os.listdir(dev_fonts))
                  if f not in wanted and not f.startswith(".")]
+        rollback = [f for f in extra if f.endswith(".bdf")
+                    and f in os.listdir(FONTS)]
+        stale = [f for f in extra if f not in rollback]
         if stale:
             kb = sum(os.path.getsize(os.path.join(dev_fonts, f))
                      for f in stale) / 1024.0
@@ -876,6 +882,11 @@ else:
                  % (", ".join(stale), round(kb)))
         else:
             ok("no stale font files on device")
+        if rollback:
+            kb = sum(os.path.getsize(os.path.join(dev_fonts, f))
+                     for f in rollback) / 1024.0
+            warn("%d superseded .bdf still on device [%d KB] - the PCF rollback "
+                 "path; delete when PCF is signed off" % (len(rollback), round(kb)))
     if os.path.isdir(os.path.join(drive, "lib", "kmk")):
         ok("KMK present in lib/")
     else:

@@ -40,15 +40,22 @@ def try_font(name):
 
 
 def preload(chars, name="menu"):
-    """Parse a font's glyphs for `chars` in ONE file pass.
+    """Load a font's glyphs for `chars` in one batch, before any Label exists.
 
-    adafruit_bitmap_font's BDF loader keeps no glyph index: every
-    load_glyphs() call that hits an uncached code point re-scans the whole
-    .bdf from byte 0 (verified against the library source). Both the Label
-    constructor and every `.text =` assignment call it, so building a 6-item
-    menu costs ~6 full scans of the file — that was the 4.6 s black screen.
-    Loading every glyph the screen can show, up front, collapses those into
-    one scan; the loader caches per code point, so nothing rescans later.
+    WHY IT WAS URGENT: adafruit_bitmap_font's BDF loader keeps no glyph index,
+    so every load_glyphs() call hitting an uncached code point re-scanned the
+    whole .bdf from byte 0. Both the Label constructor and every `.text =`
+    assignment call it, so building a 6-item menu cost ~6 full scans — the
+    4.6 s black screen. This collapsed that to one pass.
+
+    WHY IT IS STILL HERE: the fonts are PCF now (2026-08-30) and nothing
+    scans, so this is no longer load-bearing for speed. It still batches —
+    one gc.collect for the whole set, sequential seeks, and no allocation on
+    the interactive path — which is worth keeping for a FIXED, small set of
+    glyphs the screen is certain to show. Do NOT use it for a large or
+    open-ended set: it makes every one of those glyphs resident, and the
+    library's glyph cache never evicts. That is exactly why the practice
+    drill stopped preloading its prompt font.
     """
     f = font(name)
     loader = getattr(f, "load_glyphs", None)
