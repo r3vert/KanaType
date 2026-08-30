@@ -118,10 +118,64 @@ def reveal(canonical):
     return "%s (%s)" % (canonical, extra) if extra else canonical
 
 
-def build_deck(categories):
-    """[(kana, canonical), ...] for the enabled category ids (H/K/HC/KC)."""
+# --- groups -----------------------------------------------------------------
+# ROWS already IS the group structure (a row per consonant), so per-group
+# toggles need no new table -- only a stable ORDER, because a group's position
+# in that order is its bit index in nvm. Deriving the order from ROWS keeps the
+# two impossible to disagree; reordering ROWS would silently remap saved masks,
+# which is what GROUP_COUNTS in preflight guards against.
+CATEGORIES = ("H", "K", "HC", "KC")
+
+
+def groups(category):
+    """Row ids for a category, in bit order. H/K have 16, HC/KC have 12."""
+    return [row for cat, row, _e in ROWS if cat == category]
+
+
+def group_entries(category, row_id):
+    for cat, row, entries in ROWS:
+        if cat == category and row == row_id:
+            return entries
+    return []
+
+
+def group_label(category, row_id):
+    """The kana that stands for a group in the grid -- its first entry. A
+    romaji row id like 'ky' means nothing at a glance; the kana does."""
+    entries = group_entries(category, row_id)
+    return entries[0][0] if entries else "?"
+
+
+def group_romaji(row_id):
+    """What prints in the title gap for the highlighted cell: 'h-', 'ky-'."""
+    return row_id + "-"
+
+
+def full_mask(category):
+    """Every group of a category enabled -- the default, and what 'All on'
+    writes. Also the value that reproduces the old all-or-nothing behaviour."""
+    return (1 << len(groups(category))) - 1
+
+
+def mask_count(category, mask):
+    """(enabled, total) for a category's mask, for the 'Hiragana 16/16' row."""
+    total = len(groups(category))
+    return sum(1 for i in range(total) if mask & (1 << i)), total
+
+
+def build_deck(categories, masks=None):
+    """[(kana, canonical), ...] for the enabled categories.
+
+    masks maps a category id to a bitmask over groups(cat); a category absent
+    from masks (or masks=None) means all of its groups, which is exactly the
+    behaviour before per-group toggles existed.
+    """
     deck = []
-    for cat, _row, entries in ROWS:
-        if cat in categories:
-            deck.extend(entries)
+    for cat, row, entries in ROWS:
+        if cat not in categories:
+            continue
+        if masks is not None and cat in masks:
+            if not masks[cat] & (1 << groups(cat).index(row)):
+                continue
+        deck.extend(entries)
     return deck

@@ -14,11 +14,13 @@ Layout (version-tagged; bump MAGIC when it changes):
   [9:105]  4 profiles x (8-byte name + 8 x (mod bits, key index))
   [105:113] clock stamp across deep sleep -- owned by kanatype/clockstore.py,
             under its OWN marker byte (not MAGIC), so adding it reset nothing
+  [113:122] per-group practice masks: marker byte + 4 x uint16 (H, K, HC, KC),
+            bit i = groups(cat)[i] enabled. Own marker for the same reason.
 Future consumers (quick-note wake routing etc.) append bytes and bump MAGIC.
 
 The regions are written independently: save_practice touches only [0:6],
-save_macros only [0:4] and [6:105], clockstore only [105:113] — so none of
-them clobbers another.
+save_macros only [0:4] and [6:105], clockstore only [105:113], and the group
+masks only [113:122] — so none of them clobbers another.
 
 Every function degrades to no-op/None on builds without nvm.
 """
@@ -166,8 +168,73 @@ def save_macros(active, profiles):
 # clockstore.OFFSET must equal _BLOB_END below; preflight asserts it.
 
 
+# --- per-group masks --------------------------------------------------------
+# Sits after the clock stamp under its OWN marker, so adding per-group toggles
+# does NOT reset anyone's macros, practice settings or clock. An absent or
+# corrupt region reads as "every group on", which is exactly the behaviour
+# before this existed, so an old device upgrades silently.
+GROUPS_OFFSET = 113             # must equal clockstore.END; preflight asserts
+GROUPS_MARK = 0xC2              # clockstore uses 0xC1
+GROUPS_SIZE = 9                 # marker + 4 x uint16
+GROUPS_END = GROUPS_OFFSET + GROUPS_SIZE
+
+
+def _default_masks():
+    from kanatype import kana
+
+    return {c: kana.full_mask(c) for c in kana.CATEGORIES}
+
+
+def load_groups():
+    """{category: bitmask}. Falls back to every group enabled."""
+    from kanatype import kana
+
+    nvm = _nvm()
+    if nvm is None or len(nvm) < GROUPS_END or nvm[GROUPS_OFFSET] != GROUPS_MARK:
+        return _default_masks()
+    out = {}
+    for i, cat in enumerate(kana.CATEGORIES):
+        base = GROUPS_OFFSET + 1 + 2 * i
+        mask = nvm[base] | (nvm[base + 1] << 8)
+        # Bits outside the category's group count mean a corrupt region, and an
+        # all-zero mask would hand the drill an EMPTY deck. Both fall back to
+        # the full mask rather than producing a screen with nothing to show.
+        full = kana.full_mask(cat)
+        out[cat] = mask if 0 < mask <= full else full
+    return out
+
+
+def save_groups(masks):
+    """Store {category: bitmask}. True if written."""
+    from kanatype import kana
+
+    nvm = _nvm()
+    if nvm is None or len(nvm) < GROUPS_END:
+        return False
+    blob = bytearray([GROUPS_MARK])
+    for cat in kana.CATEGORIES:
+        mask = masks.get(cat, kana.full_mask(cat)) & kana.full_mask(cat)
+        blob.append(mask & 0xFF)
+        blob.append((mask >> 8) & 0xFF)
+    if bytes(nvm[GROUPS_OFFSET:GROUPS_END]) != bytes(blob):  # skip a flash write
+        nvm[GROUPS_OFFSET:GROUPS_END] = bytes(blob)
+    return True
+
+
+def clear_groups():
+    """Drop the marker so load_groups() returns every group on."""
+    nvm = _nvm()
+    if nvm is not None and len(nvm) >= GROUPS_END:
+        nvm[GROUPS_OFFSET] = 0
+
+
 def reset():
-    """Invalidate saved settings -> defaults on next load."""
+    """Invalidate saved settings -> defaults on next load.
+
+    Clears the group masks too: "Reset to defaults" that left half a category
+    switched off would look like the reset had silently failed.
+    """
     nvm = _nvm()
     if nvm is not None and bytes(nvm[0:4]) == MAGIC:
         nvm[0:4] = b"\x00\x00\x00\x00"
+    clear_groups()

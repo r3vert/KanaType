@@ -86,7 +86,7 @@ class BDFFont:
             self.descent = (-fbb[3]) if fbb else 0
 
 
-def draw_label(grid, font, x, y, text, scale=1):
+def draw_label(grid, font, x, y, text, scale=1, ink=True):
     """Replicates adafruit_display_text.Label placement (defaults).
     scale mirrors Label(scale=N): origin stays in parent pixels, content
     geometry (offsets, advances, glyph pixels) multiplies by N."""
@@ -105,7 +105,7 @@ def draw_label(grid, font, x, y, text, scale=1):
                     for sy in range(scale):
                         for sx in range(scale):
                             mockup.set_px(grid, left + c * scale + sx,
-                                          top + r * scale + sy, True)
+                                          top + r * scale + sy, ink)
         cursor += g.shift_x
 
 
@@ -260,6 +260,67 @@ def render_drill(kana="きゃ", typed="ky", cats="H,HC", correct="12",
                    layout.DRILL_PROMPT_CENTER_X
                    - len(miss) * layout.JP_CHAR_W // 2,
                    layout.DRILL_MISS_Y, miss)
+    return g
+
+
+def render_groups(cat="H", mask=None, cursor=0, combos_full=False):
+    """Per-group toggle grid (geometry from layout.GROUP_*).
+
+    mask: bitmask over kana.groups(cat); None = every group on.
+    cursor: index into the cells, or len(cells)+n for the action row.
+    combos_full: REJECTED, kept only to reproduce the evidence in
+    mockups/practice_groups.png. A whole combo is 16 px of ink in a 13 px
+    cell, so it centres to x-2 and spills into the neighbour. Combos show
+    their BASE kana instead -- all 12 bases are distinct within a category,
+    and the romaji in the title row says which row you are on.
+    """
+    from kanatype import kana
+
+    jp = BDFFont(font_path("jp"))
+    g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
+    ids = kana.groups(cat)
+    if mask is None:
+        mask = kana.full_mask(cat)
+
+    name = {"H": "Hiragana", "K": "Katakana",
+            "HC": "Hira combos", "KC": "Kata combos"}[cat]
+    on, total = kana.mask_count(cat, mask)
+    draw_label(g, jp, 2, layout.GROUP_TITLE_Y, "%s %d/%d" % (name, on, total))
+
+    # the highlighted group's romaji: a kana alone does not tell you which row
+    # you are on, and for combos the base kana is genuinely ambiguous
+    if cursor < len(ids):
+        romaji = kana.group_romaji(ids[cursor])
+        draw_label(g, jp, layout.GROUP_ROMAJI_RIGHT
+                   - len(romaji) * layout.JP_CHAR_W, layout.GROUP_TITLE_Y,
+                   romaji)
+
+    for i, row_id in enumerate(ids):
+        cx, cy = layout.group_cell(i)
+        label_text = kana.group_label(cat, row_id)
+        if not combos_full:
+            label_text = label_text[0]
+        enabled = bool(mask & (1 << i))
+        if enabled:
+            mockup.fill_rect(g, cx, cy, layout.GROUP_CELL_W,
+                             layout.GROUP_CELL_H, True)
+        gw = len(label_text) * layout.JP_KANA_W
+        gx = cx + (layout.GROUP_CELL_W - gw) // 2
+        # on an enabled (filled) cell the glyph is knocked OUT of the fill
+        draw_label(g, jp, gx, cy + layout.GROUP_GLYPH_DY, label_text,
+                   ink=not enabled)
+        if i == cursor:
+            mockup.fill_rect(g, cx, cy + layout.GROUP_CELL_H,
+                             layout.GROUP_CELL_W, 1, True)
+
+    actions = ["All on", "All off", "Back"]
+    x = 2
+    for j, text in enumerate(actions):
+        draw_label(g, jp, x, layout.GROUP_ACTION_Y, text)
+        w = len(text) * layout.JP_CHAR_W
+        if cursor == len(ids) + j:
+            mockup.fill_rect(g, x, layout.GROUP_ACTION_UNDERLINE_Y, w, 1, True)
+        x += w + 8
     return g
 
 

@@ -137,6 +137,40 @@ DRILL_PROMPT_STYLES = {
     "jp": (8, 4, 32),      # 8px fullwidth kana x4 = 32px
 }
 
+# ----------------------------------------------------- practice group grid --
+# Per-group toggles: a category row in the config opens a grid of its kana
+# rows. H/K have 16 groups, HC/KC have 12, and BOTH use the same 8-column
+# geometry so the spatial memory transfers between them (and, later, to the
+# stats screen, which reuses this grid).
+#
+# ENABLED is drawn by INVERTING the cell rather than with [x] brackets:
+# brackets were unreadable at this density. The cursor is therefore an
+# UNDERLINE, because a box outline vanishes against a filled cell. Cell fill
+# is deliberately NARROWER than the column pitch -- when the two are equal,
+# two adjacent enabled cells merge into one white bar.
+GROUP_TITLE_Y = 5
+GROUP_ROMAJI_RIGHT = 126     # highlighted group's romaji, right-aligned
+GROUP_X0 = 4
+GROUP_Y0 = 16
+GROUP_COLS = 8
+GROUP_COL_PITCH = 15
+GROUP_ROW_PITCH = 16
+GROUP_CELL_W = 13            # < COL_PITCH on purpose: see above
+GROUP_CELL_H = 14
+GROUP_GLYPH_DY = 7           # label centre inside a cell
+GROUP_ACTION_Y = 57
+# The action row's underline sits BELOW its glyphs (which ink to row 61),
+# not a cell-height below like the grid's. Reusing GROUP_CELL_H here put it
+# at y=64 on a 64px panel, so the cursor vanished on 'All on'/'All off'.
+GROUP_ACTION_UNDERLINE_Y = 63
+
+
+def group_cell(index):
+    """(x, y) top-left of the index-th cell, filling rows left to right."""
+    col, row = index % GROUP_COLS, index // GROUP_COLS
+    return (GROUP_X0 + col * GROUP_COL_PITCH, GROUP_Y0 + row * GROUP_ROW_PITCH)
+
+
 # ------------------------------------------------------------ home screen --
 # Apps down the left in the jp font, clock and power state on the right, split
 # by a rule. The clock is a FOCUS TARGET one past the last app -- Enter on it

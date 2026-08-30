@@ -67,6 +67,16 @@ def boot_line(marks, t_menu, steps=None):
         (t_disp - t0) * 1000, (t_input - t_disp) * 1000, (t_menu - t_input) * 1000)
     if steps:
         line += "  [%s]" % " ".join("%s %.0f" % (n, v * 1000) for n, v in steps)
+    # nvm SIZE has never been recorded, and it is the ceiling on everything
+    # that persists: settings use 122 bytes today and the parked stats screen
+    # would want per-group counters on top. Report it once rather than
+    # guessing. Costs one import that the settings path makes anyway.
+    try:
+        import microcontroller
+
+        line += "  nvm %dB" % len(microcontroller.nvm)
+    except Exception:
+        pass
     return line
 
 
