@@ -701,6 +701,60 @@ if _rows_end + layout.STATS_BAR_H // 2 < layout.HEIGHT:
 else:
     fail("stats overview row %d runs off the panel" % _rows_end)
 
+# The per-SYMBOL grid is the one screen that draws a whole COMBO, which is
+# 16 px of ink -- it needs wider cells than the 13 px group grids, and enough
+# columns for the largest group.
+_biggest = max(len(kana.group_entries(c, g))
+               for c in kana.CATEGORIES for g in kana.groups(c))
+if layout.SYMBOL_COLS >= _biggest:
+    ok("symbol grid has %d columns for the largest group (%d entries)"
+       % (layout.SYMBOL_COLS, _biggest))
+else:
+    fail("symbol grid has %d columns but the largest group holds %d entries"
+         % (layout.SYMBOL_COLS, _biggest))
+
+_widest = max(len(t) for c in kana.CATEGORIES for g in kana.groups(c)
+              for t, _r in kana.group_entries(c, g)) * layout.JP_KANA_W
+if layout.SYMBOL_CELL_W >= _widest:
+    ok("symbol cell %d px fits the widest entry (%d px)"
+       % (layout.SYMBOL_CELL_W, _widest))
+else:
+    fail("symbol cell %d px clips the widest entry (%d px) - a combo would "
+         "spill into its neighbour" % (layout.SYMBOL_CELL_W, _widest))
+
+_sx, _ = layout.symbol_cell(layout.SYMBOL_COLS - 1)
+if _sx + layout.SYMBOL_CELL_W <= layout.WIDTH:
+    ok("symbol row fits: last cell ends at %d px"
+       % (_sx + layout.SYMBOL_CELL_W))
+else:
+    fail("symbol row runs off the panel: last cell ends at %d px"
+         % (_sx + layout.SYMBOL_CELL_W))
+
+# The three stats levels must agree. Group and category figures are summed
+# from symbol counts, so a fabricated set has to add up at every level.
+try:
+    import types as _t
+    _stats_mod = None
+    for _name in ("displayio", "terminalio"):
+        sys.modules.setdefault(_name, _t.ModuleType(_name))
+    from apps.practice import stats as _stats_mod
+
+    _fake = {}
+    for _t2, _r2 in kana.group_entries("H", "k"):
+        _stats_mod.record(_fake, _t2, True)
+        _stats_mod.record(_fake, _t2, False)
+    _gc, _ga = _stats_mod.totals(_fake, "H", "k")
+    _cc, _ca = _stats_mod.totals(_fake, "H")
+    _tc, _ta = _stats_mod.totals(_fake)
+    _n = len(kana.group_entries("H", "k"))
+    if (_gc, _ga) == (_n, 2 * _n) and (_cc, _ca) == (_gc, _ga)             and (_tc, _ta) == (_gc, _ga):
+        ok("stats sum consistently across symbol, group and category")
+    else:
+        fail("stats levels disagree: group %r category %r total %r"
+             % ((_gc, _ga), (_cc, _ca), (_tc, _ta)))
+except ImportError as _exc:
+    warn("could not import the stats screen: %s" % _exc)
+
 # LAYER opens the stats screen, so it must be on the board and NOT already
 # doing something else in the practice app.
 if "layer" in set(keymap.matrix_app_codes().values()):

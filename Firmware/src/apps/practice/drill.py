@@ -193,10 +193,10 @@ def run(ctx, opts):
             scr.reveal(kdata.reveal(cur[1]))   # the point of a miss
 
     def open_stats():
-        from apps.practice import stats as stats_ui
-
+        # stats.run() restores whatever screen was showing when it was called,
+        # so the drill does not swap the group back itself -- doing both is how
+        # the flash between stats screens started.
         stats_ui.run(ctx, session_stats, cats)
-        ctx.display.root_group = scr.group
 
     def trace_ram():
         if not (DEBUG_RAM and answered % RAM_EVERY == 0):

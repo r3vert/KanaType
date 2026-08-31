@@ -221,6 +221,13 @@ STATS_CELL_BAR_DY = 13
 STATS_CELL_BAR_H = 3
 STATS_CURSOR_DY = 17
 
+# Per-symbol view: one row of up to 5 wide cells (a group's largest size), so
+# a two-kana combo fits where the 13px group cell would clip it.
+SYMBOL_COLS = 5
+SYMBOL_X0 = 4
+SYMBOL_COL_PITCH = 24
+SYMBOL_CELL_W = 22
+
 
 def stats_row_y(index):
     return STATS_ROW_Y0 + index * STATS_ROW_PITCH
@@ -232,6 +239,17 @@ def stats_cell(index):
     col, row = index % GROUP_COLS, index // GROUP_COLS
     return (GROUP_X0 + col * GROUP_COL_PITCH,
             STATS_GRID_Y0 + row * STATS_GRID_ROW_PITCH)
+
+
+def symbol_cell(index):
+    """(x, y) top-left of a per-SYMBOL stats cell, one row of up to 5.
+
+    Wider cells than the group grids because this is the one screen that draws
+    a whole COMBO: a group holds at most 5 entries and an entry is at most 2
+    kana, which is 16 px of ink -- it does not fit the 13 px cell the other
+    grids use. Five columns is exactly what the largest group needs.
+    """
+    return (SYMBOL_X0 + index * SYMBOL_COL_PITCH, STATS_GRID_Y0)
 
 
 # ------------------------------------------------------------ home screen --

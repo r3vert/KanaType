@@ -334,6 +334,51 @@ def draw_bar(g, x, y, w, h, frac):
             mockup.set_px(g, xx, yy, on)
 
 
+def _totals(stats, category=None, row_id=None):
+    """Mirrors apps.practice.stats.totals: symbol counts summed upward, so a
+    preview can never disagree with the device about a group's accuracy."""
+    from kanatype import kana
+
+    c = a = 0
+    for text, (ec, ea) in stats.items():
+        if category is not None:
+            group = kana.group_of(text)
+            if group is None or group[0] != category:
+                continue
+            if row_id is not None and group[1] != row_id:
+                continue
+        c += ec
+        a += ea
+    return c, a
+
+
+def render_stats_group(stats, cat="H", row_id="k", cursor=0):
+    """Per-SYMBOL view: which individual kana in a group you are missing."""
+    from kanatype import kana
+
+    jp = BDFFont(font_path("jp"))
+    g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
+    entries = kana.group_entries(cat, row_id)
+    draw_label(g, jp, 2, layout.STATS_TITLE_Y, kana.group_romaji(row_id))
+    text, romaji = entries[cursor]
+    c, a = stats.get(text, (0, 0))
+    detail = "%s %d/%d" % (romaji, c, a)
+    draw_label(g, jp, layout.STATS_PCT_RIGHT - len(detail) * layout.JP_CHAR_W,
+               layout.STATS_TITLE_Y, detail)
+    for i, (text, _r) in enumerate(entries):
+        cx, cy = layout.symbol_cell(i)
+        gw = len(text) * layout.JP_KANA_W
+        draw_label(g, jp, cx + (layout.SYMBOL_CELL_W - gw) // 2,
+                   cy + layout.GROUP_GLYPH_DY, text)
+        c, a = stats.get(text, (0, 0))
+        draw_bar(g, cx, cy + layout.STATS_CELL_BAR_DY, layout.SYMBOL_CELL_W,
+                 layout.STATS_CELL_BAR_H, (float(c) / a) if a else 0.0)
+        if i == cursor:
+            mockup.fill_rect(g, cx, cy + layout.STATS_CURSOR_DY,
+                             layout.SYMBOL_CELL_W, 1, True)
+    return g
+
+
 def render_stats(stats, cats=("H", "K", "HC", "KC"), cursor=0):
     """Overview: accuracy per category, one bar each.
 
@@ -341,14 +386,11 @@ def render_stats(stats, cats=("H", "K", "HC", "KC"), cursor=0):
     answers yet shows a dash rather than 0%, because 0% and 'not attempted'
     mean very different things to someone deciding what to drill.
     """
-    from kanatype import kana
-
     jp = BDFFont(font_path("jp"))
     g = mockup.new_grid(layout.WIDTH, layout.HEIGHT)
     draw_label(g, jp, 2, layout.STATS_TITLE_Y, "Stats")
 
-    total_c = sum(v[0] for v in stats.values())
-    total_a = sum(v[1] for v in stats.values())
+    total_c, total_a = _totals(stats)
     summary = "%d/%d" % (total_c, total_a)
     draw_label(g, jp, layout.STATS_PCT_RIGHT - len(summary) * layout.JP_CHAR_W,
                layout.STATS_TITLE_Y, summary)
@@ -358,8 +400,7 @@ def render_stats(stats, cats=("H", "K", "HC", "KC"), cursor=0):
     for i, cat in enumerate(cats):
         y = layout.stats_row_y(i)
         draw_label(g, jp, layout.STATS_NAME_X, y, names[cat])
-        c = sum(v[0] for k, v in stats.items() if k[0] == cat)
-        a = sum(v[1] for k, v in stats.items() if k[0] == cat)
+        c, a = _totals(stats, cat)
         top = y - layout.STATS_BAR_H // 2
         if a:
             draw_bar(g, layout.STATS_BAR_X, top, layout.STATS_BAR_W,
@@ -387,7 +428,7 @@ def render_stats_category(stats, cat="H", cursor=0):
             "HC": "Hira combos", "KC": "Kata combos"}[cat]
     draw_label(g, jp, 2, layout.STATS_TITLE_Y, name)
     if cursor < len(ids):
-        c, a = stats.get((cat, ids[cursor]), (0, 0))
+        c, a = _totals(stats, cat, ids[cursor])
         detail = "%s %d/%d" % (kana.group_romaji(ids[cursor]), c, a)
         draw_label(g, jp,
                    layout.GROUP_ROMAJI_RIGHT - len(detail) * layout.JP_CHAR_W,
@@ -398,7 +439,7 @@ def render_stats_category(stats, cat="H", cursor=0):
         text = kana.group_label(cat, row_id)[0]
         gx = cx + (layout.GROUP_CELL_W - layout.JP_KANA_W) // 2
         draw_label(g, jp, gx, cy + layout.GROUP_GLYPH_DY, text)
-        c, a = stats.get((cat, row_id), (0, 0))
+        c, a = _totals(stats, cat, row_id)
         draw_bar(g, cx, cy + layout.STATS_CELL_BAR_DY, layout.GROUP_CELL_W,
                  layout.STATS_CELL_BAR_H, (float(c) / a) if a else 0.0)
         if i == cursor:
