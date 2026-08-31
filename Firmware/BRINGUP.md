@@ -391,6 +391,37 @@ preflight warns rather than fails while they are there. Delete with
 
 ---
 
+## 9c. Practice: per-group toggles + stats  ✅ DONE (2026-08-30)
+
+Both were parked features; the user asked for them and both are confirmed on
+hardware the same day.
+
+**Per-group toggles:**
+
+- [x] RIGHT on a category row opens its grid; tap Enter toggles the whole
+      category
+- [x] Enabled cells invert, cursor underlines, romaji tracks the cursor
+- [x] All on / All off / Back; Start refuses an all-off selection
+- [x] Selections survive leaving Practice, and macros/clock are untouched
+      (separate nvm region at [113:122])
+
+**Stats** (LAYER, right of the spacebar — NOT MENU, which is `exit`):
+
+- [x] Overview: a dithered bar per category, "-" where nothing was answered
+- [x] Enter → group grid, Enter again → SYMBOL grid
+- [x] No flash between screens (each screen swaps itself in; `run()` restores
+      the drill once, at the end)
+- [x] LAYER returns to the drill from any level, prompt and score intact
+
+Still open, and it is a decision rather than a bug:
+
+- [ ] **Per-session or lifetime stats.** Per-session today. Lifetime needs
+      ~224 bytes of nvm (56 groups x 4) and a reset affordance.
+- [ ] **Capture `nvm NB` from the boot line.** Never recorded, and it decides
+      whether lifetime stats have room at all.
+
+---
+
 ## 10. Wrap up
 
 - [ ] Note anything that looked wrong, with the screen and the key involved

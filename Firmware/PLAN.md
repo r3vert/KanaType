@@ -201,13 +201,16 @@ killed Practice and Clock on entry, so treat M1 as untested until task 5 of
 
 ### Backlog (post-M2, unscheduled)
 
-**All THREE of the following are AGREED and MOCKED UP but deliberately NOT
-built** — 1 and 2 were parked on 2026-08-28 and 3 on 2026-08-29, to close out
-this stage. Mockups were rendered with tools/render.py primitives; the geometry
-was never committed to layout.py, so building them starts by porting the drafts
-into HOME_/DRILL_-style constants.
+**1 and 2 are BUILT and confirmed on hardware (2026-08-30). 3 is still
+parked.** All three were mocked up first and parked on 2026-08-28/29; the user
+asked for them on 2026-08-30 and 1 and 2 shipped that day. Their geometry now
+lives in layout.py (GROUP_*, STATS_*, SYMBOL_*) like everything else.
 
-#### 1. Per-group toggles in Practice
+**What the mockups got wrong, which is the useful part of this record:** three
+of their decisions did not survive contact with the code, and each failure was
+found by a check rather than by eye. They are written up under each feature.
+
+#### 1. Per-group toggles in Practice — BUILT 2026-08-30
 
 Today a category is all-or-nothing. The DJT Kana site lets you enable single
 rows (k-, s-, b-...), and this mirrors that. Real inventory: H and K have 16
@@ -220,12 +223,35 @@ groups each (71 kana), HC and KC have 12 (36 kana).
 * the grid has "All on" / "All off" items, so you can shape a category once
   and then flip it wholesale
 
-Mockup decisions worth keeping:
+**As built:** RIGHT on a category row opens its grid; tap Enter still toggles
+the whole category, so the common case stays one keypress. Masks persist in 9
+bytes at nvm [113:122] under their own marker (the clockstore trick), so adding
+them reset nobody's macros, settings or clock. Start checks the DECK rather than
+the checkboxes -- an enabled category with every group off would otherwise hand
+the drill an empty deck.
+
+Corrections to the mockup:
+
+* **Hold-Enter was impossible.** `MatrixInput.poll()` emits presses and drops
+  releases, so no app driven by `ctx.input` can time a hold at all. (The
+  keyboard app manages one only because it hooks KMK's own scanner.) RIGHT is
+  the descend-into idiom and needs no releases; BACKSPACE comes back, because
+  LEFT has to stay free or half the grid is unreachable.
+* **Combos use the SAME 8-column geometry as H/K**, showing each group's BASE
+  kana. A whole combo is 16 px of ink in a 13 px cell and centres to x-2,
+  spilling into its neighbour -- broken, not merely cramped. All 12 bases are
+  distinct within a category and the romaji in the title says which row you are
+  on. This supersedes the "combos need 5 columns" note below.
+* **Fills are a displayio.Bitmap behind the labels, not `background_color`:**
+  that background box is only as wide as the glyph advance, and the cell has to
+  be wider than the glyph or adjacent enabled cells merge.
+
+Mockup decisions that DID survive:
 
 * 16 groups fit as 8 columns x 2 rows using the row's representative kana as
   the label. `[x]` brackets were tried FIRST and were unreadable at that
-  density -- ENABLED is shown by inverting the cell instead
-  (displayio: `background_color`), which is legible and much denser
+  density -- ENABLED is shown by inverting the cell instead, which is legible
+  and much denser
 * the cursor is an UNDERLINE, not a box: a box outline disappears against an
   inverted (filled) cell
 * the highlighted group's romaji prints in the title row's gap ("h-"), because
@@ -233,7 +259,7 @@ Mockup decisions worth keeping:
 * COMBOS need 5 columns, not 6: at 6 the cell pitch equals the fill width and
   two adjacent enabled cells merge into one white bar
 
-#### 2. Stats screen
+#### 2. Stats screen — BUILT 2026-08-30
 
 Reachable from the drill at any time via the MENU key (tap for stats, hold to
 leave, or a "Back" row -- undecided). Shows accuracy per category and, drilling
@@ -249,11 +275,39 @@ in, per group.
 * keep the bar clear of the glyph -- the first draft drew it at +10 and ate
   the bottom of every kana
 
-Open questions: where the counters live (nvm is nearly full at 113 bytes of
-the region in use; per-group counts for 56 groups would need a lot more), and
-whether stats are per-session or lifetime.
+**As built**, three levels rather than two: overview -> category (group grid)
+-> group (SYMBOL grid). The third level is the one that earns its keep -- a
+group bar says k- is weak, only the symbol row says it is ki you keep missing.
+Counting is per symbol with group and category figures summed upward, so the
+levels cannot drift; preflight checks they add up.
 
-#### 3. Drill screen reflow
+Corrections to the mockup, all found by a check rather than by eye:
+
+* **MENU could not open it.** MENU already maps to app code `exit`, the drill's
+  back-to-config path, confirmed on hardware. The stats screen uses LAYER (right
+  of the spacebar), the only app code the practice app was not using. preflight
+  asserts MENU still means exit.
+* **The bar offset was worse than the mockup thought.** A kana inks rows 2..11
+  of a cell, so the noted +10 ate the glyph and +12 TOUCHED it; +13 is the first
+  clear row. And a cursor at the toggle grid's +14 landed inside the bar, making
+  the two indistinguishable -- it is at +17. The stats grid therefore reuses the
+  toggle grid's COLUMNS but not its row pitch: a 14 px toggle cell has no room
+  for a bar under a 12 px glyph.
+* **The symbol row needs its own cells.** It is the only screen that draws a
+  whole combo (16 px of ink), so 5 columns of 22 px rather than the 13 px cells
+  the other grids use. Checked against real group sizes, not assumed.
+* **A flash between screens** on first hardware test was structural: each screen
+  restored the drill in its own `finally`, repainting it for a frame before the
+  next screen swapped in. Screens now only swap themselves in and `run()`
+  restores once, at the end.
+
+Open question, NOT decided: **per-session or lifetime.** It is per-session
+today. Lifetime needs ~224 bytes of nvm (56 groups x 4) and a reset affordance,
+and is an increment on what shipped rather than a rewrite. The boot line now
+prints nvm size to settle whether that room exists -- the number is still
+uncaptured, which is why this is open rather than answered.
+
+#### 3. Drill screen reflow — STILL PARKED
 
 The H/K/HC/KC column down the left edge is the least-read thing on the screen
 — you chose the categories five seconds ago in the config menu — and it
